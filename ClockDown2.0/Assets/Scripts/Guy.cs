@@ -7,20 +7,27 @@ public class Guy : MonoBehaviour
 {
     public float walkSpeed = 2.5f;
     public float jumpHeight = 5f;
-
     public Transform groundCheck;
     public float groundCheckRadious = 0.2f;
+    public LayerMask mouseAimMask;
+    public LayerMask groundMask;
+    public GameObject bulletPrefab;
+    public Transform muzzleTransform;
+    public Transform targetTransform;
+    public AnimationCurve recoilCurve;
+    public float recoilDuration = 0.25f;
+    public float recoilMaxRotation = 45f;
+    public Transform rightLowerArm;
+    public Transform rightHand;
 
     private float inputMovement;
     private Animator animator;
     private Rigidbody rigidbodyComponent;
     private bool isGrounded;
-
-    public Transform targetTransform;
     private Camera mainCamera;
-    public LayerMask mouseAimMask;
-
-    public LayerMask groundMask;
+    private float recoilTimer;
+    private int superJumpToken;
+    
 
     private int facingSign{
         // this is for getting the correct sign for the runnnig direction
@@ -51,10 +58,53 @@ public class Guy : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask)){
             targetTransform.position = hit.point;
         }
+        
 
         if (Input.GetButtonDown("Jump") && isGrounded){
+
+            float jumpPower = 1f;
+            if(superJumpToken > 0){
+                jumpPower *= 2;
+                superJumpToken -= 1;
+            }
+
+            
             rigidbodyComponent.velocity = new Vector3(rigidbodyComponent.velocity.x, 0, 0);
-            rigidbodyComponent.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
+            rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
+
+        }
+
+        if (Input.GetButtonDown("Fire1")){
+            Fire();
+        }
+
+    }
+
+
+    private void Fire(){
+        recoilTimer = Time.time;
+
+        var go = Instantiate(bulletPrefab);
+        go.transform.position = muzzleTransform.position;
+        var bullet = go.GetComponent<Bullet>();
+        bullet.Fire(go.transform.position, muzzleTransform.eulerAngles, gameObject.layer);
+
+    }
+
+    private void LateUpdate(){
+        // recoil animation here
+
+        if (recoilTimer < 0){
+            return;
+        }
+
+        float curveTime = (Time.time - recoilTimer) / recoilDuration;
+
+        if (curveTime > 1f){
+            recoilTimer = -1;
+        }
+        else{
+            rightLowerArm.Rotate(Vector3.forward, recoilCurve.Evaluate(curveTime) * recoilMaxRotation, Space.Self);
 
         }
     }
@@ -82,4 +132,12 @@ public class Guy : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter(Collider other){
+        if (other.gameObject.layer == 9)
+        {
+            Destroy(other.gameObject);
+            superJumpToken += 1;
+        }
+    }    
 }
