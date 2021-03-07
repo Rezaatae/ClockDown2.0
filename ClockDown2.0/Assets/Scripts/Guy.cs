@@ -64,7 +64,7 @@ public class Guy : MonoBehaviour
 
             float jumpPower = 1f;
             if(superJumpToken > 0){
-                jumpPower *= 2;
+                jumpPower *= 1.5f;
                 superJumpToken -= 1;
             }
 
