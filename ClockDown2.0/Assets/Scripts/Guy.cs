@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Guy : MonoBehaviour
 {
@@ -78,6 +80,10 @@ public class Guy : MonoBehaviour
             Fire();
         }
 
+        if (transform.position.y < -20){
+            FindObjectOfType<GameManager>().GameOver();
+        }
+
     }
 
 
@@ -138,6 +144,10 @@ public class Guy : MonoBehaviour
         {
             Destroy(other.gameObject);
             superJumpToken += 1;
+        }
+
+        if (other.gameObject.layer == 14){
+            SceneManager.LoadScene("Level2");
         }
     }    
 }
