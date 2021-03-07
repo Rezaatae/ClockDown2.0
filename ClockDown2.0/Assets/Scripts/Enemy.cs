@@ -23,8 +23,9 @@ public class Enemy : MonoBehaviour
 
     void Update(){
 
-        MoveEnemy();
 
+
+        MoveEnemy();
     }
 
     void MoveEnemy(){
@@ -40,5 +41,8 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
+    
+
     
 }

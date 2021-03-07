@@ -40,8 +40,14 @@ public class Bullet : MonoBehaviour
     private void Hit(Vector3 position, Vector3 direction, Vector3 reflected, Collider collider){
         // do something with the object that was hit (collider) e.g. collider.gameObject
         
-        Destroy(gameObject);
-
+        if (collider.gameObject.layer == 12){
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }        
+    
     }
 
     public void Fire(Vector3 position, Vector3 euler, int layer){
