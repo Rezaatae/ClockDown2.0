@@ -149,5 +149,5 @@ public class Guy : MonoBehaviour
         if (other.gameObject.layer == 14){
             SceneManager.LoadScene("Level2");
         }
-    }    
+    }  
 }
