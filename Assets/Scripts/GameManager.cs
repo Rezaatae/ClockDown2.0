@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             player = PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
             route = PhotonNetwork.Instantiate("Route", new Vector3(0,0,0), Quaternion.identity, 0);
+        } else 
+        {
+            PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
         }
         
     }
@@ -42,8 +45,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public override void OnDisconnected(DisconnectCause cause)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        Debug.Log("disconnected: " + cause.ToString());
+        
     }
+
 }
