@@ -23,7 +23,7 @@ public class JoinGameController : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined room successfully: " + PhotonNetwork.CurrentRoom.Name);
-        SceneManager.LoadScene("Main Scene");
+        // SceneManager.LoadScene("Main Scene");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)

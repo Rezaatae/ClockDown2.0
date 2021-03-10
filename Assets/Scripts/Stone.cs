@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    // public Route currentPos;
+    
+    [SerializeField]
+    private Route currentPos;
 
     int routePos;
 
@@ -19,14 +21,14 @@ public class Stone : MonoBehaviour
             steps = Random.Range(1, 7);
             Debug.Log("Dice Rolled: " + steps);
 
-            // if (routePos + steps < currentPos.childNodeList.Count)
-            // {
-            //     StartCoroutine(Move());
-            // }
-            // else
-            // {
-            //     Debug.Log("Rolled number too high");
-            // }
+            if (routePos + steps < currentPos.childNodeList.Count)
+            {
+                StartCoroutine(Move());
+            }
+            else
+            {
+                Debug.Log("Rolled number too high");
+            }
         }
         
     }
