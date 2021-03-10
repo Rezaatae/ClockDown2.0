@@ -10,40 +10,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     bool gameHasEnded = false;
 
-    private GameObject player;
+    // private GameObject player;
 
     public void Start()
     {
 
-        PhotonNetwork.GameVersion = "0.0.1";
-        PhotonNetwork.ConnectUsingSettings();
-        
-    }
-
-    public override void OnConnectedToMaster()
-    {
-        if (!PhotonNetwork.InLobby)
-            PhotonNetwork.JoinLobby();
-        Debug.Log("Connected to master");
-    }
-
-    public override void OnJoinedLobby()
-    {
-        RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 2;
-        PhotonNetwork.CreateRoom("marvin", options, TypedLobby.Default);
-        Debug.Log("Joined room");
-    }
-
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("Joined room");
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
         }
+        
     }
-
 
     public void GameOver(){
 
