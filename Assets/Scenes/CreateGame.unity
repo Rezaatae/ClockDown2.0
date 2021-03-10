@@ -420,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomNameInputField: {fileID: 2141393938}
   _createGameButton: {fileID: 1552529625}
-  _loadArenaButton: {fileID: 0}
+  _loadArenaButton: {fileID: 171302787}
   _maxPlayersPerRoom: 4
 --- !u!4 &449848218
 Transform:
