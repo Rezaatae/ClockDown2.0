@@ -13,8 +13,8 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
     private void Start()
     {
         Debug.Log("Start");
-        PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.GameVersion = "0.0.1";
+        PhotonNetwork.ConnectUsingSettings();
         _connectingToServerText.text = "Connecting to server...";
     }
 
