@@ -13,8 +13,8 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
     private void Start()
     {
         Debug.Log("Start");
-        PhotonNetwork.GameVersion = "0.0.1";
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.GameVersion = "0.0.1";
         _connectingToServerText.text = "Connecting to server...";
     }
 
@@ -38,6 +38,11 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         _connectingToServerText.text = "Joined Lobby";
+    }
+
+    public override void OnLeftLobby()
+    {
+        _connectingToServerText.text = "Left Lobby";
     }
 
     public void OnClick_CreateRoom()
