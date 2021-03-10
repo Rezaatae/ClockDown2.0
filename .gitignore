@@ -62,6 +62,6 @@ crashlytics-build.properties
 
 .DS_Store
 
-Assets/Photon/
+# Assets/Photon/
 
-Assets/Photon.meta
+# Assets/Photon.meta
