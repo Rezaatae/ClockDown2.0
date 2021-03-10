@@ -44,10 +44,12 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
 
     public void OnClick_CreateRoom()
     {
+        PhotonNetwork.NickName = "kauna";
         RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 2;
-        PhotonNetwork.CreateRoom("marvin", options, TypedLobby.Default);
-        Debug.Log("Joined room");
+        options.MaxPlayers = 4;
+        TypedLobby typedLobby = new TypedLobby("marvinroom", LobbyType.Default);
+        PhotonNetwork.JoinOrCreateRoom("marvinroom", options, typedLobby);
+        Debug.Log("create room");
     }
 
     public override void OnCreatedRoom()

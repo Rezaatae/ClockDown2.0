@@ -38,4 +38,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        Debug.Log("disconnected: " + cause.ToString());
+    }
 }
