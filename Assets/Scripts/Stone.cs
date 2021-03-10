@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    public Route currentPos;
+    // public Route currentPos;
 
     int routePos;
 
