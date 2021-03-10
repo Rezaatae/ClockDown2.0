@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Stone : MonoBehaviour
 {
 
     [SerializeField]
     private Route currentPos;
+
+    [SerializeField]
+    private PhotonView player;
 
     int routePos;
 
@@ -16,20 +20,24 @@ public class Stone : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
+        if (player.IsMine)
         {
-            steps = Random.Range(1, 7);
-            Debug.Log("Dice Rolled: " + steps);
+            if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
+                {
+                steps = Random.Range(1, 7);
+                Debug.Log("Dice Rolled: " + steps);
 
-            if (routePos + steps < currentPos.childNodeList.Count)
-            {
-                StartCoroutine(Move());
-            }
-            else
-            {
-                Debug.Log("Rolled number too high");
-            }
+                if (routePos + steps < currentPos.childNodeList.Count)
+                {
+                    StartCoroutine(Move());
+                }
+                else
+                {
+                    Debug.Log("Rolled number too high");
+                }
+            }   
         }
+        
         
     }
 
