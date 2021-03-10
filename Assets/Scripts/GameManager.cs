@@ -10,14 +10,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     bool gameHasEnded = false;
 
-    // private GameObject player;
+    private GameObject player;
 
     public void Start()
     {
 
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
+            player = PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
         }
         
     }
