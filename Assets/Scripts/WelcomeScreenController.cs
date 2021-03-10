@@ -12,6 +12,7 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        Debug.Log("Start");
         PhotonNetwork.GameVersion = "0.0.1";
         PhotonNetwork.ConnectUsingSettings();
         _connectingToServerText.text = "Connecting to server...";
@@ -31,50 +32,22 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        _connectingToServerText.text = "Disconnected from server.";
-        // _inputNickNameCanvas.gameObject.SetActive(false);
+        _connectingToServerText.text = "Disconnected from server." + cause.ToString();
     }
 
     public override void OnJoinedLobby()
     {
         _connectingToServerText.text = "Joined Lobby";
-        // _inputNickNameCanvas.gameObject.SetActive(true);
-        // _loadingGameCanvas.gameObject.SetActive(false);
     }
 
     public void OnClick_CreateRoom()
     {
-        PhotonNetwork.NickName = "kauna";
-        RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 4;
-        TypedLobby typedLobby = new TypedLobby("marvinroom", LobbyType.Default);
-        PhotonNetwork.JoinOrCreateRoom("marvinroom", options, typedLobby);
-        Debug.Log("create room");
-    }
-
-    public override void OnCreatedRoom()
-    {
-        Debug.Log("Room created");
-    }
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        Debug.Log("Failed to create room: " + message);
+        SceneManager.LoadScene("CreateGame");
     }
 
     public void OnClick_JoinRoom()
     {
-        PhotonNetwork.JoinRoom("marvin");
-    }
-
-    public override void OnJoinedRoom()
-    {
-        SceneManager.LoadScene("Main Scene");
-    }
-
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        Debug.Log("Failed to join room");
+        SceneManager.LoadScene("JoinGame");
     }
 
 }
