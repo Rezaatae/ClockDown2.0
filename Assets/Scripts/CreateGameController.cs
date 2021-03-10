@@ -32,12 +32,12 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     public void OnClick_LoadArena()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
-        {
+        // if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        // {
             PhotonNetwork.LoadLevel("Main Scene");
-        } else {
-            Debug.Log("must be 2 or more players to load arena");
-        }
+        // } else {
+        //     Debug.Log("must be 2 or more players to load arena");
+        // }
     }
 
     public void OnClick_CreateRoom()

@@ -12,13 +12,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private GameObject player;
 
+    private GameObject route;
+
     public void Start()
     {
 
         if (PhotonNetwork.IsMasterClient)
         {
             player = PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
-            DontDestroyOnLoad(player);
+            route = PhotonNetwork.Instantiate("Route", new Vector3(0,0,0), Quaternion.identity, 0);
         }
         
     }

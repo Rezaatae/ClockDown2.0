@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    
+
     [SerializeField]
     private Route currentPos;
 
@@ -44,17 +44,17 @@ public class Stone : MonoBehaviour
 
         isMoving = true;
 
-        // while(steps > 0)
-        // {
-        //     Vector3 nextPos = currentPos.childNodeList[routePos + 1].position;
-        //     while (MoveToNextNode(nextPos))
-        //     {
-        //         yield return null;
-        //     }
-        //     yield return new WaitForSeconds(0.1f);
-        //     steps--;
-        //     routePos++;
-        // }
+        while(steps > 0)
+        {
+            Vector3 nextPos = currentPos.childNodeList[routePos + 1].position;
+            while (MoveToNextNode(nextPos))
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.1f);
+            steps--;
+            routePos++;
+        }
         isMoving = false;
     }
     bool MoveToNextNode(Vector3 goal)
