@@ -5132,11 +5132,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1527635600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d3ed469d1382b489cf23964848cbf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dc5c9a47f7cf144f88670caf45943e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1135720652}
-  smoothSpeed: 0.2
+  smoothSpeed: 0.125
   offset: {x: 0, y: 2, z: -10}
 --- !u!1001 &1528350954
 PrefabInstance:
