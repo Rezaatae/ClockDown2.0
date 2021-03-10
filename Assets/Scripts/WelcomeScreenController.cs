@@ -15,6 +15,7 @@ public class WelcomeScreenController : MonoBehaviourPunCallbacks
         Debug.Log("Start");
         PhotonNetwork.GameVersion = "0.0.1";
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.AutomaticallySyncScene = true;
         _connectingToServerText.text = "Connecting to server...";
     }
 
