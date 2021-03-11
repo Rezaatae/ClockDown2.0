@@ -49,6 +49,9 @@ public class CreateGameController : MonoBehaviourPunCallbacks
         Hashtable customRoomProps = new Hashtable();
         customRoomProps["whos_turn"] = 1;
         PhotonNetwork.CurrentRoom.SetCustomProperties(customRoomProps);
+        Hashtable playerProps = new Hashtable();
+        playerProps["player_id"] = 1;
+        PhotonNetwork.SetPlayerCustomProperties(playerProps);
         SceneManager.LoadScene(Constants.GameLobby);
     }
 

@@ -27,7 +27,6 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
         if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
         {
             if (PhotonNetwork.IsMasterClient)
@@ -68,6 +67,9 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
+        // Hashtable playerProps = new Hashtable();
+        // playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
+        // newPlayer.SetCustomProperties(playerProps);
         Debug.Log(newPlayer.NickName + " just joined the game");
     }
 

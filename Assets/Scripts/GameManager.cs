@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private GameObject route;
 
+    private int _whosTurn = 1;
+
     public void Start()
     {
 
@@ -41,6 +43,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
+    {
+        _whosTurn = (int) PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"];
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
