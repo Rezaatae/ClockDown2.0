@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2.unity
     guid: 78a4c7f93f085354b8631acd4b434dc0
   - enabled: 1
-    path: Assets/Scenes/Main Scene.unity
+    path: Assets/Scenes/Board.unity
     guid: 0dcecdfdaebd9b84b856aa1b2c4234a5
   - enabled: 1
     path: Assets/Scenes/CreateGame.unity
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JoinGame.unity
     guid: 9663dea49408d4d598f8aa683086cce0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 95e20b81d4bad4d7f953e10b3fe47024
+  - enabled: 1
+    path: Assets/Scenes/GameLobby.unity
+    guid: 6b795ba875189444c94c1a00d1861737
   m_configObjects: {}
