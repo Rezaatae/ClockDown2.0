@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Stone : MonoBehaviour
 {
@@ -21,6 +22,13 @@ public class Stone : MonoBehaviour
     private int playedId;
 
     bool isMoving;
+
+    void Start()
+    {
+        // Hashtable playerProps = new Hashtable();
+        // playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
+        // PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
+    }
 
     void Update()
     {
@@ -47,6 +55,9 @@ public class Stone : MonoBehaviour
                     }
                 }   
             }
+        } else
+        {
+            Debug.Log("Nope");
         }
         
     }
