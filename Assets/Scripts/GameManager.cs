@@ -10,12 +10,18 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     bool gameHasEnded = false;
 
-    // private GameObject player;
+    private GameObject player;
+
+    private GameObject route;
 
     public void Start()
     {
 
         if (PhotonNetwork.IsMasterClient)
+        {
+            player = PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
+            route = PhotonNetwork.Instantiate("Route", new Vector3(0,0,0), Quaternion.identity, 0);
+        } else 
         {
             PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
         }
@@ -39,8 +45,4 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        Debug.Log("disconnected: " + cause.ToString());
-    }
 }
