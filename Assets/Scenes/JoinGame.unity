@@ -557,6 +557,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: JoinRoomButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3202479842918899783, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
+      propertyPath: m_text
+      value: 'Join game
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
 --- !u!114 &892422682 stripped
