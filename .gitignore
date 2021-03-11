@@ -65,3 +65,5 @@ crashlytics-build.properties
 Assets/Photon/PhotonUtilities/PackObject/CodeGen/Editor/Resources/TypeCatalogue.asset
 
 Assets/Photon/PhotonUtilities/PackObject/CodeGen/Editor/Resources/TypeCatalogue.asset.meta
+
+ClockDown.app/
