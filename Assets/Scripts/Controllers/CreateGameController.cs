@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -46,12 +48,14 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Hashtable customRoomProps = new Hashtable();
-        customRoomProps["whos_turn"] = 1;
-        PhotonNetwork.CurrentRoom.SetCustomProperties(customRoomProps);
         Hashtable playerProps = new Hashtable();
         playerProps["player_id"] = 1;
         PhotonNetwork.SetPlayerCustomProperties(playerProps);
+
+        Hashtable customRoomProps = new Hashtable();
+        customRoomProps["whos_turn_index"] = 0;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(customRoomProps);
+        
         SceneManager.LoadScene(Constants.GameLobby);
     }
 

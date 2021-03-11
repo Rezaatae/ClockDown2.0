@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -14,6 +16,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private int _whosTurn = 1;
 
+    private ArrayList playerIds;
+
     public void Start()
     {
 
@@ -25,7 +29,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
         }
-        
+                
     }
 
     public void GameOver(){
@@ -45,13 +49,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
-    {
-        _whosTurn = (int) PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"];
-    }
-
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
+
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(Constants.MainMenu);
     }

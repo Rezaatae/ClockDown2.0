@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -71,6 +73,18 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
         playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
         newPlayer.SetCustomProperties(playerProps);
         Debug.Log(newPlayer.NickName + " just joined the game");
+
+        // int[] arr = new int[PhotonNetwork.CurrentRoom.PlayerCount];
+        // for (int i = 1; i < PhotonNetwork.CurrentRoom.PlayerCount + 1; i++)
+        // {
+        //     arr
+        // }
+
+        int[] players = (int[]) PhotonNetwork.CurrentRoom.CustomProperties["players"];
+        players[PhotonNetwork.CurrentRoom.PlayerCount - 1] = System.Convert.ToInt32(newPlayer.CustomProperties["player_id"]);
+        PhotonNetwork.CurrentRoom.CustomProperties["players"] = players;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
+
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
