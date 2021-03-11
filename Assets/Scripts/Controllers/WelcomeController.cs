@@ -22,12 +22,13 @@ public class WelcomeController : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.AutomaticallySyncScene = true;
         _connectionStatusText.text = "Connecting to server...";
         _playerNickNameTextField.gameObject.SetActive(false);
         _continueButton.gameObject.SetActive(false);
+        Debug.Log(PhotonNetwork.AppVersion);
     }
 
      public override void OnConnectedToMaster()

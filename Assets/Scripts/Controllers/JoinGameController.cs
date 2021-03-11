@@ -16,6 +16,7 @@ public class JoinGameController : MonoBehaviourPunCallbacks
     public void OnClick_JoinRoom()
     {
         _joinRoomButton.interactable = false;
+        Debug.Log(_roomNameInputField.text);
         PhotonNetwork.JoinRoom(_roomNameInputField.text);
     }
 
