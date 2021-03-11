@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202479842676494415, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -49
+      value: -107
       objectReference: {fileID: 0}
     - target: {fileID: 3202479842676494415, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -246,6 +246,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaveArenaButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3202479842918899783, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
+      propertyPath: m_text
+      value: 'Leave game
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
 --- !u!224 &124990583 stripped
@@ -253,6 +259,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3202479842676494415, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
   m_PrefabInstance: {fileID: 124990582}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &124990584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3202479842676494416, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
+  m_PrefabInstance: {fileID: 124990582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &449848216
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameStatusText: {fileID: 1469775012}
-  _loadArenaButton: {fileID: 0}
-  _leaveArenaButton: {fileID: 0}
+  _loadArenaButton: {fileID: 520244906}
+  _leaveArenaButton: {fileID: 124990584}
 --- !u!4 &449848218
 Transform:
   m_ObjectHideFlags: 0
@@ -422,6 +439,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadArenaButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3202479842918899783, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
+      propertyPath: m_text
+      value: 'Load arena
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
 --- !u!224 &520244905 stripped
@@ -429,6 +452,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3202479842676494415, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
   m_PrefabInstance: {fileID: 520244904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &520244906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3202479842676494416, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
+  m_PrefabInstance: {fileID: 520244904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &833572269
 GameObject:
   m_ObjectHideFlags: 0
