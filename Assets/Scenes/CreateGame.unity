@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomNameInputField: {fileID: 889578341}
-  _createGameButton: {fileID: 0}
+  _createGameButton: {fileID: 1779607797}
   _maxPlayersPerRoom: 4
 --- !u!4 &449848218
 Transform:
@@ -1051,6 +1051,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3202479842676494415, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
   m_PrefabInstance: {fileID: 1779607795}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1779607797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3202479842676494416, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
+  m_PrefabInstance: {fileID: 1779607795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1821897123
 GameObject:
   m_ObjectHideFlags: 0
