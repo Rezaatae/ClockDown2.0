@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using TMPro;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class JoinGameController : MonoBehaviourPunCallbacks
 {
@@ -31,13 +30,6 @@ public class JoinGameController : MonoBehaviourPunCallbacks
     {
         _joinRoomButton.interactable = true;
         Debug.Log("Unable to join this room: " + message);
-    }
-
-    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-    {
-        Hashtable playerProps = new Hashtable();
-        playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
-        newPlayer.SetCustomProperties(playerProps);
     }
 
 }
