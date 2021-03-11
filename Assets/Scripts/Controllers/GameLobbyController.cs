@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameLobbyController : MonoBehaviourPunCallbacks
 {
@@ -16,8 +17,6 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private Button _leaveArenaButton;
 
-    private byte _totalPlayersInGameLobby = 0;
-
     private void Start()
     {
         var loadArenaButtonColorBlock = _loadArenaButton.colors;
@@ -28,8 +27,8 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-
-        if (_totalPlayersInGameLobby > 1)
+        Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
+        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -55,8 +54,7 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public void OnClick_LoadArena()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
-            PhotonNetwork.LoadLevel(Constants.MainMenu);
+        PhotonNetwork.LoadLevel(Constants.Board);
     }
 
     public void OnClick_LeaveRoom()
@@ -70,13 +68,11 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        _totalPlayersInGameLobby++;
         Debug.Log(newPlayer.NickName + " just joined the game");
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-        _totalPlayersInGameLobby--;
         Debug.Log(otherPlayer.NickName + " just left the game");
     }
 

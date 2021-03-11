@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class CreateGameController : MonoBehaviourPunCallbacks
 {
@@ -45,6 +46,9 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        Hashtable customRoomProps = new Hashtable();
+        customRoomProps["whos_turn"] = 1;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(customRoomProps);
         SceneManager.LoadScene(Constants.GameLobby);
     }
 

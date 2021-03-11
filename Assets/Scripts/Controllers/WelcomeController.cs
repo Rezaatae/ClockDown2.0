@@ -18,12 +18,12 @@ public class WelcomeController : MonoBehaviourPunCallbacks
     private Button _continueButton;
 
     [SerializeField]
-    private string _gameVersion;
+    private string gameVersion;
 
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.GameVersion = _gameVersion;
+        PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.AutomaticallySyncScene = true;
         _connectionStatusText.text = "Connecting to server...";
         _playerNickNameTextField.gameObject.SetActive(false);

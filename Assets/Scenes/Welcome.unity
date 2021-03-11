@@ -585,7 +585,7 @@ MonoBehaviour:
   _connectionStatusText: {fileID: 718637198}
   _playerNickNameTextField: {fileID: 260080411}
   _continueButton: {fileID: 1540016463}
-  _gameVersion: 0.0.1
+  gameVersion: 1
 --- !u!4 &449848218
 Transform:
   m_ObjectHideFlags: 0

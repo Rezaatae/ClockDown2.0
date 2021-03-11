@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
@@ -43,6 +41,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.LoadLevel(Constants.MainMenu);
     }
 
 }

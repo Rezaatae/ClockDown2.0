@@ -8,7 +8,7 @@ public class JoinGameController : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
-    private TextMeshProUGUI _roomNameInputField;
+    private TMP_InputField _roomNameInputField;
 
     [SerializeField]
     private Button _joinRoomButton;
