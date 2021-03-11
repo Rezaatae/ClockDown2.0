@@ -23,19 +23,13 @@ public class Stone : MonoBehaviour
 
     bool isMoving;
 
-    void Start()
-    {
-        // Hashtable playerProps = new Hashtable();
-        // playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
-        // PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
-    }
-
     void Update()
     {
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("whos_turn") && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
         {
-            whosTurn = (int) PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"];
-            playedId = (int) PhotonNetwork.LocalPlayer.CustomProperties["player_id"];
+        
+            whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"]);
+            playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties["player_id"]);
             Debug.Log("Player " + whosTurn + "'s turn");
             Debug.Log("Local player " + playedId);
             if (player.IsMine && whosTurn == playedId)
@@ -55,9 +49,6 @@ public class Stone : MonoBehaviour
                     }
                 }   
             }
-        } else
-        {
-            Debug.Log("Nope");
         }
         
     }

@@ -67,11 +67,11 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        Hashtable playerProps = new Hashtable();
-        playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
-        newPlayer.SetCustomProperties(playerProps);
-        Debug.Log(newPlayer.NickName + " just joined the game");
-        Debug.Log(newPlayer.CustomProperties);
+        // Hashtable playerProps = new Hashtable();
+        // playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
+        // newPlayer.SetCustomProperties(playerProps);
+        // Debug.Log(newPlayer.NickName + " just joined the game");
+        // Debug.Log(newPlayer.CustomProperties);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
