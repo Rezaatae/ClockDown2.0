@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomNameInputField: {fileID: 889578341}
   _createGameButton: {fileID: 1779607797}
-  _maxPlayersPerRoom: 4
+  _maxPlayersPerRoom: 6
 --- !u!4 &449848218
 Transform:
   m_ObjectHideFlags: 0

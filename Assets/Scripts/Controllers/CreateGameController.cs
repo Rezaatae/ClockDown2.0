@@ -16,7 +16,7 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     [Tooltip("The maximum number of players per room")]
     [SerializeField]
-    private byte _maxPlayersPerRoom = 6;
+    private byte _maxPlayersPerRoom;
 
     private void Start()
     {
