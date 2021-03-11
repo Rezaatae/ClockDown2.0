@@ -16,7 +16,7 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     [Tooltip("The maximum number of players per room")]
     [SerializeField]
-    private byte _maxPlayersPerRoom = 4;
+    private byte _maxPlayersPerRoom = 6;
 
     private void Start()
     {
@@ -26,7 +26,6 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     public void OnClick_CreateRoom()
     {
-        PhotonNetwork.NickName = "kauna";
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = _maxPlayersPerRoom;
         PhotonNetwork.CreateRoom(_roomNameInputField.text, options, TypedLobby.Default);
