@@ -1,55 +1,43 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class Stone : MonoBehaviour
+public class Stone : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
     private Route currentPos;
 
-    [SerializeField]
-    private PhotonView player;
+    // [SerializeField]
+    // private PhotonView player;
 
-    int routePos;
+    [SerializeField]
+    private GameManager gameManager;
+
+    private int routePos;
 
     public int steps;
 
-    private int whosTurn;
+    // private int whosTurnIndex;
 
-    private int playedId;
+    // private ArrayList playerIds = new ArrayList();
 
-    private ArrayList playerIds = new ArrayList();
+    private bool isMoving;
 
-    bool isMoving;
-
-    void Start()
+    private void Start()
     {
-        GetPlayers();
+        // GetPlayers();
     }
 
-    void GetPlayers()
+    private void Update()
     {
-        foreach(var player in PhotonNetwork.PlayerList)
-        {
-            int playedId = System.Convert.ToInt32(player.CustomProperties[Constants.PlayerId]);
-            playerIds.Add(playedId);
-        }
-
-        Debug.Log(playerIds.Count);
-    }
-
-    void Update()
-    {
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
-        {
-            whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
-            playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
-            Debug.Log("Player " + playerIds[whosTurn] + "'s turn");
-            Debug.Log("Local player " + playedId);
-            if (player.IsMine && (int) playerIds[whosTurn] == playedId)
+        // if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
+        // {
+        //     whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
+        //     int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
+        //     if (player.IsMine && (int) playerIds[whosTurnIndex] == playedId)
+        //     {
+            if (gameManager.IsLocalPlayersTurn()) 
             {
                 if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
                 {
@@ -64,15 +52,15 @@ public class Stone : MonoBehaviour
                     {
                     Debug.Log("Rolled number too high");
                     }
-                }   
+                }
             }
-        }
+                   
+            // }
+        // }
         
     }
 
-
-
-    IEnumerator Move()
+    private IEnumerator Move()
     {
         if (isMoving)
         {
@@ -93,21 +81,38 @@ public class Stone : MonoBehaviour
             routePos++;
         }
         isMoving = false;
-        UpdateWhosTurn();
+        gameManager.UpdateWhosTurn();
+        // UpdateWhosTurn();
     }
-    bool MoveToNextNode(Vector3 goal)
+    private bool MoveToNextNode(Vector3 goal)
     {
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 8f * Time.deltaTime));
     }
 
-    private void UpdateWhosTurn()
-    {
-        if (whosTurn == PhotonNetwork.CurrentRoom.PlayerCount - 1)
-            whosTurn = 0;
-            else 
-                whosTurn++;
+    // public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    // {
+    //     GetPlayers();
+    // }
 
-        PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex] = whosTurn;
-        PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
-    }
+    // private void UpdateWhosTurn()
+    // {
+    //     if (whosTurnIndex == PhotonNetwork.CurrentRoom.PlayerCount - 1)
+    //         whosTurnIndex = 0;
+    //         else 
+    //             whosTurnIndex++;
+
+    //     PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex] = whosTurnIndex;
+    //     PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
+    // }
+
+    // private void GetPlayers()
+    // {
+    //     foreach(var player in PhotonNetwork.PlayerList)
+    //     {
+    //         int playedId = System.Convert.ToInt32(player.CustomProperties[Constants.PlayerId]);
+    //         playerIds.Add(playedId);
+    //     }
+
+    //     Debug.Log(playerIds.Count);
+    // }
 }

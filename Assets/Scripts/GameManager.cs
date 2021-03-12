@@ -2,8 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
-using Photon.Realtime;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -12,19 +10,23 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private GameObject player;
 
-    private GameObject route;
+    [SerializeField]
+    private PhotonView playerPhotonView;
+    
+    // private int _whosTurn = 1;
 
-    private int _whosTurn = 1;
+    private ArrayList playerIds = new ArrayList();
 
-    private ArrayList playerIds;
+    private int whosTurnIndex = 0;
+
 
     public void Start()
     {
 
+        GetPlayerIDs();
         if (PhotonNetwork.IsMasterClient)
         {
             player = PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
-            route = PhotonNetwork.Instantiate(Constants.Prefabs.Route, new Vector3(0,0,0), Quaternion.identity, 0);
         } else 
         {
             PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
@@ -32,7 +34,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     }
 
-    public void GameOver(){
+    public void GameOver() 
+    {
 
         if(gameHasEnded == false && SceneManager.GetActiveScene().name == "SampleScene"){
             gameHasEnded = true;
@@ -45,15 +48,59 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     }
 
-    void Restart(){
+    void Restart()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public bool IsLocalPlayersTurn()
+    {
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
+        {
+            whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
+            int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
+
+            return playerPhotonView.IsMine && (int) playerIds[whosTurnIndex] == playedId;
+        }
+
+        return false;
+    }
+    public void UpdateWhosTurn()
+    {
+        if (whosTurnIndex == PhotonNetwork.CurrentRoom.PlayerCount - 1)
+            whosTurnIndex = 0;
+            else 
+                whosTurnIndex++;
+
+        PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex] = whosTurnIndex;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
+    }
+
+    private void GetPlayerIDs()
+    {
+        playerIds.Clear();
+
+        foreach(var player in PhotonNetwork.PlayerList)
+        {
+            int playedId = System.Convert.ToInt32(player.CustomProperties[Constants.PlayerId]);
+            playerIds.Add(playedId);
+        }
+
+        Debug.Log(playerIds.Count);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
 
         if (PhotonNetwork.IsMasterClient)
+        {
             PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
+        } else
+        {
+            GetPlayerIDs();
+            SceneManager.LoadScene(Constants.Scenes.MainMenu);
+        }
+                        
     }
 
 }
