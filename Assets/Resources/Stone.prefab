@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPos: {fileID: 7845494402212660094, guid: 7a084d6b12d7140cfaaa14a6bbe17a65, type: 3}
-  player: {fileID: 6390747840680645238}
+  gameManager: {fileID: 0}
   steps: 0
 --- !u!114 &-8575526988927460082
 MonoBehaviour:

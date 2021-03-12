@@ -11,7 +11,6 @@ public class Stone : MonoBehaviourPunCallbacks
     // [SerializeField]
     // private PhotonView player;
 
-    [SerializeField]
     private GameManager gameManager;
 
     private int routePos;
@@ -24,9 +23,15 @@ public class Stone : MonoBehaviourPunCallbacks
 
     private bool isMoving;
 
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     private void Start()
     {
         // GetPlayers();
+        // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
