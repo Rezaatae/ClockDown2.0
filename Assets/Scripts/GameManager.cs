@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -9,44 +10,23 @@ public class GameManager : MonoBehaviourPunCallbacks
     bool gameHasEnded = false;
 
     private GameObject player;
-
-    [SerializeField]
-    private PhotonView playerPhotonView;
     
-    // private int _whosTurn = 1;
-
     private ArrayList playerIds = new ArrayList();
 
     private int whosTurnIndex = 0;
 
-    private bool isLocalPlayersTurn;
+    [SerializeField]
+    private TextMeshProUGUI whosTurnText;
 
 
     public void Start()
     {
-
         GetPlayerIDs();
         if (PhotonNetwork.IsMasterClient)
-        {
-            player = PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
-            // player.AddComponent<GameManager>();
-        } else 
-        {
-            PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
-        }
-
+            PhotonNetwork.Instantiate(Constants.Prefabs.Route, new Vector3(0,0,0), Quaternion.identity);
+        PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity);
     }
 
-    public void Update()
-    {
-        // if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
-        // {
-        //     whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
-        //     int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
-
-        //     isLocalPlayersTurn = playerPhotonView.IsMine && (int) playerIds[whosTurnIndex] == playedId;
-        // }
-    }
 
     public void GameOver() 
     {
@@ -73,8 +53,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
             int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
-
-            return playerPhotonView.IsMine && (int) playerIds[whosTurnIndex] == playedId;
+            whosTurnText.text = "Player " + playerIds[whosTurnIndex] + "'s turn";
+            return (int) playerIds[whosTurnIndex] == playedId;
         }
 
         return false;
@@ -100,7 +80,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             playerIds.Add(playedId);
         }
 
-        Debug.Log(playerIds.Count);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
