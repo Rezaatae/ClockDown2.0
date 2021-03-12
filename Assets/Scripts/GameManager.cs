@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private int whosTurnIndex = 0;
 
+    private bool isLocalPlayersTurn;
+
 
     public void Start()
     {
@@ -32,6 +34,17 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
         }
 
+    }
+
+    public void Update()
+    {
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
+        {
+            whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
+            int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
+
+            isLocalPlayersTurn = playerPhotonView.IsMine && (int) playerIds[whosTurnIndex] == playedId;
+        }
     }
 
     public void GameOver() 
@@ -55,15 +68,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public bool IsLocalPlayersTurn()
     {
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
-        {
-            whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
-            int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
+        // if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
+        // {
+        //     whosTurnIndex = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
+        //     int playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
 
-            return playerPhotonView.IsMine && (int) playerIds[whosTurnIndex] == playedId;
-        }
+        //     return playerPhotonView.IsMine && (int) playerIds[whosTurnIndex] == playedId;
+        // }
 
-        return false;
+        return isLocalPlayersTurn;
     }
     public void UpdateWhosTurn()
     {
