@@ -30,9 +30,9 @@ public class Stone : MonoBehaviour
         GetPlayers();
     }
 
-    IEnumerator GetPlayers()
+    void GetPlayers()
     {
-        yield return new WaitForSeconds(2);
+        // yield return new WaitForSeconds(2);
         foreach(var player in PhotonNetwork.PlayerList)
         {
             int playedId = System.Convert.ToInt32(player.CustomProperties["player_id"]);
