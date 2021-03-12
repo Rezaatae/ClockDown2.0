@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: 8d0eb324-986d-4b80-ab5e-db52ea04ee53
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 0.0.1_2.26.1
+    AppVersion: 
     UseNameServer: 1
     FixedRegion: 
     Server: 
@@ -27,8 +27,8 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: 
-  PunLogging: 0
+  DevRegion: eu
+  PunLogging: 2
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0

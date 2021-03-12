@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c95f91155b941c5a39e53786f108c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomNameInputField: {fileID: 2141393938}
+  _roomNameInputField: {fileID: 889578341}
   _joinRoomButton: {fileID: 892422682}
 --- !u!4 &449848218
 Transform:

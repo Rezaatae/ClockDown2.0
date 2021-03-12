@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameLobbyController : MonoBehaviourPunCallbacks
 {
@@ -16,8 +17,6 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private Button _leaveArenaButton;
 
-    private byte _totalPlayersInGameLobby = 0;
-
     private void Start()
     {
         var loadArenaButtonColorBlock = _loadArenaButton.colors;
@@ -28,8 +27,7 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-
-        if (_totalPlayersInGameLobby > 1)
+        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -55,28 +53,29 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public void OnClick_LoadArena()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
-            PhotonNetwork.LoadLevel(Constants.MainMenu);
+        PhotonNetwork.LoadLevel(Constants.Scenes.Board);
     }
 
     public void OnClick_LeaveRoom()
     {
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(Constants.MainMenu);
+            PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
             else
-                SceneManager.LoadScene(Constants.MainMenu);
+                SceneManager.LoadScene(Constants.Scenes.MainMenu);
         PhotonNetwork.LeaveRoom();
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        _totalPlayersInGameLobby++;
+        Hashtable playerProps = new Hashtable();
+        playerProps[Constants.PlayerId] = PhotonNetwork.CurrentRoom.PlayerCount;
+        newPlayer.SetCustomProperties(playerProps);
         Debug.Log(newPlayer.NickName + " just joined the game");
+
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-        _totalPlayersInGameLobby--;
         Debug.Log(otherPlayer.NickName + " just left the game");
     }
 

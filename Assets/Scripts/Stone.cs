@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
@@ -12,18 +11,25 @@ public class Stone : MonoBehaviour
     [SerializeField]
     private PhotonView player;
 
-    int routePos;
+    private GameManager gameManager;
+
+    private int routePos;
 
     public int steps;
 
-    bool isMoving;
+    private bool isMoving;
 
-    void Update()
+    private void Awake()
     {
-        if (player.IsMine)
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    private void Update()
+    {
+        if (gameManager.IsLocalPlayersTurn() && player.IsMine) 
         {
             if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
-                {
+            {
                 steps = Random.Range(1, 7);
                 Debug.Log("Dice Rolled: " + steps);
 
@@ -33,17 +39,14 @@ public class Stone : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Rolled number too high");
+                Debug.Log("Rolled number too high");
                 }
-            }   
+            }
         }
-        
         
     }
 
-
-
-    IEnumerator Move()
+    private IEnumerator Move()
     {
         if (isMoving)
         {
@@ -64,9 +67,12 @@ public class Stone : MonoBehaviour
             routePos++;
         }
         isMoving = false;
+        gameManager.UpdateWhosTurn();
     }
-    bool MoveToNextNode(Vector3 goal)
+    
+    private bool MoveToNextNode(Vector3 goal)
     {
         return goal != (transform.position = Vector3.MoveTowards(transform.position, goal, 8f * Time.deltaTime));
     }
+
 }

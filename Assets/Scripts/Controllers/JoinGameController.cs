@@ -8,7 +8,7 @@ public class JoinGameController : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
-    private TextMeshProUGUI _roomNameInputField;
+    private TMP_InputField _roomNameInputField;
 
     [SerializeField]
     private Button _joinRoomButton;
@@ -23,7 +23,7 @@ public class JoinGameController : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined room successfully: " + PhotonNetwork.CurrentRoom.Name);
-        SceneManager.LoadScene(Constants.GameLobby);
+        SceneManager.LoadScene(Constants.Scenes.GameLobby);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
