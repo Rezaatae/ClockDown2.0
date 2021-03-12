@@ -80,10 +80,10 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
         //     arr
         // }
 
-        int[] players = (int[]) PhotonNetwork.CurrentRoom.CustomProperties["players"];
-        players[PhotonNetwork.CurrentRoom.PlayerCount - 1] = System.Convert.ToInt32(newPlayer.CustomProperties["player_id"]);
-        PhotonNetwork.CurrentRoom.CustomProperties["players"] = players;
-        PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
+        // int[] players = (int[]) PhotonNetwork.CurrentRoom.CustomProperties["players"];
+        // players[PhotonNetwork.CurrentRoom.PlayerCount - 1] = System.Convert.ToInt32(newPlayer.CustomProperties["player_id"]);
+        // PhotonNetwork.CurrentRoom.CustomProperties["players"] = players;
+        // PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
 
     }
 
