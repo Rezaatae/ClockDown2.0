@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -55,35 +53,24 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public void OnClick_LoadArena()
     {
-        PhotonNetwork.LoadLevel(Constants.Board);
+        PhotonNetwork.LoadLevel(Constants.Scenes.Board);
     }
 
     public void OnClick_LeaveRoom()
     {
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(Constants.MainMenu);
+            PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
             else
-                SceneManager.LoadScene(Constants.MainMenu);
+                SceneManager.LoadScene(Constants.Scenes.MainMenu);
         PhotonNetwork.LeaveRoom();
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Hashtable playerProps = new Hashtable();
-        playerProps["player_id"] = PhotonNetwork.CurrentRoom.PlayerCount;
+        playerProps[Constants.PlayerId] = PhotonNetwork.CurrentRoom.PlayerCount;
         newPlayer.SetCustomProperties(playerProps);
         Debug.Log(newPlayer.NickName + " just joined the game");
-
-        // int[] arr = new int[PhotonNetwork.CurrentRoom.PlayerCount];
-        // for (int i = 1; i < PhotonNetwork.CurrentRoom.PlayerCount + 1; i++)
-        // {
-        //     arr
-        // }
-
-        // int[] players = (int[]) PhotonNetwork.CurrentRoom.CustomProperties["players"];
-        // players[PhotonNetwork.CurrentRoom.PlayerCount - 1] = System.Convert.ToInt32(newPlayer.CustomProperties["player_id"]);
-        // PhotonNetwork.CurrentRoom.CustomProperties["players"] = players;
-        // PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
 
     }
 

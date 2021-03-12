@@ -63,7 +63,7 @@ public class WelcomeController : MonoBehaviourPunCallbacks
     public void OnClick_Continue()
     {
         PhotonNetwork.NickName = _playerNickNameTextField.text;
-        SceneManager.LoadScene(Constants.MainMenu);
+        SceneManager.LoadScene(Constants.Scenes.MainMenu);
     }
 
 }

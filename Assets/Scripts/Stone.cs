@@ -34,7 +34,7 @@ public class Stone : MonoBehaviour
     {
         foreach(var player in PhotonNetwork.PlayerList)
         {
-            int playedId = System.Convert.ToInt32(player.CustomProperties["player_id"]);
+            int playedId = System.Convert.ToInt32(player.CustomProperties[Constants.PlayerId]);
             playerIds.Add(playedId);
         }
 
@@ -43,10 +43,10 @@ public class Stone : MonoBehaviour
 
     void Update()
     {
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("whos_turn") && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Constants.WhosTurnIndex) && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
         {
-            whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"]);
-            playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties["player_id"]);
+            whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex]);
+            playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerId]);
             Debug.Log("Player " + playerIds[whosTurn] + "'s turn");
             Debug.Log("Local player " + playedId);
             if (player.IsMine && (int) playerIds[whosTurn] == playedId)
@@ -102,14 +102,12 @@ public class Stone : MonoBehaviour
 
     private void UpdateWhosTurn()
     {
-        if (whosTurn >= PhotonNetwork.CurrentRoom.PlayerCount)
-        {
+        if (whosTurn == PhotonNetwork.CurrentRoom.PlayerCount - 1)
             whosTurn = 0;
-        } else {
-            whosTurn++;
-        }
+            else 
+                whosTurn++;
 
-        PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"] = whosTurn;
+        PhotonNetwork.CurrentRoom.CustomProperties[Constants.WhosTurnIndex] = whosTurn;
         PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
     }
 }

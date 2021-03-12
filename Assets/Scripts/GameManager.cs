@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            player = PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
-            route = PhotonNetwork.Instantiate("Route", new Vector3(0,0,0), Quaternion.identity, 0);
+            player = PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
+            route = PhotonNetwork.Instantiate(Constants.Prefabs.Route, new Vector3(0,0,0), Quaternion.identity, 0);
         } else 
         {
-            PhotonNetwork.Instantiate("Stone", new Vector3(0,0,0), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity, 0);
         }
-                
+
     }
 
     public void GameOver(){
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
 
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(Constants.MainMenu);
+            PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
     }
 
 }
