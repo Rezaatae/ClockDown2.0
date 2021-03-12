@@ -27,6 +27,12 @@ public class Stone : MonoBehaviour
 
     void Start()
     {
+        GetPlayers();
+    }
+
+    IEnumerator GetPlayers()
+    {
+        yield return new WaitForSeconds(2);
         foreach(var player in PhotonNetwork.PlayerList)
         {
             int playedId = System.Convert.ToInt32(player.CustomProperties["player_id"]);
@@ -38,8 +44,7 @@ public class Stone : MonoBehaviour
     {
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("whos_turn") && PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("player_id"))
         {
-            // int[] players = (int[]) PhotonNetwork.CurrentRoom.CustomProperties["players"];
-            whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties["whos_turn_index"]);
+            whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"]);
             playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties["player_id"]);
             Debug.Log("Player " + playerIds[whosTurn] + "'s turn");
             Debug.Log("Local player " + playedId);
@@ -103,7 +108,7 @@ public class Stone : MonoBehaviour
             whosTurn++;
         }
 
-        PhotonNetwork.CurrentRoom.CustomProperties["whos_turn_index"] = whosTurn;
+        PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"] = whosTurn;
         PhotonNetwork.CurrentRoom.SetCustomProperties(PhotonNetwork.CurrentRoom.CustomProperties);
     }
 }
