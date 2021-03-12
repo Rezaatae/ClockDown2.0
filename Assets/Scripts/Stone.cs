@@ -32,7 +32,6 @@ public class Stone : MonoBehaviour
 
     void GetPlayers()
     {
-        // yield return new WaitForSeconds(2);
         foreach(var player in PhotonNetwork.PlayerList)
         {
             int playedId = System.Convert.ToInt32(player.CustomProperties["player_id"]);
@@ -48,25 +47,25 @@ public class Stone : MonoBehaviour
         {
             whosTurn = System.Convert.ToInt32(PhotonNetwork.CurrentRoom.CustomProperties["whos_turn"]);
             playedId = System.Convert.ToInt32(PhotonNetwork.LocalPlayer.CustomProperties["player_id"]);
-            // Debug.Log("Player " + playerIds[whosTurn] + "'s turn");
-            // Debug.Log("Local player " + playedId);
-            // if (player.IsMine && (int) playerIds[whosTurn] == playedId)
-            // {
-            //     if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
-            //     {
-            //         steps = Random.Range(1, 7);
-            //         Debug.Log("Dice Rolled: " + steps);
+            Debug.Log("Player " + playerIds[whosTurn] + "'s turn");
+            Debug.Log("Local player " + playedId);
+            if (player.IsMine && (int) playerIds[whosTurn] == playedId)
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
+                {
+                    steps = Random.Range(1, 7);
+                    Debug.Log("Dice Rolled: " + steps);
 
-            //         if (routePos + steps < currentPos.childNodeList.Count)
-            //         {
-            //             StartCoroutine(Move());
-            //         }
-            //         else
-            //         {
-            //         Debug.Log("Rolled number too high");
-            //         }
-            //     }   
-            // }
+                    if (routePos + steps < currentPos.childNodeList.Count)
+                    {
+                        StartCoroutine(Move());
+                    }
+                    else
+                    {
+                    Debug.Log("Rolled number too high");
+                    }
+                }   
+            }
         }
         
     }
