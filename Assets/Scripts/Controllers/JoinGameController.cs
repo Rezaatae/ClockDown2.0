@@ -20,6 +20,11 @@ public class JoinGameController : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(_roomNameInputField.text);
     }
 
+    public void OnClick_BackButton()
+    {
+        SceneManager.LoadScene(Constants.Scenes.MainMenu);
+    }
+
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined room successfully: " + PhotonNetwork.CurrentRoom.Name);

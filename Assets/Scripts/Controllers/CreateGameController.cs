@@ -33,6 +33,11 @@ public class CreateGameController : MonoBehaviourPunCallbacks
         _createGameButton.interactable = false;
     }
 
+    public void OnClick_BackButton()
+    {
+        SceneManager.LoadScene(Constants.Scenes.MainMenu);
+    }
+
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully: " + PhotonNetwork.CurrentRoom.Name);
