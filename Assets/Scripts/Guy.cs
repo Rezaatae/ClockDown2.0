@@ -147,7 +147,14 @@ public class Guy : MonoBehaviour
         }
 
         if (other.gameObject.layer == 14){
+            Lives.life --;
             SceneManager.LoadScene("Level2");
+        }
+
+        if (other.gameObject.layer == 12){
+            Destroy(other.gameObject);
+            SceneManager.LoadScene("SampleScene");
+            
         }
     }  
 }

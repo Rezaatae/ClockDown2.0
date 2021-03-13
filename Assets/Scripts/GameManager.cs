@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     }
 
+
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

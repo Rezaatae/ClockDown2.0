@@ -41,6 +41,7 @@ public class Bullet : MonoBehaviour
         // do something with the object that was hit (collider) e.g. collider.gameObject
         
         if (collider.gameObject.layer == 12){
+            Score.score += 5;
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }
