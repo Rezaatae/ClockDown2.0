@@ -9,6 +9,7 @@ public class Guy : MonoBehaviour
 {
     public float walkSpeed = 2.5f;
     public float jumpHeight = 5f;
+    public bool canMove = true;
     public Transform groundCheck;
     public float groundCheckRadious = 0.2f;
     public LayerMask mouseAimMask;
@@ -53,7 +54,7 @@ public class Guy : MonoBehaviour
     void Update()
     {
         inputMovement = Input.GetAxis("Horizontal");
-
+        
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -62,7 +63,7 @@ public class Guy : MonoBehaviour
         }
         
 
-        if (Input.GetButtonDown("Jump") && isGrounded){
+        if (canMove && Input.GetButtonDown("Jump") && isGrounded){
 
             float jumpPower = 1f;
             if(superJumpToken > 0){
@@ -81,8 +82,13 @@ public class Guy : MonoBehaviour
         }
 
         if (transform.position.y < -20){
-            FindObjectOfType<GameManager>().GameOver();
+            Lives.life --;
+            FindObjectOfType<GameManager>().Respawn();
+            
         }
+        
+        
+        
 
     }
 
@@ -116,15 +122,22 @@ public class Guy : MonoBehaviour
     }
 
     private void FixedUpdate(){
+
         // movement
         rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
         animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
+
         // facing the right direction and following curser
         rigidbodyComponent.MoveRotation(Quaternion.Euler(new Vector3(0, 90* Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
 
         // ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
         animator.SetBool("isGrounded", isGrounded);
+        
+        // game over check
+        if(Lives.life == 0){
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     private void OnAnimatorIK(){
@@ -140,21 +153,36 @@ public class Guy : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
+
+        // jump token trigger
         if (other.gameObject.layer == 9)
         {
             Destroy(other.gameObject);
             superJumpToken += 1;
         }
 
-        if (other.gameObject.layer == 14){
-            Lives.life --;
-            SceneManager.LoadScene("Level2");
-        }
-
+        // virus collisoon trigger
         if (other.gameObject.layer == 12){
+            Lives.life --;
             Destroy(other.gameObject);
-            SceneManager.LoadScene("SampleScene");
+            
+            StartCoroutine(Freeze());
+            
+
             
         }
+
+        // wormhole collission trigger
+        if (other.gameObject.layer == 14){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }  
+
+    IEnumerator Freeze(){
+        canMove = false;
+        walkSpeed = 0.01f;
+        yield return new WaitForSeconds(5f);
+        walkSpeed = 2.5f;
+        canMove = true;
+    }
 }
