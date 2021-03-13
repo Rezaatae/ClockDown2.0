@@ -9,19 +9,19 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 {
     
     [SerializeField]
-    private TextMeshProUGUI _gameStatusText;
+    private TextMeshProUGUI gameStatusText;
 
     [SerializeField]
-    private Button _loadArenaButton;
+    private Button loadArenaButton;
 
     [SerializeField]
-    private Button _leaveArenaButton;
+    private Button leaveArenaButton;
 
     private void Start()
     {
-        var loadArenaButtonColorBlock = _loadArenaButton.colors;
+        var loadArenaButtonColorBlock = loadArenaButton.colors;
         loadArenaButtonColorBlock.disabledColor = Color.gray;
-        var leaveArenaButtonColorBlock = _leaveArenaButton.colors;
+        var leaveArenaButtonColorBlock = leaveArenaButton.colors;
         leaveArenaButtonColorBlock.disabledColor = Color.gray;
     }
 
@@ -31,32 +31,32 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                _gameStatusText.text = "All players are here, press continue";
-                _loadArenaButton.interactable = true;
+                gameStatusText.text = "All players are here, press continue";
+                loadArenaButton.interactable = true;
             } else 
             {
-                _gameStatusText.text = "Waiting for player 1 to load the arena";
-                _loadArenaButton.gameObject.SetActive(false);
+                gameStatusText.text = "Waiting for player 1 to load the arena";
+                loadArenaButton.gameObject.SetActive(false);
             }
         } else
         {
-            _gameStatusText.text = "Waiting for more players";
-            _loadArenaButton.interactable = false;
+            gameStatusText.text = "Waiting for more players";
+            loadArenaButton.interactable = false;
         }
 
     }
 
-    public void OnClick_CharacterSelection()
+    public void OnClickCharacterSelection()
     {
         Debug.Log("Going to load character selection scene");
     }
 
-    public void OnClick_LoadArena()
+    public void OnClickLoadArena()
     {
         PhotonNetwork.LoadLevel(Constants.Scenes.Board);
     }
 
-    public void OnClick_LeaveRoom()
+    public void OnClickLeaveRoom()
     {
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);

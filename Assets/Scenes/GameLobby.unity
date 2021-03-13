@@ -299,9 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9455f521c10412a8513407b03034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameStatusText: {fileID: 1469775012}
-  _loadArenaButton: {fileID: 520244906}
-  _leaveArenaButton: {fileID: 124990584}
+  gameStatusText: {fileID: 1469775012}
+  loadArenaButton: {fileID: 520244906}
+  leaveArenaButton: {fileID: 124990584}
 --- !u!4 &449848218
 Transform:
   m_ObjectHideFlags: 0

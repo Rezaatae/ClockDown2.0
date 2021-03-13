@@ -10,30 +10,30 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 {
     
     [SerializeField]
-    private TMP_InputField _roomNameInputField;
+    private TMP_InputField roomNameInputField;
 
     [SerializeField]
-    private Button _createGameButton;
+    private Button createGameButton;
 
     [Tooltip("The maximum number of players per room")]
     [SerializeField]
-    private byte _maxPlayersPerRoom;
+    private byte maxPlayersPerRoom;
 
     private void Start()
     {
-        var colorBlock = _createGameButton.colors;
+        var colorBlock = createGameButton.colors;
         colorBlock.disabledColor = Color.gray;
     }
 
-    public void OnClick_CreateRoom()
+    public void OnClickCreateRoom()
     {
         RoomOptions options = new RoomOptions();
-        options.MaxPlayers = _maxPlayersPerRoom;
-        PhotonNetwork.CreateRoom(_roomNameInputField.text, options, TypedLobby.Default);
-        _createGameButton.interactable = false;
+        options.MaxPlayers = maxPlayersPerRoom;
+        PhotonNetwork.CreateRoom(roomNameInputField.text, options, TypedLobby.Default);
+        createGameButton.interactable = false;
     }
 
-    public void OnClick_BackButton()
+    public void OnClickBackButton()
     {
         SceneManager.LoadScene(Constants.Scenes.MainMenu);
     }
@@ -45,7 +45,7 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        _createGameButton.interactable = true;
+        createGameButton.interactable = true;
         Debug.Log("failed to create room: " + message);
     }
 

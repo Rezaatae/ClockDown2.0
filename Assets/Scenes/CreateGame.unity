@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4b26eba1ddf434ea2d230af82c0023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomNameInputField: {fileID: 889578341}
-  _createGameButton: {fileID: 1779607797}
-  _maxPlayersPerRoom: 6
+  roomNameInputField: {fileID: 889578341}
+  createGameButton: {fileID: 1779607797}
+  maxPlayersPerRoom: 6
 --- !u!4 &449848218
 Transform:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202479842676494416, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnClick_BackButton
+      value: OnClickBackButton
       objectReference: {fileID: 0}
     - target: {fileID: 3202479842676494416, guid: e19760cb85cd54f0f8c7e35f160aa40e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

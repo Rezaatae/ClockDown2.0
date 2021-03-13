@@ -8,19 +8,18 @@ public class JoinGameController : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
-    private TMP_InputField _roomNameInputField;
+    private TMP_InputField roomNameInputField;
 
     [SerializeField]
-    private Button _joinRoomButton;
+    private Button joinRoomButton;
 
-    public void OnClick_JoinRoom()
+    public void OnClickJoinRoom()
     {
-        _joinRoomButton.interactable = false;
-        Debug.Log(_roomNameInputField.text);
-        PhotonNetwork.JoinRoom(_roomNameInputField.text);
+        joinRoomButton.interactable = false;
+        PhotonNetwork.JoinRoom(roomNameInputField.text);
     }
 
-    public void OnClick_BackButton()
+    public void OnClickBackButton()
     {
         SceneManager.LoadScene(Constants.Scenes.MainMenu);
     }
@@ -33,7 +32,7 @@ public class JoinGameController : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        _joinRoomButton.interactable = true;
+        joinRoomButton.interactable = true;
         Debug.Log("Unable to join this room: " + message);
     }
 

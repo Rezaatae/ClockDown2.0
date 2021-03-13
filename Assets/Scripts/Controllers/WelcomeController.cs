@@ -9,13 +9,16 @@ public class WelcomeController : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
-    private TextMeshProUGUI _connectionStatusText;
+    private TextMeshProUGUI connectionStatusText;
 
     [SerializeField]
-    private TMP_InputField _playerNickNameTextField;
+    private GameObject inputPanel;
 
     [SerializeField]
-    private Button _continueButton;
+    private TMP_InputField playerNickNameTextField;
+
+    [SerializeField]
+    private Button continueButton;
 
     [SerializeField]
     private string gameVersion;
@@ -25,9 +28,8 @@ public class WelcomeController : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.GameVersion = gameVersion;
         PhotonNetwork.AutomaticallySyncScene = true;
-        _connectionStatusText.text = "Connecting to server...";
-        _playerNickNameTextField.gameObject.SetActive(false);
-        _continueButton.gameObject.SetActive(false);
+        connectionStatusText.text = "Connecting to server...";
+        inputPanel.SetActive(false);
         Debug.Log(PhotonNetwork.AppVersion);
     }
 
@@ -38,31 +40,30 @@ public class WelcomeController : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.InLobby) 
         {
             PhotonNetwork.JoinLobby();
-            _connectionStatusText.text = "Connecting to server...";
+            connectionStatusText.text = "Connecting to server...";
         }
         
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        _connectionStatusText.text = "Disconnected from server." + cause.ToString();
+        connectionStatusText.text = "Disconnected from server." + cause.ToString();
     }
 
     public override void OnJoinedLobby()
     {
-        _connectionStatusText.text = "Enter your name";
-        _playerNickNameTextField.gameObject.SetActive(true);
-        _continueButton.gameObject.SetActive(true);
+        connectionStatusText.text = "Enter your name";
+        inputPanel.SetActive(true);
     }
 
     public override void OnLeftLobby()
     {
-        _connectionStatusText.text = "Left Lobby";
+        connectionStatusText.text = "Left Lobby";
     }
 
-    public void OnClick_Continue()
+    public void OnClickContinue()
     {
-        PhotonNetwork.NickName = _playerNickNameTextField.text;
+        PhotonNetwork.NickName = playerNickNameTextField.text;
         SceneManager.LoadScene(Constants.Scenes.MainMenu);
     }
 
