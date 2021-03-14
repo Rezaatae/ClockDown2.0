@@ -10,6 +10,7 @@ public class Guy : MonoBehaviour
     public float walkSpeed = 2.5f;
     public float jumpHeight = 5f;
     public bool canMove = true;
+    public float lockdownTime = 5f;
     public Transform groundCheck;
     public float groundCheckRadious = 0.2f;
     public LayerMask mouseAimMask;
@@ -165,23 +166,16 @@ public class Guy : MonoBehaviour
         if (other.gameObject.layer == 12){
             Lives.life --;
             Destroy(other.gameObject);
-            
-            StartCoroutine(Freeze());
-            
-
-            
+            StartCoroutine(Freeze());            
         }
 
-        // wormhole collission trigger
-        if (other.gameObject.layer == 14){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        
     }  
 
     IEnumerator Freeze(){
         canMove = false;
         walkSpeed = 0.01f;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(lockdownTime);
         walkSpeed = 2.5f;
         canMove = true;
     }
