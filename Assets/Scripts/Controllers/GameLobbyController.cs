@@ -58,11 +58,11 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public void OnClickLeaveRoom()
     {
-        PhotonNetwork.LeaveRoom();
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
             else
                 SceneManager.LoadScene(Constants.Scenes.MainMenu);
+        PhotonNetwork.LeaveRoom();
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
