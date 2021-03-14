@@ -21,12 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLobby.unity
     guid: 6b795ba875189444c94c1a00d1861737
   - enabled: 1
-    path: Assets/Scenes/Board.unity
-    guid: 0dcecdfdaebd9b84b856aa1b2c4234a5
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Level 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 78a4c7f93f085354b8631acd4b434dc0
+    path: Assets/Scenes/Level 2.unity
+    guid: f43c0d09c2d09a34a9f7b7e528ca0cdd
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 3a7fdb3e7543bb646ada3705da889b71
   m_configObjects: {}

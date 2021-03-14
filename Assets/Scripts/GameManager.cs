@@ -28,19 +28,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 
-    public void GameOver() 
+    public void Respawn() 
     {
 
-        if(gameHasEnded == false && SceneManager.GetActiveScene().name == "SampleScene"){
+        if(gameHasEnded == false && SceneManager.GetActiveScene().name != "Level 1"){
             gameHasEnded = true;
-            Debug.Log("Game Over");
             Restart();
         }
         else{
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Level 1");
         } 
 
     }
+
 
     void Restart()
     {
@@ -58,6 +58,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         return false;
+    }
+
+    public void EndGame(){
+        if(gameHasEnded == false){
+            gameHasEnded = true;
+            Debug.Log("Game Over!");
+        }
+        
     }
     public void UpdateWhosTurn()
     {
