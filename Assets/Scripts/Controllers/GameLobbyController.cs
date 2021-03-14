@@ -58,11 +58,11 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public void OnClickLeaveRoom()
     {
+        PhotonNetwork.LeaveRoom();
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
             else
                 SceneManager.LoadScene(Constants.Scenes.MainMenu);
-        PhotonNetwork.LeaveRoom();
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
@@ -71,7 +71,6 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
         playerProps[Constants.PlayerId] = PhotonNetwork.CurrentRoom.PlayerCount;
         newPlayer.SetCustomProperties(playerProps);
         Debug.Log(newPlayer.NickName + " just joined the game");
-
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
