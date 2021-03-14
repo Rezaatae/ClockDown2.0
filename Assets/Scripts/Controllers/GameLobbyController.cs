@@ -53,7 +53,7 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     public void OnClickLoadArena()
     {
-        PhotonNetwork.LoadLevel(Constants.Scenes.Board);
+        PhotonNetwork.LoadLevel(Constants.Scenes.Level1);
     }
 
     public void OnClickLeaveRoom()
