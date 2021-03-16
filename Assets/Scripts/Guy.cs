@@ -5,21 +5,51 @@ using Photon.Pun;
 
 public class Guy : MonoBehaviour
 {
-    public float walkSpeed = 2.5f;
-    public float jumpHeight = 5f;
-    public bool canMove = true;
-    public Transform groundCheck;
-    public float groundCheckRadious = 0.2f;
-    public LayerMask mouseAimMask;
-    public LayerMask groundMask;
-    public GameObject bulletPrefab;
-    public Transform muzzleTransform;
-    public Transform targetTransform;
-    public AnimationCurve recoilCurve;
-    public float recoilDuration = 0.25f;
-    public float recoilMaxRotation = 45f;
-    public Transform rightLowerArm;
-    public Transform rightHand;
+
+    [SerializeField]
+    private float walkSpeed = 2.5f;
+
+    [SerializeField]
+    private float jumpHeight = 5f;
+
+    [SerializeField]
+    private bool canMove = true;
+
+    [SerializeField]
+    private Transform groundCheck;
+
+    [SerializeField]
+    private float groundCheckRadious = 0.2f;
+
+    [SerializeField]
+    private LayerMask mouseAimMask;
+
+    [SerializeField]
+    private LayerMask groundMask;
+
+    [SerializeField]
+    private GameObject bulletPrefab;
+
+    [SerializeField]
+    private Transform muzzleTransform;
+
+    [SerializeField]
+    private Transform targetTransform;
+
+    [SerializeField]
+    private AnimationCurve recoilCurve;
+
+    [SerializeField]
+    private float recoilDuration = 0.25f;
+
+    [SerializeField]
+    private float recoilMaxRotation = 45f;
+
+    [SerializeField]
+    private Transform rightLowerArm;
+
+    [SerializeField]
+    private Transform rightHand;
 
     private float inputMovement;
     private Animator animator;
@@ -135,8 +165,6 @@ public class Guy : MonoBehaviour
 
     private void FixedUpdate(){
 
-        // if (photonView.IsMine)
-        // {
             // movement
             rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
             animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
@@ -157,7 +185,6 @@ public class Guy : MonoBehaviour
             {
                 FindObjectOfType<GameManager>().EndGame();
             }
-        // }
         
     }
 
@@ -165,12 +192,12 @@ public class Guy : MonoBehaviour
         if (photonView.IsMine)
         {
             // aim at target 
-            // animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-            // animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
 
-            // // look at target
-            // animator.SetLookAtWeight(1);
-            // animator.SetLookAtPosition(targetTransform.position);
+            // look at target
+            animator.SetLookAtWeight(1);
+            animator.SetLookAtPosition(targetTransform.position);
         }
 
     }
