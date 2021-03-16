@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
 
     bool gameHasEnded = false;
+    public GameObject completeLevelUI;
 
     private GameObject player;
     
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void CompleteLevel(){
+        completeLevelUI.SetActive(true);
     }
 
     public bool IsLocalPlayersTurn()

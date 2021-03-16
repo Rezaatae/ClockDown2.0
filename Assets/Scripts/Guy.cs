@@ -216,21 +216,16 @@ public class Guy : MonoBehaviour
         {
             Lives.life --;
             Destroy(other.gameObject);
-            
-            StartCoroutine(Freeze());
-        
+            StartCoroutine(Freeze());            
         }
 
-        // wormhole collission trigger
-        if (other.gameObject.layer == 14){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        
     }  
 
     IEnumerator Freeze(){
         canMove = false;
         walkSpeed = 0.01f;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(lockdownTime);
         walkSpeed = 2.5f;
         canMove = true;
     }
