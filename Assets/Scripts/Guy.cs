@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Photon.Pun;
 
 public class Guy : MonoBehaviour
 {
@@ -30,9 +28,13 @@ public class Guy : MonoBehaviour
     private Camera mainCamera;
     private float recoilTimer;
     private int superJumpToken;
+
+    [SerializeField]
+    private PhotonView photonView;
     
 
-    private int facingSign{
+    private int facingSign
+    {
         // this is for getting the correct sign for the runnnig direction
         get{
             Vector3 perp = Vector3.Cross(transform.forward, Vector3.forward);
@@ -44,6 +46,7 @@ public class Guy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        targetTransform = GameObject.Find("targetTransform").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
@@ -53,47 +56,51 @@ public class Guy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputMovement = Input.GetAxis("Horizontal");
+        if (photonView.IsMine)
+        {
+            inputMovement = Input.GetAxis("Horizontal");
         
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+            if (photonView.IsMine)
+            {
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask)){
-            targetTransform.position = hit.point;
-        }
-        
-
-        if (canMove && Input.GetButtonDown("Jump") && isGrounded){
-
-            float jumpPower = 1f;
-            if(superJumpToken > 0){
-                jumpPower *= 1.5f;
-                superJumpToken -= 1;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
+                {
+                    targetTransform.position = hit.point;
+                }
             }
 
+            if (canMove && Input.GetButtonDown("Jump") && isGrounded){
+
+                float jumpPower = 1f;
+                if(superJumpToken > 0){
+                    jumpPower *= 1.5f;
+                    superJumpToken -= 1;
+                }
+
             
-            rigidbodyComponent.velocity = new Vector3(rigidbodyComponent.velocity.x, 0, 0);
-            rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
+                rigidbodyComponent.velocity = new Vector3(rigidbodyComponent.velocity.x, 0, 0);
+                rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
 
-        }
+            }
 
-        if (Input.GetButtonDown("Fire1")){
-            Fire();
-        }
+            if (Input.GetButtonDown("Fire1")){
+                Fire();
+            }
 
-        if (transform.position.y < -20){
-            Lives.life --;
-            FindObjectOfType<GameManager>().Respawn();
+            if (transform.position.y < -20){
+                Lives.life --;
+                FindObjectOfType<GameManager>().Respawn();
             
+            }
         }
         
-        
-        
-
     }
 
 
     private void Fire(){
+
         recoilTimer = Time.time;
 
         var go = Instantiate(bulletPrefab);
@@ -103,52 +110,68 @@ public class Guy : MonoBehaviour
 
     }
 
-    private void LateUpdate(){
+    private void LateUpdate()
+    {
         // recoil animation here
+        // if (photonView.IsMine)
+        // {
+            if (recoilTimer < 0){
+                return;
+            }
 
-        if (recoilTimer < 0){
-            return;
-        }
+            float curveTime = (Time.time - recoilTimer) / recoilDuration;
 
-        float curveTime = (Time.time - recoilTimer) / recoilDuration;
-
-        if (curveTime > 1f){
+            if (curveTime > 1f)
+            {
             recoilTimer = -1;
-        }
-        else{
-            rightLowerArm.Rotate(Vector3.forward, recoilCurve.Evaluate(curveTime) * recoilMaxRotation, Space.Self);
-
-        }
+            }
+            else
+            {
+                rightLowerArm.Rotate(Vector3.forward, recoilCurve.Evaluate(curveTime) * recoilMaxRotation, Space.Self);
+            }
+        // }
+        
     }
 
     private void FixedUpdate(){
 
-        // movement
-        rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
-        animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
+        // if (photonView.IsMine)
+        // {
+            // movement
+            rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
+            animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
 
-        // facing the right direction and following curser
-        rigidbodyComponent.MoveRotation(Quaternion.Euler(new Vector3(0, 90* Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
+            if (photonView.IsMine)
+            {
+                // facing the right direction and following curser
+                rigidbodyComponent.MoveRotation(Quaternion.Euler(new Vector3(0, 90* Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
 
-        // ground check
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
-        animator.SetBool("isGrounded", isGrounded);
+            }
+            
+            // ground check
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
+            animator.SetBool("isGrounded", isGrounded);
         
-        // game over check
-        if(Lives.life == 0){
-            FindObjectOfType<GameManager>().EndGame();
-        }
+            // game over check
+            if(Lives.life == 0)
+            {
+                FindObjectOfType<GameManager>().EndGame();
+            }
+        // }
+        
     }
 
     private void OnAnimatorIK(){
-        // aim at target 
-        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
+        if (photonView.IsMine)
+        {
+            // aim at target 
+            // animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+            // animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
 
-        // look at target
-        animator.SetLookAtWeight(1);
-        animator.SetLookAtPosition(targetTransform.position);
-
+            // // look at target
+            // animator.SetLookAtWeight(1);
+            // animator.SetLookAtPosition(targetTransform.position);
+        }
 
     }
 
@@ -162,14 +185,13 @@ public class Guy : MonoBehaviour
         }
 
         // virus collisoon trigger
-        if (other.gameObject.layer == 12){
+        if (other.gameObject.layer == 12)
+        {
             Lives.life --;
             Destroy(other.gameObject);
             
             StartCoroutine(Freeze());
-            
-
-            
+        
         }
 
         // wormhole collission trigger

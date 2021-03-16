@@ -27,7 +27,7 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        if (PhotonNetwork.CurrentRoom.PlayerCount > 0)
         {
             if (PhotonNetwork.IsMasterClient)
             {

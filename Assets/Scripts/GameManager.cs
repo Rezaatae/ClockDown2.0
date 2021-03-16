@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void Start()
     {
-        GetPlayerIDs();
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Instantiate(Constants.Prefabs.Route, new Vector3(0,0,0), Quaternion.identity);
-        PhotonNetwork.Instantiate(Constants.Prefabs.Stone, new Vector3(0,0,0), Quaternion.identity);
+        // GetPlayerIDs();
+        // if (PhotonNetwork.IsMasterClient)
+        //     PhotonNetwork.Instantiate(Constants.Prefabs.Route, new Vector3(0,0,0), Quaternion.identity);
+        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(2,1,0), Quaternion.identity);
     }
 
 
