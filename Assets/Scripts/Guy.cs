@@ -16,6 +16,9 @@ public class Guy : MonoBehaviour
     private bool canMove = true;
 
     [SerializeField]
+    private float lockDownTime = 5f;
+
+    [SerializeField]
     private Transform groundCheck;
 
     [SerializeField]
@@ -66,7 +69,8 @@ public class Guy : MonoBehaviour
     private int facingSign
     {
         // this is for getting the correct sign for the runnnig direction
-        get{
+        get
+        {
             Vector3 perp = Vector3.Cross(transform.forward, Vector3.forward);
             float dir = Vector3.Dot(perp, transform.up);
             return dir > 0f ? -1 : dir < 0f ? 1 : 0;
@@ -129,7 +133,8 @@ public class Guy : MonoBehaviour
     }
 
 
-    private void Fire(){
+    private void Fire()
+    {
 
         recoilTimer = Time.time;
 
@@ -163,7 +168,8 @@ public class Guy : MonoBehaviour
         
     }
 
-    private void FixedUpdate(){
+    private void FixedUpdate()
+    {
 
             // movement
             rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
@@ -188,7 +194,8 @@ public class Guy : MonoBehaviour
         
     }
 
-    private void OnAnimatorIK(){
+    private void OnAnimatorIK()
+    {
         if (photonView.IsMine)
         {
             // aim at target 
@@ -202,7 +209,8 @@ public class Guy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other)
+    {
 
         // jump token trigger
         if (other.gameObject.layer == 9)
@@ -222,10 +230,11 @@ public class Guy : MonoBehaviour
         
     }  
 
-    IEnumerator Freeze(){
+    IEnumerator Freeze()
+    {
         canMove = false;
         walkSpeed = 0.01f;
-        yield return new WaitForSeconds(lockdownTime);
+        yield return new WaitForSeconds(lockDownTime);
         walkSpeed = 2.5f;
         canMove = true;
     }
