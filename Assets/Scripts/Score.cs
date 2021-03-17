@@ -21,19 +21,19 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (player.IsMine)
-            scoreText.text = "SCORE: " + GetCurrentScore();
+        // if (player.IsMine)
+        scoreText.text = "SCORE: " + GetCurrentScore();
     }
 
     public void Increment(int amount = 5)
     {
         score += amount;
 
-        if (player.IsMine)
-        {
-            PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore] = score;
-            PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
-        }
+        // if (player.IsMine)
+        // {
+        PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore] = score;
+        PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
+        // }
 
     }
 
