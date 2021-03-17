@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
             transform.Translate(Vector3.forward * velocity * Time.deltaTime);
         }
         if (Time.time > lifeTimer + life){
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
