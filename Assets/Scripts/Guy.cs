@@ -105,7 +105,7 @@ public class Guy : MonoBehaviour, IPunObservable
             if (canMove && Input.GetButtonDown("Jump") && isGrounded)
             {
 
-                float jumpPower = 1f;
+                float jumpPower = 1.2f;
                 if(superJumpToken > 0)
                 {
                     jumpPower *= 1.5f;
