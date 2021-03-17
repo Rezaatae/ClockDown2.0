@@ -13,9 +13,9 @@ public class Score : MonoBehaviour
 
     public void Start()
     {
-        Hashtable dict = new Hashtable();
-        dict[Constants.PlayerCurrentScore] = score;
-        PhotonNetwork.SetPlayerCustomProperties(dict);
+        // Hashtable dict = new Hashtable();
+        // dict[Constants.PlayerCurrentScore] = score;
+        // PhotonNetwork.SetPlayerCustomProperties(dict);
     }
 
     // Update is called once per frame

@@ -9,8 +9,8 @@ public class Lives : MonoBehaviour
     [SerializeField]
     private Text livesText;
 
-    [SerializeField]
-    private int life  = 5;
+    // [SerializeField]
+    private int life;
 
     private PhotonView player;
 
@@ -21,9 +21,11 @@ public class Lives : MonoBehaviour
 
     private void Start()
     {
-        Hashtable lifeDict = new Hashtable();
-        lifeDict[Constants.PlayerCurrentLifeRemaining] = life;
-        PhotonNetwork.SetPlayerCustomProperties(lifeDict);
+        // Hashtable lifeDict = new Hashtable();
+        // lifeDict[Constants.PlayerCurrentLifeRemaining] = life;
+        // PhotonNetwork.SetPlayerCustomProperties(lifeDict);
+        life = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining];
+
     }
     
 

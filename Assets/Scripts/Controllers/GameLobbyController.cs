@@ -23,6 +23,11 @@ public class GameLobbyController : MonoBehaviourPunCallbacks
         loadArenaButtonColorBlock.disabledColor = Color.gray;
         var leaveArenaButtonColorBlock = leaveArenaButton.colors;
         leaveArenaButtonColorBlock.disabledColor = Color.gray;
+
+        Hashtable dict = new Hashtable();
+        dict[Constants.PlayerCurrentLifeRemaining] = 5;
+        dict[Constants.PlayerCurrentScore] = 0;
+        PhotonNetwork.SetPlayerCustomProperties(dict);
     }
 
     private void Update()
