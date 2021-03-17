@@ -8,6 +8,15 @@ public class Bullet : MonoBehaviourPun
     public float lifeTime = 1f;
     private int firedbyLayer;
     private float lifeTimer;
+
+    private Score currentPlayerScore;
+
+    public void SetCurrentPlayerScore(Score score)
+    {
+        currentPlayerScore = score;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +40,6 @@ public class Bullet : MonoBehaviourPun
         {
             transform.Translate(Vector3.forward * velocity * Time.deltaTime);
         }
-        if (Time.time > lifeTimer + lifeTime)
-        {
-            // Destroy(gameObject);
-            // this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
-        }
     }
 
     private void Hit(Vector3 position, Vector3 direction, Vector3 reflected, Collider collider)
@@ -44,7 +48,7 @@ public class Bullet : MonoBehaviourPun
         
         if (collider.gameObject.layer == 12)
         {
-            Score.score += 5;
+            currentPlayerScore.Increment();
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }
