@@ -18,7 +18,9 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        player = GetComponent<PhotonView>();
+        Debug.Log("Player is mine: " + player.IsMine);
+        target = GameObject.Find("Guy").GetComponent<Transform>();
+    
     }
 
     void FixedUpdate()
@@ -26,7 +28,6 @@ public class CameraFollow : MonoBehaviour
         
         if (player.IsMine)
         {
-        target = GameObject.Find("Guy").GetComponent<Transform>();
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed);
         transform.position = desiredPosition;
