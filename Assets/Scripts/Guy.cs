@@ -90,39 +90,43 @@ public class Guy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        inputMovement = Input.GetAxis("Horizontal");
-        
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
+        if (photonView.IsMine)
         {
-            targetTransform.position = hit.point;
-        }
+            inputMovement = Input.GetAxis("Horizontal");
+        
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-        if (canMove && Input.GetButtonDown("Jump") && isGrounded){
-
-            float jumpPower = 1f;
-            if(superJumpToken > 0){
-                jumpPower *= 1.5f;
-                superJumpToken -= 1;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
+            {
+                targetTransform.position = hit.point;
             }
 
-            
-            rigidbodyComponent.velocity = new Vector3(rigidbodyComponent.velocity.x, 0, 0);
-            rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
+            if (canMove && Input.GetButtonDown("Jump") && isGrounded)
+            {
 
-        }
+                float jumpPower = 1f;
+                if(superJumpToken > 0)
+                {
+                    jumpPower *= 1.5f;
+                    superJumpToken -= 1;
+                }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Fire();
-        }
+                rigidbodyComponent.velocity = new Vector3(rigidbodyComponent.velocity.x, 0, 0);
+                rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
 
-        if (transform.position.y < -20)
-        {
-            Lives.life --;
-            FindObjectOfType<GameManager>().Respawn(); 
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Fire();
+            }
+
+            if (transform.position.y < -20)
+            {
+                Lives.life --;
+                FindObjectOfType<GameManager>().Respawn(); 
+            }
         }
         
     }
