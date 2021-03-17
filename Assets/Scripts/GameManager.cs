@@ -4,6 +4,8 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+
+    [SerializeField]
     private GameObject player;
     
     private bool gameHasEnded = false;
@@ -12,13 +14,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     public void Start()
     {
-        SpawnPlayers();
+        SpawnPlayer();
     }
 
-    public void SpawnPlayers()
+    public void SpawnPlayer()
     {
-        int xPos = Random.Range(1, 4);          
-        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(xPos, 0.4f, -121f), Quaternion.identity);
+        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(Random.Range(-4, 0), 0, 0), Quaternion.identity);
     }
 
 

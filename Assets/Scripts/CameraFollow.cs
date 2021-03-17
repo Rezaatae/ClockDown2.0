@@ -19,14 +19,14 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (player.IsMine)
-        {
+        // if (player.IsMine)
+        // {
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed);
         transform.position = desiredPosition;
         
-            transform.LookAt(target);
-        }
+        transform.LookAt(target);
+        // }
         
     }
 
