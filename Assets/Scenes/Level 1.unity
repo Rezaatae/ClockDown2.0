@@ -9782,7 +9782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db401ec68224e8da829877521f955a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 498159550316220638, guid: 7fa7b193beb024fcda4bb1fb86fed0d3, type: 3}
   player: {fileID: 100037989985414739, guid: 7fa7b193beb024fcda4bb1fb86fed0d3, type: 3}
   smoothSpeed: 0.125
   offset: {x: 0, y: 2, z: -12}

@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
         
         if (player.IsMine)
         {
-            target = GameObject.Find("Guy").GetComponent<Transform>();
+            // target = GameObject.Find("Guy").GetComponent<Transform>();
             Vector3 desiredPosition = target.position + offset;
             Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed);
             transform.position = desiredPosition;
