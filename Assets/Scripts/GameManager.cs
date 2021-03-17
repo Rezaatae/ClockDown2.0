@@ -17,11 +17,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void SpawnPlayers()
     {
-        foreach (var player in PhotonNetwork.PlayerList)
-        {
-            int xPos = Random.Range(1, 4);          
-            PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(xPos, 0.4f, -121f), Quaternion.identity);
-        }
+        int xPos = Random.Range(1, 4);          
+        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(xPos, 0.4f, -121f), Quaternion.identity);
     }
 
 
