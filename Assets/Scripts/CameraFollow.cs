@@ -8,31 +8,19 @@ public class CameraFollow : MonoBehaviour
     private Transform target;
 
     [SerializeField]
-    private PhotonView player;
-
-    [SerializeField]
     private float smoothSpeed = 0.125f;
 
     [SerializeField]
     private Vector3 offset;
 
-    private void Start()
-    {
-        // Debug.Log("Player is mine: " + player.IsMine);
-    
-    }
-
     void FixedUpdate()
     {
-        
-        // if (player.IsMine)
-        // {
-            target = GameObject.Find("Guy").GetComponent<Transform>();
-            Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed);
-            transform.position = desiredPosition;
-            transform.LookAt(target);
-        // }
+
+        target = GameObject.Find(Constants.Prefabs.Guy).GetComponent<Transform>();
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed);
+        transform.position = desiredPosition;
+        transform.LookAt(target);
         
     }
 
