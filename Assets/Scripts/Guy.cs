@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class Guy : MonoBehaviour, IPunObservable
@@ -53,6 +52,9 @@ public class Guy : MonoBehaviour, IPunObservable
 
     [SerializeField]
     private Transform rightHand;
+    
+    [SerializeField]
+    private PhotonView photonView;
 
     private float inputMovement;
     private Animator animator;
@@ -61,10 +63,8 @@ public class Guy : MonoBehaviour, IPunObservable
     private Camera mainCamera;
     private float recoilTimer;
     private int superJumpToken;
-
-    [SerializeField]
-    private PhotonView photonView;
-    
+    private Lives playerLives = new Lives();
+    private Score playerScore = new Score();
 
     private int facingSign
     {
@@ -124,7 +124,7 @@ public class Guy : MonoBehaviour, IPunObservable
 
             if (transform.position.y < -20)
             {
-                Lives.life --;
+                playerLives.Deduct();
                 FindObjectOfType<GameManager>().Respawn(); 
             }
 
@@ -140,6 +140,7 @@ public class Guy : MonoBehaviour, IPunObservable
 
         var gameObject = PhotonNetwork.Instantiate(bulletPrefab.name, muzzleTransform.position, Quaternion.identity);// Instantiate(bulletPrefab);
         var bullet = gameObject.GetComponent<Bullet>();
+        bullet.SetCurrentPlayerScore(playerScore);
         bullet.Fire(gameObject.transform.position, muzzleTransform.eulerAngles, base.gameObject.layer);
 
     }
@@ -183,7 +184,7 @@ public class Guy : MonoBehaviour, IPunObservable
             animator.SetBool("isGrounded", isGrounded);
         
             // game over check
-            if(Lives.life == 0)
+            if(playerLives.GetRemainingLives() == 0)
             {
                 FindObjectOfType<GameManager>().EndGame();
             }
@@ -218,7 +219,7 @@ public class Guy : MonoBehaviour, IPunObservable
         // virus collisoon trigger
         if (other.gameObject.layer == 12)
         {
-            Lives.life --;
+            playerLives.Deduct();
             Destroy(other.gameObject);
             StartCoroutine(Freeze());            
         }

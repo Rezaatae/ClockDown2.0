@@ -16,6 +16,11 @@ public static class Constants
     }    
     public const string PlayerId = "player_id";
 
+    public const string PlayerCurrentLifeRemaining = "current_life_remaining";
+
+        public const string PlayerCurrentScore = "current_score";
+
+
     public static class Prefabs
     {
         public const string Guy = "Guy";

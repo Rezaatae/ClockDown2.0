@@ -17,12 +17,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
     }
 
-    public void SpawnPlayer()
-    {
-        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(Random.Range(-4, 0), 0, 0), Quaternion.identity);
-    }
-
-
     public void Respawn() 
     {
 
@@ -33,7 +27,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            SceneManager.LoadScene("Level 1");
+            // SceneManager.LoadScene("Level 1");
+            SpawnPlayer();
         } 
 
     }
@@ -44,7 +39,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void CompleteLevel(){
+    public void CompleteLevel()
+    {
         completeLevelUI.SetActive(true);
     }
 
@@ -56,6 +52,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             Debug.Log("Game Over!");
         }
         
+    }
+
+    private void SpawnPlayer()
+    {
+        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(Random.Range(-4, 0), 0, 0), Quaternion.identity);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
