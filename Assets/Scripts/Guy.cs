@@ -185,10 +185,10 @@ public class Guy : MonoBehaviour, IPunObservable
             animator.SetBool("isGrounded", isGrounded);
         
             // game over check
-            if(playerLives.GetRemainingLives() == 0)
-            {
-                FindObjectOfType<GameManager>().EndGame();
-            }
+            // if(playerLives.GetRemainingLives() == 0)
+            // {
+            //     FindObjectOfType<GameManager>().EndGame();
+            // }
         
     }
 
