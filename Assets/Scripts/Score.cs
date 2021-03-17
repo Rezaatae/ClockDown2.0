@@ -13,6 +13,11 @@ public class Score : MonoBehaviour
     [SerializeField]
     private PhotonView player;
 
+    private void Start()
+    {
+        score = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore];
+    }
+
     // Update is called once per frame
     private void Update()
     {
