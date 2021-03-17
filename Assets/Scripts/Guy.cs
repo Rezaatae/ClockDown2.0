@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
-public class Guy : MonoBehaviour
+public class Guy : MonoBehaviour, IPunObservable
 {
 
     [SerializeField]
@@ -192,8 +192,8 @@ public class Guy : MonoBehaviour
 
     private void OnAnimatorIK()
     {
-        // if (photonView.IsMine)
-        // {
+        if (photonView.IsMine)
+        {
             // aim at target 
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
             animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
@@ -201,7 +201,7 @@ public class Guy : MonoBehaviour
             // look at target
             animator.SetLookAtWeight(1);
             animator.SetLookAtPosition(targetTransform.position);
-        // }
+        }
 
     }
 
@@ -234,4 +234,17 @@ public class Guy : MonoBehaviour
         walkSpeed = 2.5f;
         canMove = true;
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rightHand.position);
+        } else if (stream.IsReading)
+        {
+            rightHand.position = (Vector3) stream.ReceiveNext();
+        }
+    }
+
+
 }
