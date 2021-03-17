@@ -32,10 +32,11 @@ public class Bullet : MonoBehaviourPun
         else{
             transform.Translate(Vector3.forward * velocity * Time.deltaTime);
         }
-        // if (Time.time > lifeTimer + life)
-        // {
-        //     Destroy(gameObject);
-        // }
+        if (Time.time > lifeTimer + life)
+        {
+            // Destroy(gameObject);
+            this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
+        }
     }
 
     private void Hit(Vector3 position, Vector3 direction, Vector3 reflected, Collider collider)
