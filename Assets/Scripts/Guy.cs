@@ -128,9 +128,6 @@ public class Guy : MonoBehaviour, IPunObservable
                 FindObjectOfType<GameManager>().Respawn(); 
             }
 
-            // Debug.Log("Right lower arm pos: " + rightLowerArm.position);
-            // Debug.Log("Right hand pos: " + rightHand.position);
-
         }
         
     }
@@ -141,10 +138,9 @@ public class Guy : MonoBehaviour, IPunObservable
 
         recoilTimer = Time.time;
 
-        var go = Instantiate(bulletPrefab);
-        go.transform.position = muzzleTransform.position;
-        var bullet = go.GetComponent<Bullet>();
-        bullet.Fire(go.transform.position, muzzleTransform.eulerAngles, gameObject.layer);
+        var gameObject = PhotonNetwork.Instantiate(bulletPrefab.name, muzzleTransform.position, Quaternion.identity);// Instantiate(bulletPrefab);
+        var bullet = gameObject.GetComponent<Bullet>();
+        bullet.Fire(gameObject.transform.position, muzzleTransform.eulerAngles, base.gameObject.layer);
 
     }
 
