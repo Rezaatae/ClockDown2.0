@@ -85,7 +85,7 @@ public class Guy : MonoBehaviour, IPunObservable
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
 
-        playerLives = GameObject.Find("life").GetComponent<Lives>();
+        playerLives = GameObject.Find("Life").GetComponent<Lives>();
         playerScore = GameObject.Find("Score").GetComponent<Score>();
     }
 
