@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Photon.Pun;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviourPun
 {
     public float velocity = 20f;
     public float life = 1f;
@@ -10,7 +11,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(TimeOut());
     }
 
     // Update is called once per frame
@@ -31,26 +32,31 @@ public class Bullet : MonoBehaviour
         else{
             transform.Translate(Vector3.forward * velocity * Time.deltaTime);
         }
-        if (Time.time > lifeTimer + life){
-            Destroy(gameObject);
-        }
+        // if (Time.time > lifeTimer + life)
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 
-    private void Hit(Vector3 position, Vector3 direction, Vector3 reflected, Collider collider){
+    private void Hit(Vector3 position, Vector3 direction, Vector3 reflected, Collider collider)
+    {
         // do something with the object that was hit (collider) e.g. collider.gameObject
         
-        if (collider.gameObject.layer == 12){
+        if (collider.gameObject.layer == 12)
+        {
             Score.score += 5;
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }
-        else{
+        else
+        {
             Destroy(gameObject);
         }        
     
     }
 
-    public void Fire(Vector3 position, Vector3 euler, int layer){
+    public void Fire(Vector3 position, Vector3 euler, int layer)
+    {
 
         // this enforces the bullets' trajectory in one plane
         lifeTimer = Time.time;
@@ -62,4 +68,18 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(vop, Vector3.forward);
 
     }
+
+    IEnumerator TimeOut()
+    {
+        yield return new WaitForSeconds(2f);
+        this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
+
+
 }
