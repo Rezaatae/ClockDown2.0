@@ -5,7 +5,7 @@ using Photon.Pun;
 public class Bullet : MonoBehaviourPun
 {
     public float velocity = 20f;
-    public float life = 1f;
+    public float lifeTime = 1f;
     private int firedbyLayer;
     private float lifeTimer;
     // Start is called before the first frame update
@@ -27,15 +27,14 @@ public class Bullet : MonoBehaviourPun
             transform.forward = vop;
             transform.rotation = Quaternion.LookRotation(vop, Vector3.forward);
             Hit(transform.position, direction, reflected, hit.collider);
-        }
-
-        else{
+        } else
+        {
             transform.Translate(Vector3.forward * velocity * Time.deltaTime);
         }
-        if (Time.time > lifeTimer + life)
+        if (Time.time > lifeTimer + lifeTime)
         {
             // Destroy(gameObject);
-            this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
+            // this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
         }
     }
 
@@ -72,7 +71,7 @@ public class Bullet : MonoBehaviourPun
 
     IEnumerator TimeOut()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(lifeTime);
         this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
     }
 
