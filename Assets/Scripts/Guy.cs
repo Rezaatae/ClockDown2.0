@@ -127,6 +127,10 @@ public class Guy : MonoBehaviour, IPunObservable
                 Lives.life --;
                 FindObjectOfType<GameManager>().Respawn(); 
             }
+
+            // Debug.Log("Right lower arm pos: " + rightLowerArm.position);
+            // Debug.Log("Right hand pos: " + rightHand.position);
+
         }
         
     }
@@ -239,12 +243,13 @@ public class Guy : MonoBehaviour, IPunObservable
     {
         if (stream.IsWriting)
         {
+            stream.SendNext(rightLowerArm.position);
             stream.SendNext(rightHand.position);
         } else if (stream.IsReading)
         {
+            rightLowerArm.position = (Vector3) stream.ReceiveNext();
             rightHand.position = (Vector3) stream.ReceiveNext();
         }
     }
-
 
 }
