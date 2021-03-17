@@ -84,6 +84,7 @@ public class Guy : MonoBehaviour, IPunObservable
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+        playerScore.SetPlayer(photonView);
 
     }
 
