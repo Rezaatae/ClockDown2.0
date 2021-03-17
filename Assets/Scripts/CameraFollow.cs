@@ -16,6 +16,11 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Vector3 offset;
 
+    private void Start()
+    {
+        player = GetComponent<PhotonView>();
+    }
+
     void FixedUpdate()
     {
         
