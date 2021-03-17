@@ -15114,13 +15114,13 @@ Transform:
   - {fileID: 532746830}
   - {fileID: 1512194760}
   - {fileID: 4173103}
+  - {fileID: 781964277}
   - {fileID: 1380019974}
   - {fileID: 200387790}
   - {fileID: 149378892}
   - {fileID: 571189267}
-  - {fileID: 781964277}
-  - {fileID: 1148697426}
   - {fileID: 556714986}
+  - {fileID: 1148697426}
   - {fileID: 1606415212}
   - {fileID: 2033858165}
   - {fileID: 676286852}
@@ -15195,8 +15195,10 @@ Transform:
   - {fileID: 1969699013}
   - {fileID: 98551933}
   - {fileID: 2132555051}
+  - {fileID: 637621114}
   - {fileID: 93279934}
   - {fileID: 724430307}
+  - {fileID: 897904061}
   - {fileID: 582656701}
   - {fileID: 70122761}
   - {fileID: 2117553090}
@@ -15212,18 +15214,20 @@ Transform:
   - {fileID: 76826449}
   - {fileID: 49917674}
   - {fileID: 1134566425}
+  - {fileID: 1796822714}
   - {fileID: 1373496566}
   - {fileID: 429432787}
   - {fileID: 17662625}
   - {fileID: 157826941}
   - {fileID: 400626838}
+  - {fileID: 1968389293}
   - {fileID: 1517470852}
   - {fileID: 302636536}
   - {fileID: 246795866}
-  - {fileID: 897904061}
-  - {fileID: 1796822714}
-  - {fileID: 637621114}
-  - {fileID: 1968389293}
+  - {fileID: 138123830}
+  - {fileID: 1792521446}
+  - {fileID: 476307733}
+  - {fileID: 1434473456}
   - {fileID: 2113317274}
   - {fileID: 1076205480}
   - {fileID: 2052731869}
@@ -15260,10 +15264,6 @@ Transform:
   - {fileID: 2113324786}
   - {fileID: 1022955386}
   - {fileID: 1695378266}
-  - {fileID: 138123830}
-  - {fileID: 1792521446}
-  - {fileID: 476307733}
-  - {fileID: 1434473456}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38128,6 +38128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   livesText: {fileID: 1444351712}
+  player: {fileID: 100037989985414739, guid: 7fa7b193beb024fcda4bb1fb86fed0d3, type: 3}
 --- !u!1001 &1447659289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48477,6 +48478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1856402537}
+  player: {fileID: 100037989985414739, guid: 7fa7b193beb024fcda4bb1fb86fed0d3, type: 3}
 --- !u!1001 &1856586055
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Lives : MonoBehaviour
 {
@@ -11,13 +10,9 @@ public class Lives : MonoBehaviour
 
     private int life;
 
+    [SerializeField]
     private PhotonView player;
-
-    public void SetPlayerPhotonView(PhotonView player)
-    {
-        this.player = player;
-    }
-
+    
     private void Start()
     {
         life = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining];

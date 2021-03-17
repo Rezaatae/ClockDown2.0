@@ -63,8 +63,8 @@ public class Guy : MonoBehaviour, IPunObservable
     private Camera mainCamera;
     private float recoilTimer;
     private int superJumpToken;
-    private Lives playerLives = new Lives();
-    private Score playerScore = new Score();
+    private Lives playerLives;
+    private Score playerScore;
 
     private int facingSign
     {
@@ -77,6 +77,13 @@ public class Guy : MonoBehaviour, IPunObservable
         }
     }
 
+    private void Awake()
+    {
+        
+        playerLives = GameObject.Find("Life").GetComponent<Lives>();
+        playerScore = GameObject.Find("Score").GetComponent<Score>();
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -84,7 +91,8 @@ public class Guy : MonoBehaviour, IPunObservable
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
-        playerScore.SetPlayer(photonView);
+        // playerScore.SetPlayer(photonView);
+        // playerLives.SetPlayerPhotonView(photonView);
 
     }
 

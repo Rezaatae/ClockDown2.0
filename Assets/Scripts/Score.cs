@@ -8,14 +8,10 @@ public class Score : MonoBehaviour
     [SerializeField]
     private Text scoreText;
 
-    private int score = 0;
+    private int score;
 
+    [SerializeField]
     private PhotonView player;
-
-    public void SetPlayer(PhotonView player)
-    {
-        this.player = player;
-    }
 
     // Update is called once per frame
     private void Update()
