@@ -241,15 +241,6 @@ public class Guy : MonoBehaviour, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(rightLowerArm.position);
-            stream.SendNext(rightHand.position);
-        } else if (stream.IsReading)
-        {
-            rightLowerArm.position = (Vector3) stream.ReceiveNext();
-            rightHand.position = (Vector3) stream.ReceiveNext();
-        }
     }
 
 }
