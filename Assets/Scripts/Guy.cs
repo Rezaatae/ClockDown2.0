@@ -84,6 +84,9 @@ public class Guy : MonoBehaviour, IPunObservable
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+
+        playerLives = GameObject.Find("life").GetComponent<Lives>();
+        playerScore = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
