@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 20
-  life: 1
+  lifeTime: 1
 --- !u!96 &7513085200594213800
 TrailRenderer:
   serializedVersion: 2
