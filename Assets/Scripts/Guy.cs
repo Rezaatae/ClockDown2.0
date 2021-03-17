@@ -192,8 +192,8 @@ public class Guy : MonoBehaviour
 
     private void OnAnimatorIK()
     {
-        if (photonView.IsMine)
-        {
+        // if (photonView.IsMine)
+        // {
             // aim at target 
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
             animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
@@ -201,7 +201,7 @@ public class Guy : MonoBehaviour
             // look at target
             animator.SetLookAtWeight(1);
             animator.SetLookAtPosition(targetTransform.position);
-        }
+        // }
 
     }
 
