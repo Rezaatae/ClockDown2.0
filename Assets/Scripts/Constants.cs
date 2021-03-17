@@ -13,15 +13,12 @@ public static class Constants
         public const string Level4 = "Level 4";
         public const string Level5 = "Level 5";
 
-    }
-    
-    public const string WhosTurnIndex = "whos_turn_index";
+    }    
     public const string PlayerId = "player_id";
 
     public static class Prefabs
     {
         public const string Guy = "Guy";
-        public const string Route = "Route";
     }
 
 }
