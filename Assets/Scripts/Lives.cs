@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Lives : MonoBehaviour
 {
-    public Text livesText;
+
+    [SerializeField]
+    private Text livesText;
 
     public static int life  = 5;
 
-
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         livesText.text = "LIVES: " + life;
     }

@@ -1,8 +1,6 @@
-﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
-using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -43,7 +41,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 
-    void Restart()
+   private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

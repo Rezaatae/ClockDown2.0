@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EndTrigger : MonoBehaviour
 {
-    public GameManager gameManager;
-    void OnTriggerEnter(Collider other){
-        if (other.gameObject.layer == 8){
+
+    [SerializeField]
+    private GameManager gameManager;
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+        {
             gameManager.CompleteLevel();
         }
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
@@ -78,7 +78,7 @@ public class Guy : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         targetTransform = GameObject.Find("targetTransform").GetComponent<Transform>();
         animator = GetComponent<Animator>();
@@ -148,8 +148,6 @@ public class Guy : MonoBehaviour
     private void LateUpdate()
     {
         // recoil animation here
-        // if (photonView.IsMine)
-        // {
             if (recoilTimer < 0){
                 return;
             }
@@ -164,7 +162,6 @@ public class Guy : MonoBehaviour
             {
                 rightLowerArm.Rotate(Vector3.forward, recoilCurve.Evaluate(curveTime) * recoilMaxRotation, Space.Self);
             }
-        // }
         
     }
 
@@ -230,7 +227,7 @@ public class Guy : MonoBehaviour
         
     }  
 
-    IEnumerator Freeze()
+    private IEnumerator Freeze()
     {
         canMove = false;
         walkSpeed = 0.01f;

@@ -1,31 +1,34 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Text timerText;
+
+    [SerializeField]
+    private Text timerText;
+
     public int secondsLeft = 30;
 
     public bool takingAway = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         timerText.GetComponent<Text>().text = "00:" + secondsLeft;
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(takingAway == false && secondsLeft > 0){
+        if(takingAway == false && secondsLeft > 0)
+        {
             StartCoroutine(ReduceTime());
         }
     }
 
-    IEnumerator ReduceTime(){
+    private IEnumerator ReduceTime()
+    {
         takingAway = true;
         yield return new WaitForSeconds(1f);
         secondsLeft --;

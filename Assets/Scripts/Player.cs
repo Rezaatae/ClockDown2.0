@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // IGNORE THIS SCRIPT, IT WAS FOR THE FIRST PROTOTYPE
 public class Player : MonoBehaviour
@@ -13,13 +10,13 @@ public class Player : MonoBehaviour
     private Rigidbody rigidbodyComponent;
     private int superJumpToken;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -28,7 +25,8 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
     }
 
-    private void FixedUpdate(){
+    private void FixedUpdate()
+    {
         rigidbodyComponent.velocity = new Vector3(horizontalInput * 4, rigidbodyComponent.velocity.y, 0);
 
         if (Physics.OverlapSphere(groundCheck.position, 0.1f, playerMask).Length == 0)
@@ -50,7 +48,8 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.gameObject.layer == 9)
         {
             Destroy(other.gameObject);
