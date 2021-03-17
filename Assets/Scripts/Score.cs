@@ -29,11 +29,8 @@ public class Score : MonoBehaviour
     {
         score += amount;
 
-        // if (player.IsMine)
-        // {
         PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore] = score;
         PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
-        // }
 
     }
 

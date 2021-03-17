@@ -10,9 +10,6 @@ public class Lives : MonoBehaviour
 
     private int life;
 
-    [SerializeField]
-    private PhotonView player;
-    
     private void Start()
     {
         life = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining];
@@ -22,19 +19,16 @@ public class Lives : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (player.IsMine)
-            livesText.text = "LIVES: " + GetRemainingLives();
+        livesText.text = "LIVES: " + GetRemainingLives();
     }
 
     public void Deduct()
     {
         life--;
 
-        if (player.IsMine)
-        {
-            PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining] = life;
-            PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
-        }
+        PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining] = life;
+        PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
+    
     }
 
     public int GetRemainingLives()
