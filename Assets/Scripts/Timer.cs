@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -8,31 +9,26 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private Text timerText;
 
-    public int secondsLeft = 30;
+    public float secondsLeft = 60f;
 
     public bool takingAway = false;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-        timerText.GetComponent<Text>().text = "00:" + secondsLeft;
+        timerText = GetComponent<Text>();
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-        if(takingAway == false && secondsLeft > 0)
+        secondsLeft -= Time.deltaTime;
+        timerText.text = secondsLeft.ToString("f2");
+        if(secondsLeft <= 0)
         {
-            StartCoroutine(ReduceTime());
-        }
-    }
-
-    private IEnumerator ReduceTime()
-    {
-        takingAway = true;
-        yield return new WaitForSeconds(1f);
-        secondsLeft --;
-        timerText.GetComponent<Text>().text = "00:" + secondsLeft;
-        takingAway = false;
+            gameManager.CompleteLevel();
+        }     
+        
     }
 }
