@@ -12602,7 +12602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 531329532}
-  secondsLeft: 5
+  secondsLeft: 60
   takingAway: 0
   gameManager: {fileID: 1453908193}
 --- !u!114 &531329532

@@ -48,8 +48,10 @@ public class Bullet : MonoBehaviourPun
         
         if (collider.gameObject.layer == 12)
         {
-            if (photonView.IsMine)
-                currentPlayerScore.Increment();
+            FindObjectOfType<Guy>().IncrementJumpToken();
+
+            /*if (photonView.IsMine)
+                currentPlayerScore.Increment();*/
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }

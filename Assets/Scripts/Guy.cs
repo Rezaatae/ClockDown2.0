@@ -62,9 +62,15 @@ public class Guy : MonoBehaviour, IPunObservable
     private bool isGrounded;
     private Camera mainCamera;
     private float recoilTimer;
-    private int superJumpToken;
+    public int superJumpToken;
     private Lives playerLives;
     private Score playerScore;
+    private Score currentPlayerScore;
+
+    public void SetCurrentPlayerScore(Score score)
+    {
+        currentPlayerScore = score;
+    }
 
     private int facingSign
     {
@@ -216,8 +222,8 @@ public class Guy : MonoBehaviour, IPunObservable
         // jump token trigger
         if (other.gameObject.layer == 9)
         {
+            FindObjectOfType<Score>().Increment();
             Destroy(other.gameObject);
-            superJumpToken += 1;
         }
 
         // virus collisoon trigger
@@ -243,6 +249,10 @@ public class Guy : MonoBehaviour, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+    }
+
+    public void IncrementJumpToken(){
+        superJumpToken += 1;
     }
 
 }
