@@ -4179,7 +4179,7 @@ GameObject:
   - component: {fileID: 159060687}
   - component: {fileID: 159060686}
   m_Layer: 5
-  m_Name: ResumeButton
+  m_Name: Resume Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7109,7 +7109,7 @@ GameObject:
   - component: {fileID: 257011222}
   - component: {fileID: 257011221}
   m_Layer: 0
-  m_Name: targetTransform
+  m_Name: Target Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12564,7 +12564,7 @@ GameObject:
   - component: {fileID: 531329532}
   - component: {fileID: 531329531}
   m_Layer: 5
-  m_Name: CountDownTimer
+  m_Name: Count Down Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13091,7 +13091,7 @@ GameObject:
   - component: {fileID: 542071240}
   - component: {fileID: 542071239}
   m_Layer: 5
-  m_Name: PauseMenue
+  m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15563,7 +15563,7 @@ GameObject:
   - component: {fileID: 613405916}
   - component: {fileID: 613405915}
   m_Layer: 10
-  m_Name: InvisibleMouseTarget
+  m_Name: Invisible Mouse Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29197,7 +29197,7 @@ GameObject:
   - component: {fileID: 1111697726}
   - component: {fileID: 1111697727}
   m_Layer: 5
-  m_Name: LevelCompletePanel
+  m_Name: Level Complete Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32120,7 +32120,7 @@ GameObject:
   - component: {fileID: 1210066881}
   - component: {fileID: 1210066880}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: Quit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37588,7 +37588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.9473347}
-  m_AnchoredPosition: {x: 0.000030517578, y: 5.999949}
+  m_AnchoredPosition: {x: 0.000030517578, y: -107.92707}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.51721483, y: 0.99999976}
 --- !u!114 &1423477917
@@ -38306,7 +38306,7 @@ GameObject:
   - component: {fileID: 1444351712}
   - component: {fileID: 1444351714}
   m_Layer: 5
-  m_Name: Life
+  m_Name: Life Remaining Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43533,7 +43533,7 @@ GameObject:
   - component: {fileID: 1657592058}
   - component: {fileID: 1657592057}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48655,7 +48655,7 @@ GameObject:
   - component: {fileID: 1856402537}
   - component: {fileID: 1856402539}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ' Score Text'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -86,7 +86,7 @@ public class Guy : MonoBehaviour, IPunObservable
     // Start is called before the first frame update
     private void Start()
     {
-        targetTransform = GameObject.Find("targetTransform").GetComponent<Transform>();
+        targetTransform = GameObject.Find("TargetTransform").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
