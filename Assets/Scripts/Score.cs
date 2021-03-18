@@ -25,7 +25,7 @@ public class Score : MonoBehaviour
         scoreText.text = "SCORE: " + GetCurrentScore();
     }
 
-    public void Increment(int amount = 5)
+    public void Increment(int amount = 2)
     {
         score += amount;
 
