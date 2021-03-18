@@ -11245,7 +11245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 531329532}
-  secondsLeft: 60
+  secondsLeft: 5
   takingAway: 0
   gameManager: {fileID: 1453908193}
 --- !u!114 &531329532
@@ -32558,7 +32558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   livesText: {fileID: 1444351712}
-  life: 5
 --- !u!1001 &1444818303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42715,6 +42714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1856402537}
+  player: {fileID: 0}
 --- !u!1001 &1856911575
 PrefabInstance:
   m_ObjectHideFlags: 0
