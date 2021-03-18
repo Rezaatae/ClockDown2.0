@@ -1,34 +1,41 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class Timer : MonoBehaviour
+public class Timer : MonoBehaviourPun
 {
 
     [SerializeField]
     private Text timerText;
 
-    public float secondsLeft = 60f;
+    [SerializeField]
+    private float secondsLeft;
 
-    public bool takingAway = false;
-    public GameManager gameManager;
+    [SerializeField]
+    private bool takingAway;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        timerText = GetComponent<Text>();
-    }
+    [SerializeField]
+    private GameManager gameManager;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+            
+        if (PhotonNetwork.IsMasterClient)
+            GetComponent<PhotonView>().RPC("UpdateTimer", RpcTarget.AllBuffered);
+        
+    }
+
+    [PunRPC]
+    public void UpdateTimer()
     {
         secondsLeft -= Time.deltaTime;
         timerText.text = secondsLeft.ToString("f2");
         if(secondsLeft <= 0)
         {
             gameManager.CompleteLevel();
-        }     
-        
+        }
     }
+
+
 }
