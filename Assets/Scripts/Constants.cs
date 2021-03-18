@@ -18,7 +18,9 @@ public static class Constants
 
     public const string PlayerCurrentLifeRemaining = "current_life_remaining";
 
-        public const string PlayerCurrentScore = "current_score";
+    public const string PlayerCurrentScore = "current_score";
+
+    public const string Timer = "Timer";
 
 
     public static class Prefabs
