@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void Start()
     {
         SpawnPlayer();
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Instantiate(Constants.Timer, new Vector3(308,195,0), Quaternion.identity);
+        // if (PhotonNetwork.IsMasterClient)
+        //     PhotonNetwork.Instantiate(Constants.Timer, new Vector3(308,195,0), Quaternion.identity);
     }
 
     public void Respawn() 
