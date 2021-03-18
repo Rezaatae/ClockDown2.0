@@ -79,7 +79,7 @@ public class Bullet : MonoBehaviourPun
     IEnumerator TimeOut()
     {
         yield return new WaitForSeconds(lifeTime);
-        this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
+        GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
