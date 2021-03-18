@@ -222,7 +222,8 @@ public class Guy : MonoBehaviour, IPunObservable
         // jump token trigger
         if (other.gameObject.layer == 9)
         {
-            FindObjectOfType<Score>().Increment();
+            if (photonView.IsMine)
+                FindObjectOfType<Score>().Increment();
             Destroy(other.gameObject);
         }
 
