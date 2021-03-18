@@ -22,6 +22,22 @@ public static class Constants
 
     public const string Timer = "Timer";
 
+    public const string LifeRemainingText = "Life Remaining Text";
+
+    public const string ScoreText = "Score Text";
+
+    public const string TargetTransform = "Target Transform";
+
+    public static class GameControls
+    {
+        public static class Movement
+        {
+            public const string Horizontal = "Horizontal";
+            public const string Jump = "Jump";
+            public const string Fire = "Fire1";
+        }
+        
+    }
 
     public static class Prefabs
     {

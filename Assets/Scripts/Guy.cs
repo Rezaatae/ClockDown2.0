@@ -86,13 +86,13 @@ public class Guy : MonoBehaviour, IPunObservable
     // Start is called before the first frame update
     private void Start()
     {
-        targetTransform = GameObject.Find("Target Transform").GetComponent<Transform>();
+        targetTransform = GameObject.Find(Constants.TargetTransform).GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
 
-        playerLives = GameObject.Find("Life").GetComponent<Lives>();
-        playerScore = GameObject.Find("Score").GetComponent<Score>();
+        playerLives = GameObject.Find(Constants.LifeRemainingText).GetComponent<Lives>();
+        playerScore = GameObject.Find(Constants.ScoreText).GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -100,7 +100,7 @@ public class Guy : MonoBehaviour, IPunObservable
     {
         if (photonView.IsMine)
         {
-            inputMovement = Input.GetAxis("Horizontal");
+            inputMovement = Input.GetAxis(Constants.GameControls.Movement.Horizontal);
         
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -110,7 +110,7 @@ public class Guy : MonoBehaviour, IPunObservable
                 targetTransform.position = hit.point;
             }
 
-            if (canMove && Input.GetButtonDown("Jump") && isGrounded)
+            if (canMove && Input.GetButtonDown(Constants.GameControls.Movement.Jump) && isGrounded)
             {
 
                 float jumpPower = 1.2f;
@@ -125,7 +125,7 @@ public class Guy : MonoBehaviour, IPunObservable
 
             }
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown(Constants.GameControls.Movement.Fire))
             {
                 Fire();
             }
