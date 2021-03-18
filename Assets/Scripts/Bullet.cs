@@ -48,7 +48,8 @@ public class Bullet : MonoBehaviourPun
         
         if (collider.gameObject.layer == 12)
         {
-            currentPlayerScore.Increment();
+            if (photonView.IsMine)
+                currentPlayerScore.Increment();
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }

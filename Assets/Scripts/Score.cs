@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Score : MonoBehaviour
 {
@@ -9,18 +8,20 @@ public class Score : MonoBehaviour
     [SerializeField]
     private Text scoreText;
 
-    private int score = 0;
+    private int score;
 
-    public void Start()
+    [SerializeField]
+    private PhotonView player;
+
+    private void Start()
     {
-        Hashtable dict = new Hashtable();
-        dict[Constants.PlayerCurrentScore] = score;
-        PhotonNetwork.SetPlayerCustomProperties(dict);
+        score = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore];
     }
 
     // Update is called once per frame
     private void Update()
     {
+        // if (player.IsMine)
         scoreText.text = "SCORE: " + GetCurrentScore();
     }
 

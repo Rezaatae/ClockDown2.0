@@ -63,8 +63,8 @@ public class Guy : MonoBehaviour, IPunObservable
     private Camera mainCamera;
     private float recoilTimer;
     private int superJumpToken;
-    private Lives playerLives = new Lives();
-    private Score playerScore = new Score();
+    private Lives playerLives;
+    private Score playerScore;
 
     private int facingSign
     {
@@ -85,6 +85,8 @@ public class Guy : MonoBehaviour, IPunObservable
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
 
+        playerLives = GameObject.Find("Life").GetComponent<Lives>();
+        playerScore = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -124,7 +126,8 @@ public class Guy : MonoBehaviour, IPunObservable
 
             if (transform.position.y < -20)
             {
-                playerLives.Deduct();
+                if (photonView.IsMine)
+                    playerLives.Deduct();
                 FindObjectOfType<GameManager>().Respawn(); 
             }
 
@@ -140,7 +143,8 @@ public class Guy : MonoBehaviour, IPunObservable
 
         var gameObject = PhotonNetwork.Instantiate(bulletPrefab.name, muzzleTransform.position, Quaternion.identity);// Instantiate(bulletPrefab);
         var bullet = gameObject.GetComponent<Bullet>();
-        bullet.SetCurrentPlayerScore(playerScore);
+        if (photonView.IsMine)
+            bullet.SetCurrentPlayerScore(playerScore);
         bullet.Fire(gameObject.transform.position, muzzleTransform.eulerAngles, base.gameObject.layer);
 
     }
@@ -184,10 +188,10 @@ public class Guy : MonoBehaviour, IPunObservable
             animator.SetBool("isGrounded", isGrounded);
         
             // game over check
-            if(playerLives.GetRemainingLives() == 0)
-            {
-                FindObjectOfType<GameManager>().EndGame();
-            }
+            // if(playerLives.GetRemainingLives() == 0)
+            // {
+            //     FindObjectOfType<GameManager>().EndGame();
+            // }
         
     }
 
@@ -219,7 +223,8 @@ public class Guy : MonoBehaviour, IPunObservable
         // virus collisoon trigger
         if (other.gameObject.layer == 12)
         {
-            playerLives.Deduct();
+            if (photonView.IsMine)
+                playerLives.Deduct();
             Destroy(other.gameObject);
             StartCoroutine(Freeze());            
         }
