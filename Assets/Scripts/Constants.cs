@@ -39,6 +39,12 @@ public static class Constants
         
     }
 
+    public static class RPC
+    {
+        public const string Destroy = "Destroy";
+        public const string DestroyEnemy = "DestroyEnemy";
+    }
+
     public static class Prefabs
     {
         public const string Guy = "Guy";
