@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Photon.Pun;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviourPun
 {
 
     [SerializeField]
@@ -40,6 +41,13 @@ public class Enemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, nextPos.position, speed*Time.deltaTime);
         }
 
+    }
+
+    [PunRPC]
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
+        // StartCoroutine(TimeOut(0));
     }
 
     

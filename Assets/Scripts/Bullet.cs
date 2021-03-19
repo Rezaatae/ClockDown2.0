@@ -11,8 +11,6 @@ public class Bullet : MonoBehaviourPun
 
     private Score currentPlayerScore;
 
-    private Collider enemyCollider;
-
     public void SetCurrentPlayerScore(Score score)
     {
         currentPlayerScore = score;
@@ -42,10 +40,11 @@ public class Bullet : MonoBehaviourPun
     {
         
         if (collider.gameObject.layer == 12)
-        {
+        {   
             FindObjectOfType<Guy>().IncrementJumpToken();
-            Debug.Log("PhotonView: " + PhotonView.Get(collider.gameObject).gameObject.name);
-            PhotonView.Get(collider.gameObject).RPC(Constants.RPC.DestroyEnemy, RpcTarget.AllBuffered, collider);
+            Debug.Log("PhotonView GO: " + PhotonView.Get(collider.gameObject).gameObject.name);
+            PhotonView.Get(collider.gameObject).RPC(Constants.RPC.DestroyEnemy, RpcTarget.AllBuffered);
+            StartCoroutine(TimeOut(0));
         }
         else
         {
@@ -80,11 +79,5 @@ public class Bullet : MonoBehaviourPun
         Destroy(gameObject);
     }
 
-    [PunRPC]
-    public void DestroyEnemy(Collider collider)
-    {
-        Destroy(collider.gameObject);
-        StartCoroutine(TimeOut(0));
-    }
 
 }
