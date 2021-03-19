@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-using ExitGames.Client.Photon;
 
-public class Timer : MonoBehaviourPunCallbacks
+public class Timer : MonoBehaviour
 {
 
     [SerializeField]
@@ -18,50 +17,16 @@ public class Timer : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameManager gameManager;
 
-    private Hashtable dict = new Hashtable();
-
-
-    private void Start()
-    {
-        PhotonNetwork.CurrentRoom.SetCustomProperties(dict);
-    }
-
     // Update is called once per frame
     private void Update()
     {
-            
-        if (PhotonNetwork.IsMasterClient)
+        secondsLeft -= Time.deltaTime;
+        timerText.text = secondsLeft.ToString("f2");
+        if(secondsLeft <= 0)
         {
-            secondsLeft -= Time.deltaTime;
-            dict.Add("current_time_left", secondsLeft);
-            PhotonNetwork.CurrentRoom.SetCustomProperties(dict);
-        }
-        //     GetComponent<PhotonView>().RPC("UpdateTimer", RpcTarget.AllBuffered);
-            
+            gameManager.CompleteLevel();
+        }     
         
     }
-
-    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
-    {
-        int currentTimeLeft = (int) propertiesThatChanged["current_time_left"];
-        // if (propertiesThatChanged.TryGetValue("current_time_left", out currentTimeLeft))
-        // {
-            timerText.text = secondsLeft.ToString("f2");
-            if(currentTimeLeft <= 0)
-            {
-                gameManager.CompleteLevel();
-            }
-        // }
-        
-    }
-
-    // [PunRPC]
-    // public void UpdateTimer()
-    // {
-    //     secondsLeft -= Time.deltaTime;
-        
-        
-    // }
-
-
+    
 }

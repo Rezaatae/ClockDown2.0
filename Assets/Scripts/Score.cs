@@ -10,9 +10,6 @@ public class Score : MonoBehaviour
 
     private int score;
 
-    [SerializeField]
-    private PhotonView player;
-
     private void Start()
     {
         score = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore];
