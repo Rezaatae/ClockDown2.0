@@ -11,17 +11,13 @@ public class Bullet : MonoBehaviourPun
 
     private Score currentPlayerScore;
 
+    private Collider enemyCollider;
+
     public void SetCurrentPlayerScore(Score score)
     {
         currentPlayerScore = score;
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(TimeOut());
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,20 +40,15 @@ public class Bullet : MonoBehaviourPun
 
     private void Hit(Vector3 position, Vector3 direction, Vector3 reflected, Collider collider)
     {
-        // do something with the object that was hit (collider) e.g. collider.gameObject
         
         if (collider.gameObject.layer == 12)
         {
             FindObjectOfType<Guy>().IncrementJumpToken();
-
-            /*if (photonView.IsMine)
-                currentPlayerScore.Increment();*/
-            Destroy(collider.gameObject);
-            Destroy(gameObject);
+            PhotonView.Get(collider.gameObject).RPC(Constants.RPC.DestroyEnemy, RpcTarget.AllBuffered, collider);
         }
         else
         {
-            Destroy(gameObject);
+            StartCoroutine(TimeOut(lifeTime));
         }        
     
     }
@@ -76,17 +67,23 @@ public class Bullet : MonoBehaviourPun
 
     }
 
-    IEnumerator TimeOut()
+    IEnumerator TimeOut(float waitTime)
     {
-        yield return new WaitForSeconds(lifeTime);
-        GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
+        yield return new WaitForSeconds(waitTime);
+        PhotonView.Get(gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
     }
 
     [PunRPC]
     public void Destroy()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
+    [PunRPC]
+    public void DestroyEnemy(Collider collider)
+    {
+        Destroy(collider.gameObject);
+        StartCoroutine(TimeOut(0));
+    }
 
 }
