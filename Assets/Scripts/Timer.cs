@@ -43,15 +43,15 @@ public class Timer : MonoBehaviourPunCallbacks
 
     public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
     {
-        object currentTimeLeft;
-        if (propertiesThatChanged.TryGetValue("current_time_left", out currentTimeLeft))
-        {
+        int currentTimeLeft = (int) propertiesThatChanged["current_time_left"];
+        // if (propertiesThatChanged.TryGetValue("current_time_left", out currentTimeLeft))
+        // {
             timerText.text = secondsLeft.ToString("f2");
-            if((int) currentTimeLeft <= 0)
+            if(currentTimeLeft <= 0)
             {
                 gameManager.CompleteLevel();
             }
-        }
+        // }
         
     }
 
