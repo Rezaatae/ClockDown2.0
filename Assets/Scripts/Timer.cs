@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     private Text timerText;
 
     [SerializeField]
-    private float secondsLeft = 5;
+    private float secondsLeft;
 
     [SerializeField]
     private bool takingAway;
