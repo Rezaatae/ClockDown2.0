@@ -44,10 +44,9 @@ public class Enemy : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void DestroyEnemy()
+    public void Destroy()
     {
         Destroy(gameObject);
-        // StartCoroutine(TimeOut(0));
     }
 
     

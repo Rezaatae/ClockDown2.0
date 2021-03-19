@@ -42,8 +42,7 @@ public class Bullet : MonoBehaviourPun
         if (collider.gameObject.layer == 12)
         {   
             FindObjectOfType<Guy>().IncrementJumpToken();
-            Debug.Log("PhotonView GO: " + PhotonView.Get(collider.gameObject).gameObject.name);
-            PhotonView.Get(collider.gameObject).RPC(Constants.RPC.DestroyEnemy, RpcTarget.AllBuffered);
+            PhotonView.Get(collider.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
             StartCoroutine(TimeOut(0));
         }
         else

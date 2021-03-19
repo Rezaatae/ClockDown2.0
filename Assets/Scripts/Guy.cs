@@ -224,7 +224,7 @@ public class Guy : MonoBehaviour, IPunObservable
         {
             if (photonView.IsMine)
                 FindObjectOfType<Score>().Increment();
-            Destroy(other.gameObject);
+            PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
         }
 
         // virus collisoon trigger
