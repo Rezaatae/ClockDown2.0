@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
 
 public class Timer : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class Timer : MonoBehaviour
     private Text timerText;
 
     [SerializeField]
-    private float secondsLeft;
+    private float secondsLeft = 5;
 
     [SerializeField]
     private bool takingAway;
@@ -28,5 +27,5 @@ public class Timer : MonoBehaviour
         }     
         
     }
-    
+
 }
