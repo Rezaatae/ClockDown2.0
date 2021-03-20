@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SpawnPlayer()
     {
-        PhotonNetwork.Instantiate(Constants.Prefabs.Guy, new Vector3(Random.Range(-4, 0), 0, 0), Quaternion.identity);
+        PhotonNetwork.Instantiate(Constants.Prefabs.Player, new Vector3(Random.Range(-4, 0), 0, 0), Quaternion.identity);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)

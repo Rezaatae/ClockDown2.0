@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
 
-        target = GameObject.Find(Constants.Prefabs.Guy).GetComponent<Transform>();
+        target = GameObject.Find(Constants.Prefabs.Player).GetComponent<Transform>();
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed);
         transform.position = desiredPosition;

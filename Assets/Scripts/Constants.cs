@@ -47,7 +47,8 @@ public static class Constants
 
     public static class Prefabs
     {
-        public const string Guy = "Guy";
+        public const string Player = "Player";
+        public const string PlayerPhotonClone = "Player(Clone)";
     }
 
 }

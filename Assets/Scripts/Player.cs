@@ -2,7 +2,7 @@
 using UnityEngine;
 using Photon.Pun;
 
-public class Guy : MonoBehaviour, IPunObservable
+public class Player : MonoBehaviour, IPunObservable
 {
 
     [SerializeField]
