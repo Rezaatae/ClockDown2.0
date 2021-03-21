@@ -3,7 +3,7 @@ public static class Constants
     public static class Scenes
     {
         public const string MainMenu = "MainMenu";
-        public const string Welcome = "Welcome";
+        public const string NameSelection = "Name Selection";
         public const string CreateGame = "CreateGame";
         public const string JoinGame = "JoinGame";
         public const string GameLobby = "GameLobby";
@@ -49,6 +49,16 @@ public static class Constants
     {
         public const string Player = "Player";
         public const string PlayerPhotonClone = "Player(Clone)";
+    }
+
+    public static class PhotonErrorCodes
+    {
+        public const int OK = 0;
+        public const int GameAlreadyExists = 32766;
+        public const int GameDoesNotExist = 32758;
+        public const int GameFull = 32765;
+        public const int GameClosed = 32764;        
+
     }
 
 }
