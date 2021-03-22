@@ -66,6 +66,7 @@ public class Player : MonoBehaviour, IPunObservable
     private Lives playerLives;
     private Score playerScore;
     private Score currentPlayerScore;
+    private float speedOriginal;
 
     public void SetCurrentPlayerScore(Score score)
     {
@@ -93,6 +94,17 @@ public class Player : MonoBehaviour, IPunObservable
 
         playerLives = GameObject.Find(Constants.LifeRemainingText).GetComponent<Lives>();
         playerScore = GameObject.Find(Constants.ScoreText).GetComponent<Score>();
+    }
+
+    public void SpeedBoostOn (float speedMultiplier)
+    {
+        speedOriginal = walkSpeed;
+        walkSpeed *= speedMultiplier;
+    }
+
+    public void SpeedBoostOff ()
+    {
+        walkSpeed = speedOriginal;
     }
 
     // Update is called once per frame
