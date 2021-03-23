@@ -13,8 +13,13 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private bool takingAway;
 
-    [SerializeField]
     private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
 
     // Update is called once per frame
     private void Update()

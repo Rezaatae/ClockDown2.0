@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 100037989985414739}
   - component: {fileID: 100037989985414764}
   m_Layer: 8
-  m_Name: Guy
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2.5
   jumpHeight: 5
-  canMove: 1
+  canMove: 0
   lockDownTime: 5
   groundCheck: {fileID: 100037990225816312}
   groundCheckRadious: 0.2
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 7549911467152620857}
   - component: {fileID: 5179659843759734150}
   m_Layer: 8
-  m_Name: Guy
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
