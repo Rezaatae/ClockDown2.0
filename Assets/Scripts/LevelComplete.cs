@@ -6,6 +6,7 @@ public class LevelComplete : MonoBehaviour
 {
     public void LoadNextLevel()
     {
-        PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

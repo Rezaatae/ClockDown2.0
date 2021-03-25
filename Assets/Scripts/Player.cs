@@ -87,13 +87,17 @@ public class Player : MonoBehaviour, IPunObservable
     // Start is called before the first frame update
     private void Start()
     {
+        if (photonView.IsMine)
+        {
+            Debug.Log("Player is mine");
         targetTransform = GameObject.Find(Constants.TargetTransform).GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
-
+        
         playerLives = GameObject.Find(Constants.LifeRemainingText).GetComponent<Lives>();
         playerScore = GameObject.Find(Constants.ScoreText).GetComponent<Score>();
+        }
     }
 
     public void SpeedBoostOn (float speedMultiplier)
@@ -124,7 +128,7 @@ public class Player : MonoBehaviour, IPunObservable
 
             if (canMove && Input.GetButtonDown(Constants.GameControls.Movement.Jump) && isGrounded)
             {
-
+                Debug.Log("Jump man");
                 float jumpPower = 1.2f;
                 if(superJumpToken > 0)
                 {
@@ -204,7 +208,8 @@ public class Player : MonoBehaviour, IPunObservable
             // ground check
             isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
             animator.SetBool("isGrounded", isGrounded);
-        
+            Debug.Log("ground position: " + groundCheck.position);
+            Debug.Log("Is grounded: " + isGrounded);
             // game over check
             // if(playerLives.GetRemainingLives() == 0)
             // {
