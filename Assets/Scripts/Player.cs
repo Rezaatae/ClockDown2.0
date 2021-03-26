@@ -265,6 +265,13 @@ public class Player : MonoBehaviour, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(isGrounded);
+        } else if (stream.IsReading)
+        {
+            isGrounded = (bool) stream.ReceiveNext();
+        }
     }
 
     public void IncrementJumpToken(){
