@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2.5
   jumpHeight: 5
-  canMove: 0
+  canMove: 1
   lockDownTime: 5
   groundCheck: {fileID: 100037990225816312}
   groundCheckRadious: 0.2

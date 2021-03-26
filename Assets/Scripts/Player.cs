@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IPunObservable
     private float jumpHeight = 5f;
 
     [SerializeField]
-    private bool canMove = true;
+    private bool canMove;
 
     [SerializeField]
     private float lockDownTime = 5f;
@@ -208,8 +208,6 @@ public class Player : MonoBehaviour, IPunObservable
             // ground check
             isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
             animator.SetBool("isGrounded", isGrounded);
-            Debug.Log("ground position: " + groundCheck.position);
-            Debug.Log("Is grounded: " + isGrounded);
             // game over check
             // if(playerLives.GetRemainingLives() == 0)
             // {
