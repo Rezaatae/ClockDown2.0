@@ -19693,7 +19693,7 @@ PrefabInstance:
       objectReference: {fileID: 1453908193}
     - target: {fileID: 8018235887816214264, guid: b65a13063ccfc443785028873f875089, type: 3}
       propertyPath: secondsLeft
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8018235887816214265, guid: b65a13063ccfc443785028873f875089, type: 3}
       propertyPath: m_Pivot.x
@@ -27115,6 +27115,7 @@ Transform:
   - {fileID: 1762627285}
   - {fileID: 1594012652}
   - {fileID: 62600734}
+  - {fileID: 1106573523}
   - {fileID: 1228267104}
   - {fileID: 472360073}
   - {fileID: 792757922}
@@ -27128,7 +27129,6 @@ Transform:
   - {fileID: 2007116196}
   - {fileID: 382269351}
   - {fileID: 326101321}
-  - {fileID: 1106573523}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

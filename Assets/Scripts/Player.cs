@@ -68,6 +68,7 @@ public class Player : MonoBehaviour, IPunObservable
     private Score currentPlayerScore;
     private float speedOriginal;
 
+
     public void SetCurrentPlayerScore(Score score)
     {
         currentPlayerScore = score;

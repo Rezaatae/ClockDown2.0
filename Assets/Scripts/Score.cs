@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class Score : MonoBehaviour
 {
-
     [SerializeField]
     private Text scoreText;
 
@@ -24,6 +24,13 @@ public class Score : MonoBehaviour
 
     public void Increment(int amount = 2)
     {
+
+        if (SceneManager.GetActiveScene().buildIndex == 10){
+            amount = 5;
+        }else{
+            amount = 2;
+        }
+        
         score += amount;
 
         PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentScore] = score;
