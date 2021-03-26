@@ -194,26 +194,20 @@ public class Player : MonoBehaviour, IPunObservable
     private void FixedUpdate()
     {
 
-            // movement
-            rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
-            animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
-
             if (photonView.IsMine)
             {
+                // movement
+                rigidbodyComponent.velocity = new Vector3(inputMovement * walkSpeed, rigidbodyComponent.velocity.y, 0);
+                animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
                 // facing the right direction and following curser
                 rigidbodyComponent.MoveRotation(Quaternion.Euler(new Vector3(0, 90* Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
 
+                isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
+                
             }
-            
-            // ground check
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
+
             animator.SetBool("isGrounded", isGrounded);
-            // game over check
-            // if(playerLives.GetRemainingLives() == 0)
-            // {
-            //     FindObjectOfType<GameManager>().EndGame();
-            // }
-        
+            
     }
 
     private void OnAnimatorIK()
