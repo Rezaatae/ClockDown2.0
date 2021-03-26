@@ -203,10 +203,8 @@ public class Player : MonoBehaviour, IPunObservable
                 rigidbodyComponent.MoveRotation(Quaternion.Euler(new Vector3(0, 90* Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
 
                 isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);
-                
+                animator.SetBool("isGrounded", isGrounded);
             }
-
-            animator.SetBool("isGrounded", isGrounded);
             
     }
 
