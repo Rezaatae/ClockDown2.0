@@ -18095,7 +18095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6840772103728666515, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.352614
+      value: 6.6058373
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
@@ -80191,6 +80191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 811803172}
     m_Modifications:
+    - target: {fileID: 2045774420527160486, guid: 0eabebd6571e142cab5c14ff3ee24223, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8113230818238315984, guid: 0eabebd6571e142cab5c14ff3ee24223, type: 3}
       propertyPath: m_RootOrder
       value: 0
