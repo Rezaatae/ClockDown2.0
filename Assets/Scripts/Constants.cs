@@ -7,6 +7,8 @@ public static class Constants
         public const string CreateGame = "CreateGame";
         public const string JoinGame = "JoinGame";
         public const string GameLobby = "GameLobby";
+        public const string About = "About";
+        public const string Instructions = "Instructions";
         public const string Level1 = "Level 1";
         public const string Level2 = "Level 2";
         public const string Level3 = "Level 3";
