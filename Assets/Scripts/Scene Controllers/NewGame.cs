@@ -6,7 +6,7 @@ using Photon.Realtime;
 using TMPro;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class NewGameController : MonoBehaviourPunCallbacks
+public class NewGame : MonoBehaviourPunCallbacks
 {
     
     [SerializeField]

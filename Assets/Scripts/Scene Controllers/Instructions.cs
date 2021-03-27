@@ -1,7 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class InstructionsController : MonoBehaviour
+public class Instructions : MonoBehaviour
 {
     public void OnClickBackButton()
     {

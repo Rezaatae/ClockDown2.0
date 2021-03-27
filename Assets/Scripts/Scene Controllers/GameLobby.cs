@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class GameLobbyController : MonoBehaviourPunCallbacks
+public class GameLobby : MonoBehaviourPunCallbacks
 {
     
     [SerializeField]

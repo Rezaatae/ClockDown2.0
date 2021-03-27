@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using TMPro;
 
-public class JoinGameController : MonoBehaviourPunCallbacks
+public class JoinGame : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
