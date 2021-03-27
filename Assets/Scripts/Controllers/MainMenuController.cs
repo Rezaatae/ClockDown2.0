@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     
-    public void OnClickCreateRoom()
+    public void OnClickNewGame()
     {
         SceneManager.LoadScene(Constants.Scenes.Game.Menu.NewGame);
     }
 
-    public void OnClickJoinRoom()
+    public void OnClickJoinGame()
     {
         SceneManager.LoadScene(Constants.Scenes.Game.Menu.JoinGame);
     }
