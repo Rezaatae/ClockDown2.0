@@ -14,4 +14,14 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(Constants.Scenes.JoinGame);
     }
 
+    public void OnClickAbout()
+    {
+        SceneManager.LoadScene(Constants.Scenes.About);
+    }
+
+    public void OnClickInstructions()
+    {
+        SceneManager.LoadScene(Constants.Scenes.Instructions);
+    }
+
 }

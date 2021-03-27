@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using Photon.Pun;
 
-public class PowerUps : MonoBehaviour
+public class PowerUps : MonoBehaviourPun
 {
     public string powerUpName;
     public bool expiresImmediately;
@@ -17,6 +18,7 @@ public class PowerUps : MonoBehaviour
 
     protected PowerUpState powerUpState;
 
+    [PunRPC]
     protected virtual void OnTriggerEnter(Collider other)
         {
             PowerUpCollected(other.gameObject);
@@ -69,12 +71,13 @@ public class PowerUps : MonoBehaviour
             ExecuteEvents.Execute<IPowerUpEvent> (go, null, (x, y) => x.OnPowerUpExpired (this, player));
         }
         Debug.Log ("Power Up has expired, removing after a delay for: " + gameObject.name);
-        DestroySelfAfterDelay ();
+        Destroy();
     }
 
-    protected virtual void DestroySelfAfterDelay ()
+    [PunRPC]
+    public void Destroy()
     {
-        Destroy (gameObject, 10f);
+        Destroy(gameObject);
     }
 }
 

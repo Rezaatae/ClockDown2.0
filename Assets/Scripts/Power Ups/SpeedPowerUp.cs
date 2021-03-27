@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class SpeedPowerUp : PowerUps, IPlayerEvent
+class SpeedPowerUp : PowerUps
 {
     public float speedMultiplier = 3.0f;
 
@@ -17,20 +17,4 @@ class SpeedPowerUp : PowerUps, IPlayerEvent
         player.SpeedBoostOff();
         base.PowerUpExpired();
     }
-
-    void IPlayerEvent.OnPlayerHurt (int newLives)
-    {
-        if (powerUpState != PowerUpState.IsCollected)
-        {
-            return;
-        }
-
-        PowerUpExpired();
-    }
-
-    void IPlayerEvent.OnPlayerReachExit (GameObject exit)
-    {
-
-    }
-
 }
