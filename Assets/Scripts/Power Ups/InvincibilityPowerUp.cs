@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviourPun
-
+public class InvincibilityPowerUp : MonoBehaviourPun
 {
-    public float multiplier = 2.0f;
-    public float duration = 6.0f;
+    public float duration = 10.0f;
+     
 
-    
     [PunRPC]
     void OnTriggerEnter(Collider other)
     {
@@ -23,14 +21,14 @@ public class PowerUp : MonoBehaviourPun
     IEnumerator Pickup(Collider player)
     {
         Player playerstats = player.GetComponent<Player>();
-        playerstats.walkSpeed *= multiplier;
+        playerstats.invincible = true;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(duration);
 
-        playerstats.walkSpeed /= multiplier;
+        playerstats.invincible = false;
 
         Destroy(gameObject);
         Debug.Log("Power Up picked up!");

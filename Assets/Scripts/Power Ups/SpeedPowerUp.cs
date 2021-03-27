@@ -1,17 +1,38 @@
-﻿
-class SpeedPowerUp : PowerUps
-{
-    public float speedMultiplier = 3.0f;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Photon.Pun;
+using UnityEngine;
 
-    protected override void PowerUpPayload()       
+public class SpeedPowerUp : MonoBehaviourPun
+
+{
+    public float multiplier = 2.0f;
+    public float duration = 6.0f;
+
+    
+    [PunRPC]
+    void OnTriggerEnter(Collider other)
     {
-        base.PowerUpPayload();
-        player.SpeedBoostOn(speedMultiplier);
+        if(other.CompareTag("Untagged"))
+        {
+            StartCoroutine(Pickup(other));
+        }
     }
 
-    protected override void PowerUpExpired()       
+    
+    IEnumerator Pickup(Collider player)
     {
-        player.SpeedBoostOff();
-        base.PowerUpExpired();
+        Player playerstats = player.GetComponent<Player>();
+        playerstats.walkSpeed *= multiplier;
+
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        playerstats.walkSpeed /= multiplier;
+
+        Destroy(gameObject);
+        Debug.Log("Power Up picked up!");
     }
 }

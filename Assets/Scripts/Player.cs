@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     private float jumpHeight = 5f;
 
     [SerializeField]
+    public bool invincible = false;
+
+    [SerializeField]
     private bool canMove;
 
     [SerializeField]
@@ -66,7 +69,6 @@ public class Player : MonoBehaviour
     private Lives playerLives;
     private Score playerScore;
     private Score currentPlayerScore;
-    private float speedOriginal;
 
 
     public void SetCurrentPlayerScore(Score score)
@@ -226,14 +228,17 @@ public class Player : MonoBehaviour
             PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
         }
 
-        // virus collisoon trigger
-        if (other.gameObject.layer == 12)
+        // virus collision trigger
+        
+
+        if (other.CompareTag("Enemy"))
         {
             if (photonView.IsMine)
                 playerLives.Deduct();
             PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
             StartCoroutine(Freeze());            
         }
+        
 
         
     }  
@@ -245,17 +250,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(lockDownTime);
         walkSpeed = 2.5f;
         canMove = true;
-    }
-
-    public void SpeedBoostOn(float speedMultiplier)
-    {
-        speedOriginal = walkSpeed;
-        walkSpeed *= speedMultiplier;
-    }
-
-    public void SpeedBoostOff()
-    {
-        walkSpeed = speedOriginal;
     }
 
     public void IncrementJumpToken()
