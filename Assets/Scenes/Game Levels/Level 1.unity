@@ -1250,7 +1250,7 @@ Transform:
   m_LocalPosition: {x: -7.8551016, y: 0.6153166, z: 0.030000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2323696296346254187}
+  - {fileID: 352842709}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9821,6 +9821,11 @@ SphereCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7415273526459659969, guid: 675ee027266492740871dbd31f76df25, type: 3}
   m_PrefabInstance: {fileID: 352488328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &352842709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+  m_PrefabInstance: {fileID: 5046277913375681197}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &352864802
 PrefabInstance:
@@ -61929,86 +61934,6 @@ PrefabInstance:
       objectReference: {fileID: 621609483}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
---- !u!1001 &2323696296346254186
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 44209032}
-    m_Modifications:
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180878522147908212, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-      propertyPath: m_Name
-      value: Invincibility Power Up
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
---- !u!4 &2323696296346254187 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 215222516867994889, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-  m_PrefabInstance: {fileID: 2323696296346254186}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2323696296346254188 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2180878522147908212, guid: 280ce42af39b42444ad733ed43087d6b, type: 3}
-  m_PrefabInstance: {fileID: 2323696296346254186}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2323696296346254189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2323696296346254188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1001 &2480627485301874508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62180,6 +62105,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8003793805127608081, guid: 175d571068d3c4b42a85f8eea4ec3080, type: 3}
   m_PrefabInstance: {fileID: 2955306410065067535}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5046277913375681197
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 44209032}
+    m_Modifications:
+    - target: {fileID: 5046277913728009560, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_Name
+      value: Invincibility Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728107508, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: viewIdField
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046277913728506232, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd3ed75cbabe69f4d9c3968e438f510c, type: 3}
 --- !u!1001 &5846608587025030847
 PrefabInstance:
   m_ObjectHideFlags: 0
