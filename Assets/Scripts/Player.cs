@@ -229,19 +229,22 @@ public class Player : MonoBehaviour
         }
 
         // virus collision trigger
-        
-
         if (other.CompareTag("Enemy"))
         {
-            if (photonView.IsMine)
-                playerLives.Deduct();
-            PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
-            StartCoroutine(Freeze());            
+            VirusCollision(other);
         }
         
-
-        
     }  
+    public void VirusCollision(Collider other)
+    {
+        if (invincible == false)
+        {
+            if (photonView.IsMine)
+                    playerLives.Deduct();
+                PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
+                StartCoroutine(Freeze());  
+        }
+    }
 
     private IEnumerator Freeze()
     {
