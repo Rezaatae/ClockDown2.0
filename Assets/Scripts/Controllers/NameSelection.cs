@@ -19,7 +19,7 @@ public class NameSelection : MonoBehaviour
     public void OnClickContinue()
     {
         PhotonNetwork.NickName = playerNickNameTextField.text;
-        SceneManager.LoadScene(Constants.Scenes.MainMenu);
+        SceneManager.LoadScene(Constants.Scenes.Game.MainMenu);
     }
 
 }

@@ -68,9 +68,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
 
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(Constants.Scenes.MainMenu);
+            PhotonNetwork.LoadLevel(Constants.Scenes.Game.MainMenu);
         else
-            SceneManager.LoadScene(Constants.Scenes.MainMenu);
+            SceneManager.LoadScene(Constants.Scenes.Game.MainMenu);
                         
     }
 

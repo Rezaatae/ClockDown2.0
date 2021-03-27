@@ -2,18 +2,36 @@ public static class Constants
 {
     public static class Scenes
     {
-        public const string MainMenu = "MainMenu";
+
         public const string NameSelection = "Name Selection";
-        public const string CreateGame = "CreateGame";
-        public const string JoinGame = "JoinGame";
-        public const string GameLobby = "GameLobby";
-        public const string About = "About";
-        public const string Instructions = "Instructions";
-        public const string Level1 = "Level 1";
-        public const string Level2 = "Level 2";
-        public const string Level3 = "Level 3";
-        public const string Level4 = "Level 4";
-        public const string Level5 = "Level 5";
+
+        public static class Game
+        {
+
+            public const string MainMenu = "Main Menu";
+
+            public static class Menu 
+            {
+
+                public const string About = "About";
+                public const string Instructions = "Instructions";
+                public const string NewGame = "New Game";
+                public const string JoinGame = "Join Game";
+        
+            }
+
+            public static class Levels 
+            {
+
+                public const string GameLobby = "Game Lobby";
+                public const string Level1 = "Level 1";
+                public const string Level2 = "Level 2";
+                public const string Level3 = "Level 3";
+                public const string Level4 = "Level 4";
+                public const string Level5 = "Level 5";
+            
+            }
+        }
 
     }    
     public const string PlayerId = "player_id";

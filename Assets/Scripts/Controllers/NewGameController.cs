@@ -6,7 +6,7 @@ using Photon.Realtime;
 using TMPro;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class CreateGameController : MonoBehaviourPunCallbacks
+public class NewGameController : MonoBehaviourPunCallbacks
 {
     
     [SerializeField]
@@ -35,7 +35,7 @@ public class CreateGameController : MonoBehaviourPunCallbacks
 
     public void OnClickBackButton()
     {
-        SceneManager.LoadScene(Constants.Scenes.MainMenu);
+        SceneManager.LoadScene(Constants.Scenes.Game.MainMenu);
     }
 
     public override void OnCreatedRoom()
@@ -55,7 +55,7 @@ public class CreateGameController : MonoBehaviourPunCallbacks
         playerProps[Constants.PlayerId] = 1;
         PhotonNetwork.SetPlayerCustomProperties(playerProps);
 
-        SceneManager.LoadScene(Constants.Scenes.GameLobby);
+        SceneManager.LoadScene(Constants.Scenes.Game.Levels.GameLobby);
     }
 
 }
