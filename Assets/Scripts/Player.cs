@@ -232,6 +232,7 @@ public class Player : MonoBehaviour, IPunObservable
         {
             if (photonView.IsMine)
                 FindObjectOfType<Score>().Increment();
+            Debug.Log("Touched toilet roll: " + other.gameObject.name);
             PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
         }
 
@@ -240,7 +241,7 @@ public class Player : MonoBehaviour, IPunObservable
         {
             if (photonView.IsMine)
                 playerLives.Deduct();
-            Destroy(other.gameObject);
+            PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
             StartCoroutine(Freeze());            
         }
 
