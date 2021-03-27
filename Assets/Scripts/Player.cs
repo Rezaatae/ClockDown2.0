@@ -2,7 +2,7 @@
 using UnityEngine;
 using Photon.Pun;
 
-public class Player : MonoBehaviour, IPunObservable
+public class Player : MonoBehaviour
 {
 
     [SerializeField]
@@ -90,7 +90,6 @@ public class Player : MonoBehaviour, IPunObservable
     {
         if (photonView.IsMine)
         {
-            Debug.Log("Player is mine");
         targetTransform = GameObject.Find(Constants.TargetTransform).GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rigidbodyComponent = GetComponent<Rigidbody>();
@@ -101,16 +100,7 @@ public class Player : MonoBehaviour, IPunObservable
         }
     }
 
-    public void SpeedBoostOn (float speedMultiplier)
-    {
-        speedOriginal = walkSpeed;
-        walkSpeed *= speedMultiplier;
-    }
-
-    public void SpeedBoostOff ()
-    {
-        walkSpeed = speedOriginal;
-    }
+    
 
     // Update is called once per frame
     private void Update()
@@ -257,18 +247,19 @@ public class Player : MonoBehaviour, IPunObservable
         canMove = true;
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void SpeedBoostOn(float speedMultiplier)
     {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(isGrounded);
-        } else if (stream.IsReading)
-        {
-            isGrounded = (bool) stream.ReceiveNext();
-        }
+        speedOriginal = walkSpeed;
+        walkSpeed *= speedMultiplier;
     }
 
-    public void IncrementJumpToken(){
+    public void SpeedBoostOff()
+    {
+        walkSpeed = speedOriginal;
+    }
+
+    public void IncrementJumpToken()
+    {
         superJumpToken += 1;
     }
 
