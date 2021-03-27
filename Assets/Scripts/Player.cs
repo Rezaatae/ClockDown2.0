@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField]
-    private float walkSpeed = 2.5f;
+    public float walkSpeed = 2.5f;
 
     [SerializeField]
     private float jumpHeight = 5f;
