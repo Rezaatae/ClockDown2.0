@@ -3957,6 +3957,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1500070718119688372, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
   m_PrefabInstance: {fileID: 98557377}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &98557379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1500070718119688375, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
+  m_PrefabInstance: {fileID: 98557377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &104193165
 GameObject:
   m_ObjectHideFlags: 0
@@ -18760,7 +18765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6840772103728666515, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.605835
+      value: 7.2488403
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
@@ -27211,10 +27216,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 621609478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaded04baa8291247b3c915e7d42a502, type: 3}
+  m_Script: {fileID: 11500000, guid: 885c78ff56a5347f79f51b0e566716c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 98557379}
 --- !u!1 &624255388
 GameObject:
   m_ObjectHideFlags: 0
@@ -40094,12 +40099,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5db401ec68224e8da829877521f955a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dcc2b94c05c946d687e485e0e39853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 2, z: -15}
+  offset: {x: 0, y: 2, z: -12}
 --- !u!1001 &967673695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55507,7 +55512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402629934}
   m_Layer: 0
-  m_Name: toiletRolls
+  m_Name: Toilet Rolls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

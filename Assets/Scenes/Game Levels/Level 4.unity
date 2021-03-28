@@ -6416,6 +6416,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: positions.Array.data[0]
       value: 
       objectReference: {fileID: 206307336}
@@ -8027,13 +8031,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 423070921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {fileID: 1090230414}
-  - {fileID: 1929612772}
-  speed: 4
+  - {fileID: 1543886425}
+  - {fileID: 540882004}
+  speed: 5
 --- !u!65 &423070923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11336,10 +11340,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 621609478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaded04baa8291247b3c915e7d42a502, type: 3}
+  m_Script: {fileID: 11500000, guid: 885c78ff56a5347f79f51b0e566716c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1947179855}
 --- !u!1 &624336974
 GameObject:
   m_ObjectHideFlags: 0
@@ -12755,13 +12759,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 692431637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 485538394}
   - {fileID: 52988154}
-  speed: 4
+  speed: 5
 --- !u!65 &692431639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13207,7 +13211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6840772103728666515, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.605774
+      value: 7.247925
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
@@ -14092,13 +14096,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 769077390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 1183776358}
   - {fileID: 687942466}
-  speed: 4
+  speed: 5
 --- !u!65 &769077393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17639,13 +17643,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 918980874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 1913997740}
   - {fileID: 301375715}
-  speed: 4
+  speed: 5
 --- !u!65 &918980877
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18194,12 +18198,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5db401ec68224e8da829877521f955a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dcc2b94c05c946d687e485e0e39853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 2, z: -15}
+  offset: {x: 0, y: 2, z: -12}
 --- !u!1001 &975572836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21106,7 +21110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1156455314}
   m_Layer: 0
-  m_Name: toiletRolls
+  m_Name: Toilet Rolls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22720,6 +22724,10 @@ PrefabInstance:
     - target: {fileID: 3800177792215024254, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: positions.Array.data[0]
@@ -31997,13 +32005,17 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: positions.Array.data[0]
       value: 
-      objectReference: {fileID: 685094195}
+      objectReference: {fileID: 1059946004}
     - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: positions.Array.data[1]
       value: 
-      objectReference: {fileID: 1059946004}
+      objectReference: {fileID: 685094195}
     - target: {fileID: 7306367338323198132, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: viewIdField
       value: 183
@@ -34990,6 +35002,11 @@ PrefabInstance:
 --- !u!224 &1947179854 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1500070718119688372, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
+  m_PrefabInstance: {fileID: 1947179853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1947179855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1500070718119688375, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
   m_PrefabInstance: {fileID: 1947179853}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1947579422
@@ -39181,6 +39198,10 @@ PrefabInstance:
     - target: {fileID: 3800177792215024254, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3800177792215024255, guid: 64fa2866e529e48cb9b7b54bf0fb2eab, type: 3}
       propertyPath: positions.Array.data[0]

@@ -7290,13 +7290,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 361960675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 575477425}
   - {fileID: 1018811401}
-  speed: 7
+  speed: 5
 --- !u!1001 &364109951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12351,6 +12351,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1500070718119688372, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
   m_PrefabInstance: {fileID: 556102474}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &556102476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1500070718119688375, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
+  m_PrefabInstance: {fileID: 556102474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &556316926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14151,10 +14156,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 621609478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaded04baa8291247b3c915e7d42a502, type: 3}
+  m_Script: {fileID: 11500000, guid: 885c78ff56a5347f79f51b0e566716c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 556102476}
 --- !u!1001 &623779583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19197,7 +19202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6840772103728666515, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.605835
+      value: 7.2488403
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6323b444d71cd43d2b7fe1b8bfaa564f, type: 3}
@@ -22629,12 +22634,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5db401ec68224e8da829877521f955a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dcc2b94c05c946d687e485e0e39853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 2, z: -15}
+  offset: {x: 0, y: 2, z: -12}
 --- !u!1001 &966873175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23427,13 +23432,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 2110501646}
     m_Modifications:
     - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: positions.Array.data[0]
       value: 
-      objectReference: {fileID: 704525591}
+      objectReference: {fileID: 1096723153}
     - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: positions.Array.data[1]
       value: 
-      objectReference: {fileID: 1096723153}
+      objectReference: {fileID: 704525591}
     - target: {fileID: 2452626869355499233, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: m_Name
       value: Enemy2 (3)
@@ -28880,13 +28889,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1222248081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 1208695356}
   - {fileID: 469663835}
-  speed: 7
+  speed: 5
 --- !u!1001 &1225610579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44780,13 +44789,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883490469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 1433641173}
   - {fileID: 2105273275}
-  speed: 7
+  speed: 5
 --- !u!1001 &1889371773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45341,13 +45350,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 2110501646}
     m_Modifications:
     - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: positions.Array.data[0]
       value: 
-      objectReference: {fileID: 2109444023}
+      objectReference: {fileID: 1962362372}
     - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: positions.Array.data[1]
       value: 
-      objectReference: {fileID: 1962362372}
+      objectReference: {fileID: 2109444023}
     - target: {fileID: 2452626869355499233, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: m_Name
       value: Enemy2 (1)
@@ -45854,13 +45871,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1929903659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6fbce3b208de34091482e89ac0838d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b945a09f84dd4c7a8f5cb969ab857d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
   - {fileID: 391219414}
   - {fileID: 133972955}
-  speed: 7
+  speed: 0
 --- !u!1001 &1931738058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50651,6 +50668,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2110501646}
     m_Modifications:
+    - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
+      propertyPath: positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2452626869355499232, guid: dd720e508367043bcafb826dcdecde14, type: 3}
       propertyPath: positions.Array.data[0]
       value: 
