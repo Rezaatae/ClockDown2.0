@@ -107,13 +107,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5149505301008937706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 642eec10fe6e1b846b6c28e2ffdf9e70, type: 3}
+  m_Script: {fileID: 11500000, guid: ed6c4c3b400954fe9b107ef189f2e6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions:
-  - {fileID: 0}
-  - {fileID: 0}
+  positions: []
   speed: 5
+  effectA: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
+  explosionLifeTime: 2
 --- !u!114 &2707633748519122170
 MonoBehaviour:
   m_ObjectHideFlags: 0

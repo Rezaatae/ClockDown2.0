@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7162829519208942205}
   - component: {fileID: -4394567165134045944}
   m_Layer: 5
-  m_Name: PlayerStatus
+  m_Name: Player Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,10 +104,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7162829519208942207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8786670d458471ca8c8b27bf9fc9a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 077bd2a2b421f4881930bd640c9b8c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 7162829519316691749}
+  text: {fileID: 0}
 --- !u!1 &7162829519316691751
 GameObject:
   m_ObjectHideFlags: 0

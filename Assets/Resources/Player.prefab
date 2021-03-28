@@ -250,7 +250,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 982349679379434084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f68530e460cd1e48a539d61847cbf59, type: 3}
+  m_Script: {fileID: 11500000, guid: c9c3430888e96445dbe52de5cbc4c284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2.5
@@ -262,111 +262,21 @@ MonoBehaviour:
   groundCheckRadious: 0.2
   mouseAimMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   groundMask:
     serializedVersion: 2
-    m_Bits: 2048
-  bulletPrefab: {fileID: 7513085200594213799, guid: 5af828528f8d33c4ca1ec2de15c88de4, type: 3}
+    m_Bits: 0
+  bulletPrefab: {fileID: 0}
   muzzleTransform: {fileID: 100037991069577380}
   targetTransform: {fileID: 0}
   recoilCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -9.987762
-      value: 0.007534027
-      inSlope: 0.10084551
-      outSlope: 0.10084551
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -9.41718
-      value: 0.0650747
-      inSlope: 0.072745144
-      outSlope: 0.072745144
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -7.987736
-      value: 0.12889192
-      inSlope: 0.014106729
-      outSlope: 0.014106729
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -1.9496479
-      value: 0.029678091
-      inSlope: -0.010513255
-      outSlope: -0.010513255
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -0.00734825
-      value: 0.020752875
-      inSlope: -0.0035207132
-      outSlope: -0.0035207132
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.6914005
-      value: 0.016597318
-      inSlope: -0.002110167
-      outSlope: -0.002110167
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3.4187531
-      value: 0.0135328425
-      inSlope: -0.0015402727
-      outSlope: -0.0015402727
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 5.277366
-      value: 0.011104643
-      inSlope: -0.0013388903
-      outSlope: -0.0013388903
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 6.871345
-      value: 0.008918784
-      inSlope: -0.00091584236
-      outSlope: -0.00091584236
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 9.929381
-      value: 0.0075109806
-      inSlope: -0.00046036177
-      outSlope: -0.00046036177
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   recoilDuration: 0.25
-  recoilMaxRotation: 90
+  recoilMaxRotation: 45
   rightLowerArm: {fileID: 5240666860730949388}
   rightHand: {fileID: 5343245947026177179}
   photonView: {fileID: 100037989985414739}
@@ -390,7 +300,6 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 100037989985414765}
   - {fileID: 100037989985414764}
   viewIdField: 0
   InstantiationId: 0
