@@ -266,7 +266,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 7513085200594213799, guid: 5af828528f8d33c4ca1ec2de15c88de4, type: 3}
   muzzleTransform: {fileID: 100037991069577380}
   targetTransform: {fileID: 0}
   recoilCurve:

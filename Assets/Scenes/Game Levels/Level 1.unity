@@ -14513,6 +14513,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8003793805127608081, guid: 175d571068d3c4b42a85f8eea4ec3080, type: 3}
   m_PrefabInstance: {fileID: 541762937}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &542071237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1500070718119688375, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
+  m_PrefabInstance: {fileID: 1500070718651654514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &542071238 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1500070718119688372, guid: b0bbd5c96860f44118ae9376f918597e, type: 3}
@@ -17493,6 +17498,7 @@ GameObject:
   - component: {fileID: 621609481}
   - component: {fileID: 621609480}
   - component: {fileID: 621609479}
+  - component: {fileID: 621609483}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -17585,6 +17591,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &621609483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621609478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885c78ff56a5347f79f51b0e566716c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 542071237}
 --- !u!1001 &625736190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27390,9 +27409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcc2b94c05c946d687e485e0e39853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 257011220}
+  target: {fileID: 0}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 2, z: -12}
 --- !u!1001 &966716122
 PrefabInstance:
   m_ObjectHideFlags: 0
