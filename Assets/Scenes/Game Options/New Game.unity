@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 449848218}
   - component: {fileID: 449848217}
   m_Layer: 0
-  m_Name: CreateGameController
+  m_Name: NewGameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
