@@ -12,11 +12,10 @@ public class Lives : MonoBehaviour
 
     private void Start()
     {
-        life = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining];
+        life = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining];
     }
     
 
-    // Update is called once per frame
     private void Update()
     {
         livesText.text = "LIVES: " + GetRemainingLives();
@@ -26,15 +25,14 @@ public class Lives : MonoBehaviour
     {
         life--;
 
-        PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining] = life;
+        PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining] = life;
         PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
     
     }
 
-    public int GetRemainingLives()
+    private int GetRemainingLives()
     {
-        var remainingLives = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.PlayerCurrentLifeRemaining];
-        return remainingLives;
+        return (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining];
     }
 
 

@@ -52,7 +52,7 @@ public class NewGame : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Hashtable playerProps = new Hashtable();
-        playerProps[Constants.PlayerId] = 1;
+        playerProps[Constants.Scenes.Game.Objects.PlayerId] = 1;
         PhotonNetwork.SetPlayerCustomProperties(playerProps);
 
         SceneManager.LoadScene(Constants.Scenes.Game.Levels.GameLobby);

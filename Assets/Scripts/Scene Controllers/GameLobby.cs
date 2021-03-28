@@ -25,8 +25,8 @@ public class GameLobby : MonoBehaviourPunCallbacks
         leaveArenaButtonColorBlock.disabledColor = Color.gray;
 
         Hashtable dict = new Hashtable();
-        dict[Constants.PlayerCurrentLifeRemaining] = 5;
-        dict[Constants.PlayerCurrentScore] = 0;
+        dict[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining] = 5;
+        dict[Constants.Scenes.Game.Objects.PlayerCurrentScore] = 0;
         PhotonNetwork.SetPlayerCustomProperties(dict);
     }
 
@@ -73,7 +73,7 @@ public class GameLobby : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Hashtable playerProps = new Hashtable();
-        playerProps[Constants.PlayerId] = PhotonNetwork.CurrentRoom.PlayerCount;
+        playerProps[Constants.Scenes.Game.Objects.PlayerId] = PhotonNetwork.CurrentRoom.PlayerCount;
         newPlayer.SetCustomProperties(playerProps);
         Debug.Log(newPlayer.NickName + " just joined the game");
     }

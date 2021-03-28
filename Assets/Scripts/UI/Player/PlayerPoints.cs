@@ -25,7 +25,7 @@ public class PlayerPoints : MonoBehaviourPunCallbacks
 
     private void SetPlayerPointsText(Photon.Realtime.Player player)
     {
-        var points = (int) player.CustomProperties[Constants.PlayerCurrentScore];
+        var points = (int) player.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentScore];
         text.text = player.NickName + ", " + points + " points";
     }
 

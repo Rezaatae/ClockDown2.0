@@ -4,21 +4,16 @@ using Photon.Pun;
 
 public class Bullet : MonoBehaviourPun
 {
-    public float velocity = 20f;
-    public float lifeTime = 1f;
+
+    [SerializeField]
+    private float velocity = 20f;
+    [SerializeField]
+    private float lifeTime = 1f;
+    
     private int firedbyLayer;
     private float lifeTimer;
 
-    private Score currentPlayerScore;
-
-    public void SetCurrentPlayerScore(Score score)
-    {
-        currentPlayerScore = score;
-    }
-
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         RaycastHit hit;
 
@@ -43,16 +38,16 @@ public class Bullet : MonoBehaviourPun
         {   
             FindObjectOfType<Player>().IncrementJumpToken();
             PhotonView.Get(collider.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
-            StartCoroutine(TimeOut(0));
+            StartCoroutine(Expire(0));
         }
         else
         {
-            StartCoroutine(TimeOut(lifeTime));
+            StartCoroutine(Expire(lifeTime));
         }        
     
     }
 
-    public void Fire(Vector3 position, Vector3 euler, int layer)
+    public void SetTrajectory(Vector3 position, Vector3 euler, int layer)
     {
 
         // this enforces the bullets' trajectory in one plane
@@ -66,14 +61,14 @@ public class Bullet : MonoBehaviourPun
 
     }
 
-    IEnumerator TimeOut(float waitTime)
+    private IEnumerator Expire(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         PhotonView.Get(gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
     }
 
     [PunRPC]
-    public void Destroy()
+    private void Destroy()
     {
         Destroy(gameObject);
     }
