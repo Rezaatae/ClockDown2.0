@@ -57,7 +57,6 @@ public class Enemy : MonoBehaviourPun
     public void Destroy()
     {
         StartCoroutine(CreateEffect(effectA, transform.position));
-        // CreateEffect(effectB, transform.position);
         Destroy(gameObject);
     }
 

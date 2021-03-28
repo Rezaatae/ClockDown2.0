@@ -110,10 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c4c3b400954fe9b107ef189f2e6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions: []
-  speed: 0
-  effectA: {fileID: 0}
-  effectB: {fileID: 0}
+  positions:
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 25
+  effectA: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
   explosionLifeTime: 1
 --- !u!114 &2045774420527160486
 MonoBehaviour:
