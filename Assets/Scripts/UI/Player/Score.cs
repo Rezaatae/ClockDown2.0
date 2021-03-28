@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
     public void Increment(int amount = 2)
     {
 
-        amount = SceneManager.GetActiveScene().buildIndex == 10 ? 5 : 2;
+        amount = SceneManager.GetActiveScene().buildIndex == 12 ? 5 : 2;
         
         score += amount;
 
