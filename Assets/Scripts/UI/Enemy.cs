@@ -15,6 +15,15 @@ public class Enemy : MonoBehaviourPun
 
     private float dist;
 
+    [SerializeField]
+    private GameObject effectA;
+
+    // [SerializeField]
+    // private GameObject effectB;
+
+    [SerializeField]
+    private float explosionLifeTime = 1f;
+
     private void Start()
     {
         nextPos = positions[0];
@@ -22,10 +31,10 @@ public class Enemy : MonoBehaviourPun
 
     private void Update()
     {
-        MoveEnemy();
+        Move();
     }
 
-    private void MoveEnemy()
+    private void Move()
     {
         if (transform.position == nextPos.position)
         {
@@ -46,8 +55,19 @@ public class Enemy : MonoBehaviourPun
     [PunRPC]
     public void Destroy()
     {
+        CreateEffect(effectA, transform.position);
+        // CreateEffect(effectB, transform.position);
         Destroy(gameObject);
     }
+
+
+    private void CreateEffect(GameObject prefab, Vector3 position)
+	{
+		GameObject go = PhotonNetwork.Instantiate(prefab.name, position, Quaternion.identity);
+
+		
+		// PhotonNetwork.Destroy(go, explosionLifeTime);
+	}
 
     
 
