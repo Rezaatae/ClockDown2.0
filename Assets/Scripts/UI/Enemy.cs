@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Photon.Pun;
 
 public class Enemy : MonoBehaviourPun
@@ -55,18 +56,18 @@ public class Enemy : MonoBehaviourPun
     [PunRPC]
     public void Destroy()
     {
-        CreateEffect(effectA, transform.position);
+        StartCoroutine(CreateEffect(effectA, transform.position));
         // CreateEffect(effectB, transform.position);
         Destroy(gameObject);
     }
 
 
-    private void CreateEffect(GameObject prefab, Vector3 position)
+    private IEnumerator CreateEffect(GameObject prefab, Vector3 position)
 	{
 		GameObject go = PhotonNetwork.Instantiate(prefab.name, position, Quaternion.identity);
-
 		
-		// PhotonNetwork.Destroy(go, explosionLifeTime);
+        yield return new WaitForSeconds(explosionLifeTime);
+		PhotonNetwork.Destroy(PhotonView.Get(go));
 	}
 
     
