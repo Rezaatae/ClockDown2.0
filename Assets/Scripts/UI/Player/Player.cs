@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float walkSpeed = 2.5f;
 
     [SerializeField]
-    private float jumpHeight = 5f;
+    public float jumpHeight = 5f;
 
     [SerializeField]
     public bool invincible = false;
