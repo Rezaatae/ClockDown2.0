@@ -6,9 +6,9 @@ using UnityEngine;
 public class InvincibilityPowerUp : MonoBehaviourPun
 {
     public float duration = 10.0f;
-    private Lives playerLives;
      
-
+// Needed for player who is untagged to register colliding with gameObject
+// Initiates PickUp effect coroutine
     [PunRPC]
     void OnTriggerEnter(Collider other)
     {
@@ -18,7 +18,14 @@ public class InvincibilityPowerUp : MonoBehaviourPun
         }
     }
 
+    // Invincibility power up effect
     
+    /* 
+    This references the 'invincible' boolean in 'Player' class making it true. This turns off hit
+    detection for player against enemies for 10 seconds. The code also adds one life to 'Lives' and
+    instantiates this across the network.
+    */ 
+     
     IEnumerator Pickup(Collider player)
     {
         Player playerstats = player.GetComponent<Player>();
