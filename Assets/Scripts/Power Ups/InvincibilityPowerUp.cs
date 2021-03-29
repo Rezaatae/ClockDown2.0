@@ -6,6 +6,7 @@ using UnityEngine;
 public class InvincibilityPowerUp : MonoBehaviourPun
 {
     public float duration = 10.0f;
+    private Lives playerLives;
      
 
     [PunRPC]
@@ -22,6 +23,11 @@ public class InvincibilityPowerUp : MonoBehaviourPun
     {
         Player playerstats = player.GetComponent<Player>();
         playerstats.invincible = true;
+        
+        if (photonView.IsMine)
+        {
+            FindObjectOfType<Lives>().Increase();
+        }
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;

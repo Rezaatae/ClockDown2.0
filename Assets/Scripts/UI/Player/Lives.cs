@@ -21,6 +21,14 @@ public class Lives : MonoBehaviour
         livesText.text = "LIVES: " + GetRemainingLives();
     }
 
+    public void Increase(int amount = 1)
+    {
+        life += amount;
+
+        PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining] = life;
+        PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
+    }
+
     public void Deduct()
     {
         life--;
