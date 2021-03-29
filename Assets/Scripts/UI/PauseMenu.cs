@@ -37,13 +37,6 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void LoadMenu()
-    {
-        Time.timeScale = 1f;
-        // TODO: Load menu
-        // SceneManager.LoadScene(1);
-    }
-
     public void QuitGame()
     {
         ModalManager.Show(null, "Are you sure you want to quit now?", new[] { new ModalButton() { Text = "YES", Callback = Quit }, new ModalButton() { Text = "NO" } });
@@ -52,7 +45,6 @@ public class PauseMenu : MonoBehaviour
     private void Quit()
     {
         PhotonNetwork.LeaveRoom();
-        Application.Quit();
         SceneManager.LoadScene(Constants.Scenes.Game.MainMenu);
     }
 }

@@ -199,8 +199,8 @@ public class Player : MonoBehaviour
         canMove = false;
         walkSpeed = 0.01f;
         Modal modal = ModalManager.Show(null, "You're on lockdown for " + lockDownTime + " seconds", null);
+        ModalManager.Destroy(modal, lockDownTime);
         yield return new WaitForSeconds(lockDownTime);
-        ModalManager.Destroy(modal);
         walkSpeed = 2.5f;
         canMove = true;
     }
