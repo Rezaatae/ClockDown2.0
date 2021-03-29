@@ -63456,7 +63456,7 @@ PrefabInstance:
       objectReference: {fileID: 1453908193}
     - target: {fileID: 8018235887816214264, guid: b65a13063ccfc443785028873f875089, type: 3}
       propertyPath: secondsLeft
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8018235887816214265, guid: b65a13063ccfc443785028873f875089, type: 3}
       propertyPath: m_Pivot.x
