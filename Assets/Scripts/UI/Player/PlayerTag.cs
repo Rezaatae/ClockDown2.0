@@ -16,6 +16,7 @@ public class PlayerTag : MonoBehaviour
 
     private float characterControllerHeight = 1f;
     private Transform targetTransform;
+    private CanvasGroup _canvasGroup;
     private Renderer targetRenderer;
     private Vector3 targetPosition;
 
@@ -23,6 +24,7 @@ public class PlayerTag : MonoBehaviour
 
     private void Awake()
     {
+        this._canvasGroup = GetComponent<CanvasGroup>();
         this.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
     }
 
