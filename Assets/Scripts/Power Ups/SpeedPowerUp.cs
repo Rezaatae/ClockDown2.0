@@ -23,14 +23,14 @@ public class SpeedPowerUp : MonoBehaviourPun
     IEnumerator Pickup(Collider player)
     {
         Player playerstats = player.GetComponent<Player>();
-        playerstats.walkSpeed *= multiplier;
+        playerstats.walkSpeed = 5.0f;
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(duration);
 
-        playerstats.walkSpeed /= multiplier;
+        playerstats.walkSpeed = 2.5f;
 
         PhotonView.Get(gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
     }
