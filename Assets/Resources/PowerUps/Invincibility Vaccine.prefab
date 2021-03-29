@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2269758221871576621}
   - component: {fileID: 4282742615794052767}
   - component: {fileID: 5072708459434756962}
+  - component: {fileID: 5966948570362898103}
   m_Layer: 0
   m_Name: Invincibility Vaccine
   m_TagString: Untagged
@@ -139,3 +140,15 @@ CapsuleCollider:
   m_Height: 0.19426966
   m_Direction: 1
   m_Center: {x: 0.0035926625, y: 0, z: -0.012764293}
+--- !u!114 &5966948570362898103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269758221864142317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638ec136539a24acaa494cbc2bcbbaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
