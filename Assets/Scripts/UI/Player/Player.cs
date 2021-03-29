@@ -69,7 +69,6 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private Camera mainCamera;
     private float recoilTimer;
-    public int superJumpToken;
     private Lives playerLives;
 
     [Tooltip("The Player's UI GameObject Prefab")]
@@ -208,11 +207,6 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
-    public void IncrementJumpToken()
-    {
-        superJumpToken += 1;
-    }
-
     private void Recoil()
     {
         if (recoilTimer < 0)
@@ -246,11 +240,6 @@ public class Player : MonoBehaviour
             if (canMove && Input.GetButtonDown(Constants.GameControls.Movement.Jump) && isGrounded)
             {
                 float jumpPower = 1.2f;
-                if(superJumpToken > 0)
-                {
-                    jumpPower *= 1.5f;
-                    superJumpToken -= 1;
-                }
 
                 rigidbodyComponent.velocity = new Vector3(rigidbodyComponent.velocity.x, 0, 0);
                 rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
