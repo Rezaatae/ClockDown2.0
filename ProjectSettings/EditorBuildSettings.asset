@@ -28,7 +28,7 @@ EditorBuildSettings:
     guid: 9663dea49408d4d598f8aa683086cce0
   - enabled: 1
     path: Assets/Scenes/Game Levels/Game Lobby.unity
-    guid: 6b795ba875189444c94c1a00d1861737
+    guid: 1d691204c80fc48748a93cac01c83cb7
   - enabled: 1
     path: Assets/Scenes/Game Levels/Level 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Levels/Level 5.unity
     guid: c81b0d3922ab7d947969cee3cdee887a
+  - enabled: 1
+    path: Assets/Scenes/Game Levels/Leader Table.unity
+    guid: 3195936b7814146eb887cff353377ef6
   m_configObjects: {}
