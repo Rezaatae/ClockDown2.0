@@ -70,6 +70,11 @@ public class Player : MonoBehaviour
     private Camera mainCamera;
     private float recoilTimer;
     private Lives playerLives;
+    public float minHeightForDeath = -50;
+    
+    [SerializeField]
+    public Transform playerSpawnPoint;
+
 
     [Tooltip("The Player's UI GameObject Prefab")]
     [SerializeField]
@@ -251,7 +256,18 @@ public class Player : MonoBehaviour
                 Fire();
             }
 
+            
+    
+            if (transform.position.y < minHeightForDeath)
+            {
+                transform.position = new Vector3(15, 2, 0);
+                playerLives.Deduct();
+            }
+    
+
             // TODO: RESPAWN LOGIC
+
+            
 
         }
     }
