@@ -30,17 +30,16 @@ public class PlayerTag : MonoBehaviour
 
     private void Update()
     {
-        if (target == null)
-        {
-            PhotonNetwork.Destroy(this.gameObject);
-            
-            return;
-        }
+        // if (target == null)
+        // {
+        //     PhotonNetwork.Destroy(this.gameObject);   
+        //     return;
+        // }
     }
 
     private void LateUpdate()
     {
-        if (targetTransform != null)
+        if (targetTransform != null && target.photonView.IsMine)
         {
             targetPosition = targetTransform.position;
             targetPosition.y += characterControllerHeight;
@@ -55,20 +54,24 @@ public class PlayerTag : MonoBehaviour
             Debug.LogError("<Color=Red><a>Missing</a></Color> PlayMakerManager target for PlayerUI.SetTarget.", this);
             return;
         }
-        // Cache references for efficiency
-        this.target = target;
-        targetTransform = this.target.GetComponent<Transform>();
-        targetRenderer = this.target.GetComponent<Renderer>();
-        CharacterController characterController = target.GetComponent<CharacterController>();
+        if (target.photonView.IsMine)
+        {
+           // Cache references for efficiency
+            this.target = target;
+            targetTransform = this.target.GetComponent<Transform>();
+            targetRenderer = this.target.GetComponent<Renderer>();
+            CharacterController characterController = target.GetComponent<CharacterController>();
         // Get data from the Player that won't change during the lifetime of this Component
-        if (characterController != null)
-        {
-            characterControllerHeight = characterController.height;
-        }   
-        if (playerNameText != null)
-        {
-            playerNameText.text = this.target.photonView.Owner.NickName;
+            if (characterController != null)
+            {
+                characterControllerHeight = characterController.height;
+            }   
+            if (playerNameText != null)
+            {
+                playerNameText.text = PhotonNetwork.NickName;
+            } 
         }
+        
     }
 
 }
