@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class Lives : MonoBehaviour
@@ -9,15 +8,11 @@ public class Lives : MonoBehaviour
     [SerializeField]
     private Text livesText;
 
-    private GameManager gameManager;
-
     public int life;
 
 
     private void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
         life = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining];
     }
     
@@ -25,11 +20,6 @@ public class Lives : MonoBehaviour
     private void Update()
     {
         livesText.text = "LIVES: " + GetRemainingLives();
-
-        if (life < 1)
-        {
-            gameManager.EndGame();
-        }
     }
 
     public void Increase(int amount = 1)
