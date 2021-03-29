@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     private Transform rightHand;
     
     [SerializeField]
-    private PhotonView photonView;
+    public PhotonView photonView;
 
     private float inputMovement;
     private Animator animator;
@@ -67,6 +67,10 @@ public class Player : MonoBehaviour
     private float recoilTimer;
     public int superJumpToken;
     private Lives playerLives;
+
+    [Tooltip("The Player's UI GameObject Prefab")]
+    [SerializeField]
+    private GameObject playerTagPrefab;
 
     private int facingSign
     {
@@ -89,6 +93,16 @@ public class Player : MonoBehaviour
         mainCamera = Camera.main;
         
         playerLives = GameObject.Find(Constants.Scenes.Game.Objects.LifeRemainingText).GetComponent<Lives>();
+
+        if (playerTagPrefab != null)
+        {
+            GameObject _uiGo = PhotonNetwork.Instantiate(playerTagPrefab.name, new Vector3(0,0,0), Quaternion.identity);
+            _uiGo.SendMessage ("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+        }
         
     }
 
