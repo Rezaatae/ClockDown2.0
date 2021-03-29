@@ -30,7 +30,6 @@ public class InvincibilityPowerUp : MonoBehaviourPun
 
         playerstats.invincible = false;
 
-        Destroy(gameObject);
-        Debug.Log("Power Up picked up!");
+        PhotonView.Get(gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
     }
 }

@@ -32,7 +32,6 @@ public class SpeedPowerUp : MonoBehaviourPun
 
         playerstats.walkSpeed /= multiplier;
 
-        Destroy(gameObject);
-        Debug.Log("Power Up picked up!");
+        PhotonView.Get(gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
     }
 }

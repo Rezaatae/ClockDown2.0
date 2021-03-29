@@ -31,7 +31,6 @@ public class SuperJumpPowerUp : MonoBehaviourPun
 
         playerstats.jumpHeight /= multiplier;
 
-        Destroy(gameObject);
-        Debug.Log("Power Up picked up!");
+        PhotonView.Get(gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
     }
 }
