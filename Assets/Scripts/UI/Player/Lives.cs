@@ -9,6 +9,7 @@ public class Lives : MonoBehaviour
     private Text livesText;
 
     private int life;
+    private int localLife = 5;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class Lives : MonoBehaviour
     public void Increase(int amount = 1)
     {
         life += amount;
+        localLife += amount;
 
         PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining] = life;
         PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
@@ -32,6 +34,12 @@ public class Lives : MonoBehaviour
     public void Deduct()
     {
         life--;
+        localLife--;
+        
+        if (localLife == 0)
+        {
+            gameOver();
+        }
 
         PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining] = life;
         PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
@@ -43,5 +51,11 @@ public class Lives : MonoBehaviour
         return (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining];
     }
 
+    public void gameOver()
+    {
+        Player playerStats = GetComponent<Player>();
+        playerStats.playerAlive = false;
+    }
+    
 
 }
