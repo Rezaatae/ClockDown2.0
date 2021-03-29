@@ -256,7 +256,7 @@ MonoBehaviour:
   walkSpeed: 2.5
   jumpHeight: 5
   invincible: 0
-  playerAlive: 1
+  playerDead: 0
   canMove: 1
   lockDownTime: 5
   groundCheck: {fileID: 100037990225816312}
@@ -281,7 +281,6 @@ MonoBehaviour:
   rightLowerArm: {fileID: 5240666860730949388}
   rightHand: {fileID: 5343245947026177179}
   photonView: {fileID: 100037989985414739}
-  superJumpToken: 0
   playerTagPrefab: {fileID: 2121891443381150907, guid: 888d98d0f59964516a0ba7c74565299d, type: 3}
 --- !u!114 &100037989985414739
 MonoBehaviour:

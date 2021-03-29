@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public bool invincible = false;
 
     [SerializeField]
-    public bool playerAlive = true;
+    public bool playerDead = false;
 
     [SerializeField]
     private bool canMove;
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
     }  
     public void VirusCollision(Collider other)
     {
-        if (!invincible && other.CompareTag("Enemy") && playerAlive)
+        if (!invincible && other.CompareTag("Enemy"))
         {
             if (photonView.IsMine)
                 playerLives.Deduct();
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
 
     private void JumpBoost(GameObject go)
     {
-        if (go.layer.Equals(Constants.Scenes.Game.Objects.ToiletRoll) && playerAlive)
+        if (go.layer.Equals(Constants.Scenes.Game.Objects.ToiletRoll))
         {
             if (photonView.IsMine)
                 FindObjectOfType<Score>().Increment();

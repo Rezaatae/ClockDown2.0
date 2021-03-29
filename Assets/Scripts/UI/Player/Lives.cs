@@ -8,7 +8,8 @@ public class Lives : MonoBehaviour
     [SerializeField]
     private Text livesText;
 
-    private int life;
+    public int life;
+
 
     private void Start()
     {
