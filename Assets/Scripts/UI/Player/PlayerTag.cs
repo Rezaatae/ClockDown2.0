@@ -68,7 +68,7 @@ public class PlayerTag : MonoBehaviour
             }   
             if (playerNameText != null)
             {
-                playerNameText.text = PhotonNetwork.NickName;
+                playerNameText.text = target.photonView.Owner.NickName;
             } 
         }
         
