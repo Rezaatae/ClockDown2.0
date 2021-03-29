@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
 
         if (playerTagPrefab != null)
         {
-            GameObject _uiGo = PhotonNetwork.Instantiate(playerTagPrefab.name, new Vector3(0,0,0), Quaternion.identity);
+            GameObject _uiGo = Instantiate(playerTagPrefab);
             _uiGo.SendMessage ("SetTarget", this, SendMessageOptions.RequireReceiver);
         }
         else
