@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Photon.Pun;
+using Gravitons.UI.Modal;
 
 public class Player : MonoBehaviour
 {
@@ -197,7 +198,9 @@ public class Player : MonoBehaviour
     {
         canMove = false;
         walkSpeed = 0.01f;
+        Modal modal = ModalManager.Show(null, "You're on lockdown for " + lockDownTime + " seconds", null);
         yield return new WaitForSeconds(lockDownTime);
+        ModalManager.Destroy(modal);
         walkSpeed = 2.5f;
         canMove = true;
     }

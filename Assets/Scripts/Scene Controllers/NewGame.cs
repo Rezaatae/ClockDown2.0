@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using Gravitons.UI.Modal;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class NewGame : MonoBehaviourPunCallbacks
@@ -14,6 +15,9 @@ public class NewGame : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private Button createGameButton;
+
+    [SerializeField]
+    private Button backButton;
 
     [Tooltip("The maximum number of players per room")]
     [SerializeField]
@@ -45,8 +49,10 @@ public class NewGame : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        createGameButton.interactable = true;
-        Debug.Log("failed to create room: " + message);
+        createGameButton.interactable = false;
+        backButton.interactable = false;
+        ModalManager.Show("Failed to create room", LocalizePhotonErrorMessage.localizedMessage(returnCode), new[] { new ModalButton() { Callback = EnableButtons, Text = "OK" } });
+
     }
 
     public override void OnJoinedRoom()
@@ -56,6 +62,12 @@ public class NewGame : MonoBehaviourPunCallbacks
         PhotonNetwork.SetPlayerCustomProperties(playerProps);
 
         SceneManager.LoadScene(Constants.Scenes.Game.Levels.GameLobby);
+    }
+
+    private void EnableButtons()
+    {
+        createGameButton.interactable = true;
+        backButton.interactable = true; 
     }
 
 }

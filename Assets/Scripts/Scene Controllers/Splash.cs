@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
+using Gravitons.UI.Modal;
+using System.Collections;
 
 public class Splash : MonoBehaviourPunCallbacks
 {
@@ -37,6 +39,8 @@ public class Splash : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
+        
+        ModalManager.Show("You're disconnected from the game", LocalizePhotonErrorMessage.disconnectCause(cause), new[] { new ModalButton() { Text = "YES", Callback = RetryPhotonNetwork }, new ModalButton() { Text = "NO" } });
     }
 
     public override void OnJoinedLobby()
@@ -48,6 +52,32 @@ public class Splash : MonoBehaviourPunCallbacks
     public void OnPlayButtonClick()
     {
         SceneManager.LoadScene(Constants.Scenes.NameSelection);
+    }
+
+    private void RetryPhotonNetwork()
+    {
+        StartCoroutine(MainReconnect());
+    }
+
+    private IEnumerator MainReconnect()
+    {
+        while (PhotonNetwork.NetworkingClient.LoadBalancingPeer.PeerState != ExitGames.Client.Photon.PeerStateValue.Disconnected)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        loadingIndicator.gameObject.SetActive(true);
+
+        if (!PhotonNetwork.Reconnect())
+        {
+            playButton.gameObject.SetActive(false);
+            loadingIndicator.gameObject.SetActive(false);
+            ModalManager.Show("Unable to connect to game", "There was an error connecting to our servers", new[] { new ModalButton() { Text = "OK" } });
+        } else
+        {
+            playButton.gameObject.SetActive(true);
+            loadingIndicator.gameObject.SetActive(false);
+        }
     }
 
 }

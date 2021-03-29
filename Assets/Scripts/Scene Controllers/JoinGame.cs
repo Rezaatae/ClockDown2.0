@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using TMPro;
+using Gravitons.UI.Modal;
 
 public class JoinGame : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,9 @@ public class JoinGame : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private Button joinRoomButton;
+
+    [SerializeField]
+    private Button backButton;
 
     public void OnClickJoinRoom()
     {
@@ -32,8 +36,16 @@ public class JoinGame : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
+        joinRoomButton.interactable = false;
+        backButton.interactable = false;
+        ModalManager.Show("Unable to join this room", LocalizePhotonErrorMessage.localizedMessage(returnCode), new[] { new ModalButton() { Callback = EnableButtons, Text = "OK" } });
+        
+    }
+
+    private void EnableButtons()
+    {
         joinRoomButton.interactable = true;
-        Debug.Log("Unable to join this room: " + message);
+        backButton.interactable = true; 
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Gravitons.UI.Modal;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -43,7 +44,6 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting game...");
-        Application.Quit();
+        ModalManager.Show(null, "Are you sure you want to quit now?", new[] { new ModalButton() { Text = "YES", Callback = Application.Quit }, new ModalButton() { Text = "NO" } });
     }
 }
