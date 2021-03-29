@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     public bool invincible = false;
 
     [SerializeField]
+    public bool playerAlive = true;
+
+    [SerializeField]
     private bool canMove;
 
     [SerializeField]
@@ -175,7 +178,7 @@ public class Player : MonoBehaviour
     }  
     public void VirusCollision(Collider other)
     {
-        if (!invincible && other.CompareTag("Enemy"))
+        if (!invincible && other.CompareTag("Enemy") && playerAlive)
         {
             if (photonView.IsMine)
                 playerLives.Deduct();
@@ -186,7 +189,7 @@ public class Player : MonoBehaviour
 
     private void JumpBoost(GameObject go)
     {
-        if (go.layer.Equals(Constants.Scenes.Game.Objects.ToiletRoll))
+        if (go.layer.Equals(Constants.Scenes.Game.Objects.ToiletRoll) && playerAlive)
         {
             if (photonView.IsMine)
                 FindObjectOfType<Score>().Increment();
@@ -198,8 +201,8 @@ public class Player : MonoBehaviour
     {
         canMove = false;
         walkSpeed = 0.01f;
-        Modal modal = ModalManager.Show(null, "You're on lockdown for " + lockDownTime + " seconds", null);
-        ModalManager.Destroy(modal, lockDownTime);
+      //  Modal modal = ModalManager.Show(null, "You're on lockdown for " + lockDownTime + " seconds", null);
+       // ModalManager.Destroy(modal, lockDownTime);
         yield return new WaitForSeconds(lockDownTime);
         walkSpeed = 2.5f;
         canMove = true;
