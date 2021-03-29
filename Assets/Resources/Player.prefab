@@ -281,6 +281,7 @@ MonoBehaviour:
   rightLowerArm: {fileID: 5240666860730949388}
   rightHand: {fileID: 5343245947026177179}
   photonView: {fileID: 100037989985414739}
+  minHeightForDeath: -50
   playerTagPrefab: {fileID: 2121891443381150907, guid: 888d98d0f59964516a0ba7c74565299d, type: 3}
 --- !u!114 &100037989985414739
 MonoBehaviour:
