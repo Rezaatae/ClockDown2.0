@@ -32,7 +32,7 @@ public class PlayerTag : MonoBehaviour
     {
         if (target == null)
         {
-            PhotonNetwork.Destroy(this.gameObject);   
+            Destroy(this.gameObject);   
             return;
         }
     }
