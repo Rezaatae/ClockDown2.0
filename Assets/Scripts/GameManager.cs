@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private bool gameHasEnded = false;
     
     public GameObject completeLevelUI;
+    public GameObject GameOverUI;
     
     public void Start()
     {
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             gameHasEnded = true;
             Debug.Log("Game Over!");
+            GameOverUI.SetActive(true);
         }
         
     }
