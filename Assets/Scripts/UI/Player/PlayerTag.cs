@@ -30,11 +30,11 @@ public class PlayerTag : MonoBehaviour
 
     private void Update()
     {
-        // if (target == null)
-        // {
-        //     PhotonNetwork.Destroy(this.gameObject);   
-        //     return;
-        // }
+        if (target == null)
+        {
+            PhotonNetwork.Destroy(this.gameObject);   
+            return;
+        }
     }
 
     private void LateUpdate()
