@@ -9,22 +9,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Splash.unity
     guid: aa1e3198f984a478eaf332ea2e485758
   - enabled: 1
-    path: Assets/Scenes/Game Levels/Game Options/Name Selection.unity
+    path: Assets/Scenes/Game Options/Name Selection.unity
     guid: 14946deaec46748498ec481fe083427e
   - enabled: 1
-    path: Assets/Scenes/Game Levels/Game Options/Main Menu.unity
+    path: Assets/Scenes/Game Options/Main Menu.unity
     guid: 95e20b81d4bad4d7f953e10b3fe47024
   - enabled: 1
-    path: Assets/Scenes/Game Levels/Game Options/About.unity
+    path: Assets/Scenes/Game Options/About.unity
     guid: 374aca971025c1a4f8bdde909d618d13
   - enabled: 1
-    path: Assets/Scenes/Game Levels/Game Options/Instructions.unity
+    path: Assets/Scenes/Game Options/Instructions.unity
     guid: 4b5fa5c5ff8940f449bda40028667e36
   - enabled: 1
-    path: Assets/Scenes/Game Levels/Game Options/New Game.unity
+    path: Assets/Scenes/Game Options/New Game.unity
     guid: 659ccd9857f294cd5b2b0fced6ddc4f5
   - enabled: 1
-    path: Assets/Scenes/Game Levels/Game Options/Join Game.unity
+    path: Assets/Scenes/Game Options/Join Game.unity
     guid: 9663dea49408d4d598f8aa683086cce0
   - enabled: 1
     path: Assets/Scenes/Game Levels/Game Lobby.unity
