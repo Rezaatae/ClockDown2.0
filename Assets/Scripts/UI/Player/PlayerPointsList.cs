@@ -18,7 +18,11 @@ public class PlayerPointsList : MonoBehaviour
             {
                 PlayerPoints playerPoints = Instantiate(playerPointsPrefab, content);
                 if (playerPoints != null)
+                {
+                    playerPoints.color = Color.black;
                     playerPoints.SetPointsFor(player);
+                }
+                    
             }
         }
     }

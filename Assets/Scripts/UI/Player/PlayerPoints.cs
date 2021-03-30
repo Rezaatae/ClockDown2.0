@@ -12,12 +12,16 @@ public class PlayerPoints : MonoBehaviourPunCallbacks
     public Color color = Color.black;
 
     public Photon.Realtime.Player Player { get; private set; }
+
+    private void Start()
+    {
+        text.color = color;
+    }
     
     public void SetPointsFor(Photon.Realtime.Player player)
     {
         Player = player;
         SetPlayerPointsText(player);
-        text.color = color;
     }
 
     public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer, Hashtable changedProps)
