@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using TMPro;
 using Gravitons.UI.Modal;
+using System;
 
 public class CreateJoinRoomUI : MonoBehaviourPunCallbacks
 {
@@ -20,14 +21,11 @@ public class CreateJoinRoomUI : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (inputField.text.Length == 0 || inputField.text == " ")
-        {
+        if (String.IsNullOrWhiteSpace(inputField.text))
             actionButton.interactable = false;
-        } else
-        {
+        else
             Text = inputField.text;
             actionButton.interactable = true;
-        }
     }
 
     private void EnableButtons()
