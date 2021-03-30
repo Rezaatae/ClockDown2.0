@@ -9,7 +9,7 @@ public class PlayerPoints : MonoBehaviourPunCallbacks
     [SerializeField]
     private TextMeshProUGUI text;
 
-    public Color color;
+    public Color color = Color.black;
 
     public Photon.Realtime.Player Player { get; private set; }
     

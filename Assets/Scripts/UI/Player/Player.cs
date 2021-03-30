@@ -256,19 +256,18 @@ public class Player : MonoBehaviour
                 Fire();
             }
 
-            
+            Respawn();
     
-            if (transform.position.y < minHeightForDeath)
-            {
-                transform.position = new Vector3(15, 2, 0);
-                playerLives.Deduct();
-            }
-    
+        }
+    }
 
-            // TODO: RESPAWN LOGIC
-
-            
-
+    private void Respawn()
+    {
+        // TODO: RESPAWN LOGIC
+        if (transform.position.y < minHeightForDeath)
+        {
+            transform.position = new Vector3(15, 2, 0);
+            playerLives.Deduct();
         }
     }
 

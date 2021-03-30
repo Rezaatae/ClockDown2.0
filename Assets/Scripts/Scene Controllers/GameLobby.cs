@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Gravitons.UI.Modal;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameLobby : MonoBehaviourPunCallbacks
@@ -12,56 +13,56 @@ public class GameLobby : MonoBehaviourPunCallbacks
     private TextMeshProUGUI gameStatusText;
 
     [SerializeField]
-    private Button loadArenaButton;
+    private TextMeshProUGUI roomNameText;
 
     [SerializeField]
-    private Button leaveArenaButton;
+    private Button startGameButton;
+
+    [SerializeField]
+    private Button leaveGameButton;
 
     private void Start()
     {
-        var loadArenaButtonColorBlock = loadArenaButton.colors;
-        loadArenaButtonColorBlock.disabledColor = Color.gray;
-        var leaveArenaButtonColorBlock = leaveArenaButton.colors;
-        leaveArenaButtonColorBlock.disabledColor = Color.gray;
-
         Hashtable dict = new Hashtable();
         dict[Constants.Scenes.Game.Objects.PlayerCurrentLifeRemaining] = 5;
         dict[Constants.Scenes.Game.Objects.PlayerCurrentScore] = 0;
         PhotonNetwork.SetPlayerCustomProperties(dict);
+
+        roomNameText.text = "Room name: " + PhotonNetwork.CurrentRoom.Name;
     }
 
     private void Update()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount >= 1)
+        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                gameStatusText.text = "All players are here, press continue";
-                loadArenaButton.interactable = true;
+                gameStatusText.text = PhotonNetwork.CurrentRoom.PlayerCount + " players are currently in the game";
+                startGameButton.interactable = true;
             } else 
             {
-                gameStatusText.text = "Waiting for player 1 to load the arena";
-                loadArenaButton.gameObject.SetActive(false);
+                gameStatusText.text = "Waiting for room owner to start the game";
+                startGameButton.gameObject.SetActive(false);
             }
         } else
         {
-            gameStatusText.text = "Waiting for more players";
-            loadArenaButton.interactable = false;
+            gameStatusText.text = "Waiting for more players. Game requires atleast 2 players";
+            startGameButton.interactable = false;
         }
 
     }
 
-    public void OnClickCharacterSelection()
-    {
-        Debug.Log("Going to load character selection scene");
-    }
-
-    public void OnClickLoadArena()
+    public void OnClickStartGame()
     {
         PhotonNetwork.LoadLevel(Constants.Scenes.Game.Levels.Level1);
     }
 
-    public void OnClickLeaveRoom()
+    public void OnClickLeaveGame()
+    {
+            ModalManager.Show(null, "You're about to leave the game", new[] { new ModalButton() { Callback = LeaveGame, Text = "Confirm" }, new ModalButton() { Text = "Cancel" } });
+    }
+
+    public void LeaveGame()
     {
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(Constants.Scenes.Game.MainMenu);

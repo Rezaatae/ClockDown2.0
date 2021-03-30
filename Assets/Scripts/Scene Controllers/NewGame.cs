@@ -23,10 +23,15 @@ public class NewGame : MonoBehaviourPunCallbacks
     [SerializeField]
     private byte maxPlayersPerRoom;
 
-    private void Start()
+    private void Update()
     {
-        var colorBlock = createGameButton.colors;
-        colorBlock.disabledColor = Color.gray;
+        if (roomNameInputField.text.Length == 0 || roomNameInputField.text == " ")
+        {
+            createGameButton.interactable = false;
+        } else
+        {
+            createGameButton.interactable = true;
+        }
     }
 
     public void OnClickCreateRoom()
@@ -52,7 +57,6 @@ public class NewGame : MonoBehaviourPunCallbacks
         createGameButton.interactable = false;
         backButton.interactable = false;
         ModalManager.Show("Failed to create room", LocalizePhotonErrorMessage.localizedMessage(returnCode), new[] { new ModalButton() { Callback = EnableButtons, Text = "OK" } });
-
     }
 
     public override void OnJoinedRoom()

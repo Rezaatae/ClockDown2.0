@@ -16,6 +16,17 @@ public class NameSelection : MonoBehaviour
     [SerializeField]
     private Button continueButton;
 
+    private void Update()
+    {
+        if (playerNickNameTextField.text.Length == 0 || playerNickNameTextField.text == " ")
+        {
+            continueButton.interactable = false;
+        } else
+        {
+            continueButton.interactable = true;
+        }
+    }
+
     public void OnClickContinue()
     {
         PhotonNetwork.NickName = playerNickNameTextField.text;
