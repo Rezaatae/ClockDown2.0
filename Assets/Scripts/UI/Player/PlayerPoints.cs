@@ -9,13 +9,11 @@ public class PlayerPoints : MonoBehaviourPunCallbacks
     [SerializeField]
     private TextMeshProUGUI text;
 
-    public Color color = Color.black;
-
     public Photon.Realtime.Player Player { get; private set; }
 
     private void Start()
     {
-        text.color = color;
+        text.color = Color.black;
     }
     
     public void SetPointsFor(Photon.Realtime.Player player)
