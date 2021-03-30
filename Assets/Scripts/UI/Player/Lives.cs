@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class Lives : MonoBehaviour
@@ -30,6 +31,7 @@ public class Lives : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void Increase(int amount = 1)
     {
         life += amount;

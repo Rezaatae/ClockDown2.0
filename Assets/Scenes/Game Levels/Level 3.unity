@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invincibility Vaccine (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
+      propertyPath: m_TagString
+      value: Vaccine
+      objectReference: {fileID: 0}
     - target: {fileID: 4282742615794052767, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: viewIdField
       value: 330
@@ -362,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1 &4915129
 GameObject:
   m_ObjectHideFlags: 0
@@ -6581,7 +6584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1001 &142008322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8864,7 +8866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6290023700921099038, guid: 757ca131f07e3478983435cf80dc4eee, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6290023700921099038, guid: 757ca131f07e3478983435cf80dc4eee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -29200,7 +29202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1001 &719745614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34182,7 +34183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5846608588061226884, guid: 4c94cab768ff84904b063c87e7e7957a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5846608588061226884, guid: 4c94cab768ff84904b063c87e7e7957a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -36431,7 +36432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1001 &904919914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56050,7 +56050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1001 &1455431735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71021,7 +71020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce9ceaf430ea1a49b82e1dc496f90db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
 --- !u!1001 &1814045260
 PrefabInstance:
   m_ObjectHideFlags: 0

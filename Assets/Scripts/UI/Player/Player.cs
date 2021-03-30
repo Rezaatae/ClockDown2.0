@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     private float recoilTimer;
     private Lives playerLives;
     public float minHeightForDeath = -50;
+    public float duration = 10.0f;
 
 
     [Tooltip("The Player's UI GameObject Prefab")]
@@ -174,6 +175,7 @@ public class Player : MonoBehaviour
     {
 
         JumpBoost(other.gameObject);
+        gainLife(other);
         VirusCollision(other);
         
     }  
@@ -187,6 +189,17 @@ public class Player : MonoBehaviour
             StartCoroutine(Freeze());  
         }
     }
+
+    public void gainLife(Collider other)
+    {
+        if (other.CompareTag("Vaccine"))
+        {
+            if (photonView.IsMine)
+                playerLives.Increase();
+            PhotonView.Get(other.gameObject).RPC(Constants.RPC.Destroy, RpcTarget.AllBuffered);
+            StartCoroutine(Invincibility());
+        }
+    } 
 
     private void JumpBoost(GameObject go)
     {
@@ -207,6 +220,13 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(lockDownTime);
         walkSpeed = 2.5f;
         canMove = true;
+    }
+
+    IEnumerator Invincibility()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(duration);
+        invincible = false;    
     }
 
     private void Recoil()

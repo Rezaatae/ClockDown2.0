@@ -36,6 +36,7 @@ public static class Constants
             {
                 public const int ToiletRoll = 9;
                 public const int Enemy = 12;
+            
                 public const string PlayerId = "player_id";
 
                 public const string PlayerCurrentLifeRemaining = "current_life_remaining";
