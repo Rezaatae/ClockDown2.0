@@ -5,11 +5,11 @@ using Photon.Pun;
 public class GameManager : MonoBehaviourPunCallbacks
 {
 
-    // [SerializeField]
-    private GameObject player;
+    // // [SerializeField]
+    // private GameObject player;
 
-    [SerializeField]
-    private GameObject playerSpawnPosition;
+    // [SerializeField]
+    // private GameObject playerSpawnPosition;
     
     private bool gameHasEnded = false;
     
@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     public void Start()
     {
-        Debug.Log("New game manager");
         // SpawnPlayer();
     }
 
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void CompleteLevel()
     {
-        // PhotonNetwork.Destroy(PhotonView.Get(player));
         completeLevelUI.SetActive(true);
     }
 
@@ -60,11 +58,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         
     }
 
-    private void SpawnPlayer()
-    {
-        player = PhotonNetwork.Instantiate(Constants.Prefabs.Player, new Vector3(Random.Range(-4, 0), playerSpawnPosition.transform.position.y, playerSpawnPosition.transform.position.z), Quaternion.identity);
-        // DontDestroyOnLoad(player);
-    }
+    // private void SpawnPlayer()
+    // {
+    //     player = PhotonNetwork.Instantiate(Constants.Prefabs.Player, new Vector3(Random.Range(-4, 0), playerSpawnPosition.transform.position.y, playerSpawnPosition.transform.position.z), Quaternion.identity);
+    //     // DontDestroyOnLoad(player);
+    // }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
