@@ -6556,6 +6556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invincibility Vaccine
       objectReference: {fileID: 0}
+    - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
+      propertyPath: m_TagString
+      value: Vaccine
+      objectReference: {fileID: 0}
     - target: {fileID: 4282742615794052767, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: viewIdField
       value: 316
@@ -29174,6 +29178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invincibility Vaccine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
+      propertyPath: m_TagString
+      value: Vaccine
+      objectReference: {fileID: 0}
     - target: {fileID: 4282742615794052767, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: viewIdField
       value: 326
@@ -36403,6 +36411,10 @@ PrefabInstance:
     - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: m_Name
       value: Invincibility Vaccine (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
+      propertyPath: m_TagString
+      value: Vaccine
       objectReference: {fileID: 0}
     - target: {fileID: 4282742615794052767, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: viewIdField
@@ -56022,6 +56034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invincibility Vaccine (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
+      propertyPath: m_TagString
+      value: Vaccine
+      objectReference: {fileID: 0}
     - target: {fileID: 4282742615794052767, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: viewIdField
       value: 327
@@ -70991,6 +71007,10 @@ PrefabInstance:
     - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: m_Name
       value: Invincibility Vaccine (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269758221864142317, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
+      propertyPath: m_TagString
+      value: Vaccine
       objectReference: {fileID: 0}
     - target: {fileID: 4282742615794052767, guid: af39632ea2215b947a5b8fc3858c00e1, type: 3}
       propertyPath: viewIdField
