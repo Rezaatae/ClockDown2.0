@@ -71,9 +71,6 @@ public class Player : MonoBehaviour
     private float recoilTimer;
     private Lives playerLives;
     public float minHeightForDeath = -50;
-    
-    [SerializeField]
-    public Transform playerSpawnPoint;
 
 
     [Tooltip("The Player's UI GameObject Prefab")]
