@@ -11,3 +11,12 @@ We embraced a lot of open source packages from the Unity Asset Store that allowe
 ## [Potions, Coin And Box of Pandora Pack](https://assetstore.unity.com/packages/3d/props/potions-coin-and-box-of-pandora-pack-71778)
 ## [2D Backgrounds Pack](https://assetstore.unity.com/packages/2d/environments/2d-backgrounds-pack-188495)
 ## [Animated Loading Icons](https://assetstore.unity.com/packages/2d/gui/icons/animated-loading-icons-47844)
+
+## Royalty-free Music used in-game
+
+Ending, Komiku, FreeMusicArchive.org – Level 2
+Mission, BoxCatGames, FreeMusicArchive.org – Level 3
+Epic Song, BoxCatGames, FreeMusicArchive.org - Level 5
+
+## https://freemusicarchive.org/music/BoxCat_Games 
+## https://freemusicarchive.org/music/Komiku 
