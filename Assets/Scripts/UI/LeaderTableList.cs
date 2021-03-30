@@ -24,11 +24,6 @@ public class LeaderTableList : MonoBehaviour
 
             if (playerPoints != null)
             {
-                if (playerList[0].Equals(player))
-                    playerPoints.color = Color.yellow;
-                else
-                    playerPoints.color = Color.black;
-            
                 playerPoints.SetPointsFor(player);
             }
             
@@ -40,7 +35,7 @@ public class LeaderTableList : MonoBehaviour
         var player1Points = ((int) p1.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentScore]);
         var player2Points =  ((int) p2.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentScore]);
 
-        return player1Points < player2Points ? player1Points : player2Points;
+        return player1Points > player2Points ? player1Points : player2Points;
     }
 
 }

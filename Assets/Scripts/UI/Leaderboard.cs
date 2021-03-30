@@ -2,30 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Gravitons.UI.Modal;
 
 public class Leaderboard : MonoBehaviour
 {
 
-    // public static Leaderboard Instance;
-
-    // [SerializeField]
-	private GameObject particleEmitter;
-
     [SerializeField]
     private Button backToGameLobbyButton;
 
-	// [SerializeField]
-	private ParticleSystem effectA;
-
-	// [SerializeField]
-	private ParticleSystem effectB;
-
 	void Start()
     {
-		/// -----------------------------------------
-		/// Instanciate into a box of 5 x 5 x 5 (xyz)
-		/// -----------------------------------------
-        // Explosion(particleEmitter.transform.position);
         if (PhotonNetwork.IsMasterClient)
             backToGameLobbyButton.gameObject.SetActive(true);
         else
@@ -35,12 +21,22 @@ public class Leaderboard : MonoBehaviour
 
 	}
 
-    public void BackToGameLobby()
+	public void OnClickBackToLobby()
+    {
+            ModalManager.Show(null, "You're about to enter the game lobby", new[] { new ModalButton() { Callback = BackToGameLobby, Text = "Confirm" }, new ModalButton() { Text = "Cancel" } });
+    }
+
+    private void BackToGameLobby()
     {
         PhotonNetwork.LoadLevel(Constants.Scenes.Game.Levels.GameLobby);
     }
 
-    public void LeaveGame()
+	public void OnClickLeaveGame()
+    {
+            ModalManager.Show(null, "You're about to leave the game", new[] { new ModalButton() { Callback = LeaveGame, Text = "Confirm" }, new ModalButton() { Text = "Cancel" } });
+    }
+
+    private void LeaveGame()
     {
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(Constants.Scenes.Game.MainMenu);
@@ -48,32 +44,5 @@ public class Leaderboard : MonoBehaviour
             SceneManager.LoadScene(Constants.Scenes.Game.MainMenu);
         PhotonNetwork.LeaveRoom();
     }
-
-	/// -----------------------------------------
-	/// Create an explosion at the given location
-	/// -----------------------------------------
-	public void Explosion(Vector3 position)
-	{
-		instantiate(effectA, position);
-		instantiate(effectB, position);
-	}
-
-	/// -----------------------------------------
-	/// Instantiate a Particle system from prefab
-	/// -----------------------------------------
-	private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position)
-	{
-		ParticleSystem newParticleSystem = Instantiate(prefab,position,Quaternion.identity) as ParticleSystem;
-
-		/// -----------------------------
-		// Make sure it will be destroyed
-		/// -----------------------------
-		Destroy(
-			newParticleSystem.gameObject,
-			0.5f
-		);
-
-		return newParticleSystem;
-	}
 
 }
