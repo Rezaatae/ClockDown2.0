@@ -25,6 +25,8 @@ public class LeaderTableList : MonoBehaviour
             {
                 if (playerList[0].Equals(player))
                     playerPoints.color = Color.yellow;
+                else
+                    playerPoints.color = Color.black;
             
                 playerPoints.SetPointsFor(player);
             }
