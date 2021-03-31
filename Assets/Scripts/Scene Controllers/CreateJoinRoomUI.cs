@@ -19,6 +19,7 @@ public class CreateJoinRoomUI : MonoBehaviourPunCallbacks
 
     public string Text { get; private set; }
 
+    // If the input field is null/contains no characters, the button is disabled
     private void Update()
     {
         if (String.IsNullOrWhiteSpace(inputField.text))
@@ -28,6 +29,7 @@ public class CreateJoinRoomUI : MonoBehaviourPunCallbacks
             actionButton.interactable = true;
     }
 
+    // If there is text in the input field, the button becomes enabled
     private void EnableButtons()
     {
         actionButton.interactable = true;
