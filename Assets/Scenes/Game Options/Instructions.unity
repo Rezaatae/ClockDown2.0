@@ -416,7 +416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621450551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -328.4, y: 45.8, z: -105}
+  m_LocalPosition: {x: -245.10002, y: 45.8, z: -105}
   m_LocalScale: {x: 12.08092, y: 12.026695, z: 4.2781653}
   m_Children: []
   m_Father: {fileID: 809167538}
@@ -498,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684161068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -173.2657, y: 67, z: -57.1}
+  m_LocalPosition: {x: -173.2657, y: 72.2, z: -57.1}
   m_LocalScale: {x: 27.674984, y: 24.508917, z: 4.2781653}
   m_Children: []
   m_Father: {fileID: 809167538}
@@ -562,7 +562,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You can kill the virus by using the mouse to aim, and left click to shoot.
-    Every sucessfull kill gives you a super jump boost.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1380,7 +1379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759635438}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -317, y: 119, z: -104.99999}
+  m_LocalPosition: {x: -233.7, y: 119, z: -104.99999}
   m_LocalScale: {x: 10.599477, y: 11.825241, z: 4.2781653}
   m_Children: []
   m_Father: {fileID: 809167538}
@@ -1592,7 +1591,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You must avoid being caught by a virus, if you do not, you will be required
-    to go into lockdown for 5 seconds and lose 1 life.
+    to go into lockdown for 5 seconds and lose 1 life. You will also lose a life
+    for falling out of the map, so tread lightly!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1880,7 +1880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122156407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -161, y: -158, z: -94.8}
+  m_LocalPosition: {x: -161, y: -127.3, z: -94.8}
   m_LocalScale: {x: 25.800497, y: 21.604677, z: 4.2781653}
   m_Children: []
   m_Father: {fileID: 809167538}
@@ -2054,7 +2054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134044073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -325.9, y: -24.8, z: -140.70001}
+  m_LocalPosition: {x: -219.3, y: -24.8, z: -140.70001}
   m_LocalScale: {x: 18.200182, y: 14.864086, z: 4.2781653}
   m_Children: []
   m_Father: {fileID: 809167538}
