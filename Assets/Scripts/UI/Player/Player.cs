@@ -171,6 +171,10 @@ public class Player : MonoBehaviour
 
     }
 
+    /* 
+    These methods activate when the player collides with a certain entity in the game equipped with a
+    3D box collider.
+    */
     private void OnTriggerEnter(Collider other)
     {
 
@@ -179,6 +183,12 @@ public class Player : MonoBehaviour
         VirusCollision(other);
         
     }  
+
+    /*
+    When the player prefab collides with a virus game object of tag 'Enemy', and is not invincible,
+    if the player is contolled by the local user then the player has one life deducted, 
+    the gameobject is then destroyed, and the freeze coroutine will begin (explained below).
+    */
     public void VirusCollision(Collider other)
     {
         if (!invincible && other.CompareTag("Enemy"))
@@ -190,6 +200,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*
+    When the player collides with a game object with the tag "Vaccine" and the player is contolled by the
+    local user, then one life will be added on, and the game object will be destroyed. Then the
+    "Invincibility" coroutine will begin (explained below).
+    */
     public void gainLife(Collider other)
     {
         if (other.CompareTag("Vaccine"))
@@ -211,17 +226,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*
+    The coroutine Freeze() accounts for the disabling of movement after collision with tag "Enemy". 
+    Here for lockDownTime = 5f, the player is unable to move.
+    */
     private IEnumerator Freeze()
     {
         canMove = false;
         walkSpeed = 0.01f;
-      //  Modal modal = ModalManager.Show(null, "You're on lockdown for " + lockDownTime + " seconds", null);
-       // ModalManager.Destroy(modal, lockDownTime);
         yield return new WaitForSeconds(lockDownTime);
         walkSpeed = 2.5f;
         canMove = true;
     }
 
+    /*
+    The coroutine Invincibility() accounts for disabling colliders with the viruses for duration = 10f.
+    */
     IEnumerator Invincibility()
     {
         invincible = true;
@@ -278,9 +298,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    // When a player falls below a certain y coordinate under the map, they will respawn at designated area
     private void Respawn()
     {
-        // TODO: RESPAWN LOGIC
         if (transform.position.y < minHeightForDeath)
         {
             transform.position = new Vector3(15, 2, 0);
