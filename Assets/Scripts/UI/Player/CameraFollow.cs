@@ -14,7 +14,8 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        // camera object to follow the player (target)
+        
         if (GameObject.Find(Constants.Prefabs.PlayerPhotonClone) != null)
         {
             target = GameObject.Find(Constants.Prefabs.PlayerPhotonClone).GetComponent<Transform>();

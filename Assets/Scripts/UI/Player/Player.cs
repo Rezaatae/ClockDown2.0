@@ -120,7 +120,9 @@ public class Player : MonoBehaviour
         ProcessInputs();
     }
 
-
+    /* 
+    Fire() method instantiates bullets and projects them with the mechanics defined in the Bullet script
+    */
     private void Fire()
     {
 
@@ -149,7 +151,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("Speed", (facingSign * rigidbodyComponent.velocity.x) / walkSpeed);
                 // facing the right direction and following curser
             rigidbodyComponent.MoveRotation(Quaternion.Euler(new Vector3(0, 90* Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
-
+            // checking the player is grounded to avoid infinite jumps
             isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadious, groundMask, QueryTriggerInteraction.Ignore);        
             animator.SetBool("isGrounded", isGrounded);
         }
@@ -249,6 +251,9 @@ public class Player : MonoBehaviour
         invincible = false;    
     }
 
+    /*
+    getting player object's arm to recoil when bullets are fired.
+    */
     private void Recoil()
     {
         if (recoilTimer < 0)
@@ -265,6 +270,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // processing user inputs (keyboard and mouse)
     private void ProcessInputs()
     {
         if (photonView.IsMine)
@@ -274,11 +280,12 @@ public class Player : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
+            // following mouse object
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, mouseAimMask))
             {
                 targetTransform.position = hit.point;
             }
-
+            // jumping
             if (canMove && Input.GetButtonDown(Constants.GameControls.Movement.Jump) && isGrounded)
             {
                 float jumpPower = 1.2f;
@@ -287,7 +294,7 @@ public class Player : MonoBehaviour
                 rigidbodyComponent.AddForce(Vector3.up * jumpPower * Mathf.Sqrt(jumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
 
             }
-
+            // firing when mouse clicks
             if (Input.GetButtonDown(Constants.GameControls.Movement.Fire))
             {
                 Fire();

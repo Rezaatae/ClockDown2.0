@@ -25,6 +25,7 @@ public class MovingPlatform : MonoBehaviour
          MovePlatform();
     }
 
+    // moving platform to be moved between waypoints (similar to enemy)
     private void MovePlatform()
     {
         if (transform.position == nextPos.position)

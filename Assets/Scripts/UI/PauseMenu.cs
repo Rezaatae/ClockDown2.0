@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // calling Pause/Resume method when esc key is down
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused)
@@ -26,14 +27,14 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; // sets timescale back to normal
         GameIsPaused = false;
     }
 
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; // freezes the game
         GameIsPaused = true;
     }
 

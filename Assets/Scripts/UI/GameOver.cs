@@ -8,6 +8,6 @@ public class GameOver : MonoBehaviour
     public void QuitGame()
     {
         
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2); // main menu to be loaded on game over
     }
 }

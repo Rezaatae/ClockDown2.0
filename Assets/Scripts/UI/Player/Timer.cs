@@ -24,11 +24,12 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // decreasing the timer UI per frame
         secondsLeft -= Time.deltaTime;
         timerText.text = secondsLeft.ToString("f2");
         if(secondsLeft <= 0)
         {
-            gameManager.CompleteLevel();
+            gameManager.CompleteLevel(); // complete level when time runs out (load next level)
         }     
         
     }

@@ -20,7 +20,10 @@ public class Bullet : MonoBehaviourPun
     private void Update()
     {
         
-        // using a raycast to calculate the next frame position of the bullet and trigger a hit if the position in the next frame collides with an object (of layer other that the firedbylayer layer)
+        /* 
+        using a raycast to calculate the next frame position of the bullet and trigger a hit if the position in the next frame 
+        collides with an object (of layer other that the firedbylayer layer)
+        */
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, velocity * Time.deltaTime, ~(1 << firedbyLayer))){

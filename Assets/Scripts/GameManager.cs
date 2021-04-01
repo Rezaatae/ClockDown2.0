@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
    private void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reloading current active scene on respawn
     }
 
     public void CompleteLevel()
     {
-        completeLevelUI.SetActive(true);
+        completeLevelUI.SetActive(true); // activating Time Up UI when time is up
     }
 
     public void EndGame()

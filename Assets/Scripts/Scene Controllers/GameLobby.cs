@@ -43,7 +43,7 @@ public class GameLobby : MonoBehaviourPunCallbacks
     */
     private void Update()
     {
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= 1)
         {
             if (PhotonNetwork.IsMasterClient)
             {

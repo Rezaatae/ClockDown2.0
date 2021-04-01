@@ -15,14 +15,17 @@ public class Score : MonoBehaviour
         score = (int) PhotonNetwork.LocalPlayer.CustomProperties[Constants.Scenes.Game.Objects.PlayerCurrentScore];
     }
 
+    // updating score UI text
     private void Update()
     {
         scoreText.text = "SCORE: " + GetCurrentScore();
     }
 
+    // inceremening score points on toilet roll collection
+
     public void Increment(int amount = 2)
     {
-
+        // setting amount variable to g for the golden toilet rolls in level 5
         amount = SceneManager.GetActiveScene().buildIndex == 12 ? 5 : 2;
         
         score += amount;
