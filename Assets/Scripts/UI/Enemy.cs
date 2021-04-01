@@ -4,7 +4,7 @@ using Photon.Pun;
 
 public class Enemy : MonoBehaviourPun
 {
-
+    // waypoints stored here in transforms
     [SerializeField]
     private Transform[] positions;
 
@@ -14,13 +14,8 @@ public class Enemy : MonoBehaviourPun
 
     private int nextPosIndex;
 
-    private float dist;
-
     [SerializeField]
     private GameObject effectA;
-
-    // [SerializeField]
-    // private GameObject effectB;
 
     [SerializeField]
     private float explosionLifeTime = 1f;
@@ -37,9 +32,13 @@ public class Enemy : MonoBehaviourPun
 
     private void Move()
     {
+        // the enemy object must always transform to next position index
+        // if the enemy object is at the "next" positon, next position index must increase
+        
         if (transform.position == nextPos.position)
         {
             nextPosIndex++;
+            // if the index of the next position resembles the size of the positions, next position is set back to the first position
             if (nextPosIndex >= positions.Length)
             {
                 nextPosIndex = 0;
@@ -61,6 +60,7 @@ public class Enemy : MonoBehaviourPun
     }
 
 
+    // method for instantiating the explosion effect when enemy dies
     private IEnumerator CreateEffect(GameObject prefab, Vector3 position)
 	{
 		GameObject go = PhotonNetwork.Instantiate(prefab.name, position, Quaternion.identity);
